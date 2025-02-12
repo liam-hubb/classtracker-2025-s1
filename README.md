@@ -1,66 +1,181 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Student Cheat Sheet SaaS Application Mini Project Brief
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Project Overview
+Web-based system for managing student class rosters with photos and personal details, providing lecturers with visual cheat sheets for their sessions.
 
-## About Laravel
+The project does NOT need a timetabling capability. It acts as a cheat sheet for lecturers.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Technical Stack
+- Laravel 11
+- PHP 8.3
+- SQL Database (Primary)
+- Optional: Livewire, MongoDB
+- GitHub for version control
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Team Structure and Timeline
+- 4 team members
+- 3-week development timeline
+- Collaborative development via GitHub repository
+- Project management through GitHub Projects and Issues
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Roles and Permissions
 
-## Learning Laravel
+### Role Hierarchy
+- Super Admin
+  - System configuration
+  - Role management
+  - Domain whitelist management
+- Admin
+  - User management
+  - Data import/export
+  - Backup management
+- Staff
+  - Session management
+  - Student approval
+  - Report generation
+- Student
+  - Profile management
+  - Change requests
+  - Photo submission
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Permission Matrix
+| Permission               | SuperAdmin | Admin | Staff | Student |
+| ------------------------ | ---------- | ----- | ----- | ------- |
+| System Configuration     | ✓          | -     | -     | -       |
+| Manage Roles             | ✓          | -     | -     | -       |
+| Manage Domains           | ✓          | ✓     | -     | -       |
+| User Management          | ✓          | ✓     | -     | -       |
+| Backup Management        | ✓          | ✓     | -     | -       |
+| Import/Export            | ✓          | ✓     | -     | -       |
+| Class Session Management | ✓          | ✓     | ✓     | -       |
+| Approve Changes          | ✓          | ✓     | ✓     | -       |
+| View All Class Sessions  | ✓          | ✓     | -     | -       |
+| View Own Class Sessions  | ✓          | ✓     | ✓     | -       |
+| Edit Own Profile         | ✓          | ✓     | ✓     | ✓       |
+| Request Changes          | ✓          | ✓     | ✓     | ✓       |
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# Feature Requirements
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Core Infrastructure
+- Laravel 11 based system
+- PHP 8.3 compatibility
+- SQL database (SQLite for development)
+- Secure file storage system
+- Domain email validation system
+- Automated backup system
 
-## Laravel Sponsors
+## Authentication & Authorization
+- Role-based access control:
+  - Super Admin: Full system access
+  - Admin: System management
+  - Staff: Class management
+  - Student: Personal profile access
+- Email verification system
+- Domain whitelist management
+- Password security requirements
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## User Management
+- Profile Requirements:
+  - Given and/or Family name (at least one required)
+  - Preferred name (optional)
+  - Preferred pronouns
+  - Valid email from approved domain
+  - Profile photo
+- Change request system for updates
+- Email verification and bounce checking
 
-### Premium Partners
+## Image Management
+- Upload Requirements:
+  - PNG/JPG formats only
+  - Size: 250KB maximum
+  - Dimensions: 512x512px minimum, 1024x1024px maximum
+- Processing Features:
+  - Automatic resizing
+  - Interactive cropping interface
+  - AI-assisted face detection
+  - Head/shoulders positioning guide
+  - Web Cam capture interface
+  - Drag-and-drop upload
+- Storage Features:
+  - UUID-based file naming
+  - Secure storage location
+  - Download prevention
+  - Multiple image versions (original, processed, thumbnail)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Course Management
+- Data Structure:
+  - Packages (contains multiple courses)
+  - Courses (core, specialist, elective units)
+  - Units (part of courses and clusters)
+  - Clusters (1-8 units)
+- Import Capabilities:
+  - CSV/Excel file support
+  - Data validation
+  - Error handling
+  - Relationship verification
 
-## Contributing
+## Session Management
+- Features:
+  - Course/Cluster assignment
+  - Start/End dates
+  - Duration tracking
+  - Lecturer assignment
+- Import Options:
+  - CSV/Excel import
+  - ICS feed integration
+  - Manual entry
+- Scheduling:
+  - Conflict detection
+  - Calendar interface
+  - Duration validation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Cheat Sheet Generation
+- Features:
+  - Student photos
+  - Names (Given, Family, Preferred)
+  - Pronouns
+  - Session-specific grouping
+  - Print optimization
+  - Layout customization
 
-## Code of Conduct
+## Data Import/Export
+- Import Validation:
+  - File format verification
+  - Schema validation
+  - Data type checking
+  - Relationship integrity
+  - Error reporting
+- Export Features:
+  - Full system backup
+  - Selective data export
+  - Multiple format support
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## System Administration
+- Backup Management:
+  - Daily automated backups
+  - 30-day retention
+  - Monthly archives
+  - Annual archives
+  - Integrity verification
+- System Configuration:
+  - Email domain management
+  - Role/Permission settings
+  - System parameters
+  - Import/Export settings
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Development Requirements
+- Version Control:
+  - GitHub repository
+  - Branch protection rules
+  - Pull request workflow
+  - Code review process
+- Testing:
+  - Pest testing framework
+  - Required test coverage
+  - Integration tests
+  - Unit tests
+- Documentation:
+  - Code documentation
+  - API documentation
+  - User guides
+  - Setup instructions
