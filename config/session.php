@@ -9,9 +9,9 @@ return [
     | Default Session Driver
     |--------------------------------------------------------------------------
     |
-    | This option determines the default session driver that is utilized for
+    | This option determines the default sessions driver that is utilized for
     | incoming requests. Laravel supports a variety of storage options to
-    | persist session data. Database storage is a great default choice.
+    | persist sessions data. Database storage is a great default choice.
     |
     | Supported: "file", "cookie", "database", "apc",
     |            "memcached", "redis", "dynamodb", "array"
@@ -25,7 +25,7 @@ return [
     | Session Lifetime
     |--------------------------------------------------------------------------
     |
-    | Here you may specify the number of minutes that you wish the session
+    | Here you may specify the number of minutes that you wish the sessions
     | to be allowed to remain idle before it expires. If you want them
     | to expire immediately when the browser is closed then you may
     | indicate that via the expire_on_close configuration option.
@@ -41,9 +41,9 @@ return [
     | Session Encryption
     |--------------------------------------------------------------------------
     |
-    | This option allows you to easily specify that all of your session data
+    | This option allows you to easily specify that all of your sessions data
     | should be encrypted before it's stored. All encryption is performed
-    | automatically by Laravel and you may use the session like normal.
+    | automatically by Laravel and you may use the sessions like normal.
     |
     */
 
@@ -54,7 +54,7 @@ return [
     | Session File Location
     |--------------------------------------------------------------------------
     |
-    | When utilizing the "file" session driver, the session files are placed
+    | When utilizing the "file" sessions driver, the sessions files are placed
     | on disk. The default storage location is defined here; however, you
     | are free to provide another location where they should be stored.
     |
@@ -67,7 +67,7 @@ return [
     | Session Database Connection
     |--------------------------------------------------------------------------
     |
-    | When using the "database" or "redis" session drivers, you may specify a
+    | When using the "database" or "redis" sessions drivers, you may specify a
     | connection that should be used to manage these sessions. This should
     | correspond to a connection in your database configuration options.
     |
@@ -80,7 +80,7 @@ return [
     | Session Database Table
     |--------------------------------------------------------------------------
     |
-    | When using the "database" session driver, you may specify the table to
+    | When using the "database" sessions driver, you may specify the table to
     | be used to store sessions. Of course, a sensible default is defined
     | for you; however, you're welcome to change this to another table.
     |
@@ -93,8 +93,8 @@ return [
     | Session Cache Store
     |--------------------------------------------------------------------------
     |
-    | When using one of the framework's cache driven session backends, you may
-    | define the cache store which should be used to store the session data
+    | When using one of the framework's cache driven sessions backends, you may
+    | define the cache store which should be used to store the sessions data
     | between requests. This must match one of your defined cache stores.
     |
     | Affects: "apc", "dynamodb", "memcached", "redis"
@@ -108,7 +108,7 @@ return [
     | Session Sweeping Lottery
     |--------------------------------------------------------------------------
     |
-    | Some session drivers must manually sweep their storage location to get
+    | Some sessions drivers must manually sweep their storage location to get
     | rid of old sessions from storage. Here are the chances that it will
     | happen on a given request. By default, the odds are 2 out of 100.
     |
@@ -121,7 +121,7 @@ return [
     | Session Cookie Name
     |--------------------------------------------------------------------------
     |
-    | Here you may change the name of the session cookie that is created by
+    | Here you may change the name of the sessions cookie that is created by
     | the framework. Typically, you should not need to change this value
     | since doing so does not grant a meaningful security improvement.
     |
@@ -137,7 +137,7 @@ return [
     | Session Cookie Path
     |--------------------------------------------------------------------------
     |
-    | The session cookie path determines the path for which the cookie will
+    | The sessions cookie path determines the path for which the cookie will
     | be regarded as available. Typically, this will be the root path of
     | your application, but you're free to change this when necessary.
     |
@@ -150,7 +150,7 @@ return [
     | Session Cookie Domain
     |--------------------------------------------------------------------------
     |
-    | This value determines the domain and subdomains the session cookie is
+    | This value determines the domain and subdomains the sessions cookie is
     | available to. By default, the cookie will be available to the root
     | domain and all subdomains. Typically, this shouldn't be changed.
     |
@@ -163,7 +163,7 @@ return [
     | HTTPS Only Cookies
     |--------------------------------------------------------------------------
     |
-    | By setting this option to true, session cookies will only be sent back
+    | By setting this option to true, sessions cookies will only be sent back
     | to the server if the browser has a HTTPS connection. This will keep
     | the cookie from being sent to you when it can't be done securely.
     |
