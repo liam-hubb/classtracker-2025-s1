@@ -36,10 +36,21 @@ class PackageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Packages $packages)
+    public function show(string $id)
     {
-        return view('packages.show', compact('packages'));
-    }
+        {
+
+            $package = Packages::whereId($id)->get()->first();
+
+            if ($package) {
+                return view('packages.show', compact(['package',]))
+                    ->with('success', 'Package found')
+                    ;
+            }
+
+            return redirect(route('packages.index'))
+                ->with('warning', 'Package not found');
+        }    }
 
     /**
      * Show the form for editing the specified resource.

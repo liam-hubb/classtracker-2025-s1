@@ -33,13 +33,6 @@
                                 <th scope="col" class="px-6 py-4">AQF Level</th>
                                 <th scope="col" class="px-6 py-4">Title</th>
                                 <th scope="col" class="px-6 py-4">TGA Status</th>
-                                <th scope="col" class="px-6 py-4">State Code</th>
-                                <th scope="col" class="px-6 py-4">Nominal Hours</th>
-                                <th scope="col" class="px-6 py-4">Type</th>
-                                <th scope="col" class="px-6 py-4">QA</th>
-                                <th scope="col" class="px-6 py-4">Nat Code</th>
-                                <th scope="col" class="px-6 py-4">Nat Title</th>
-                                <th scope="col" class="px-6 py-4">Nat Code & Title</th>
                                 <th scope="col" class="px-6 py-4"></th>
                             </tr>
                             </thead>
@@ -52,13 +45,6 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $course->aqf_level }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $course->title }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $course->tga_status }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $course->state_code }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $course->nominal_hours }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $course->type }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $course->qa }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $course->nat_code }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $course->nat_title }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $course->nat_code_title }}</td>
                                     <td class="whitespace-nowrap px-0 py-4">
                                         <form action="{{ route('courses.destroy', $course) }}"
                                               method="POST"

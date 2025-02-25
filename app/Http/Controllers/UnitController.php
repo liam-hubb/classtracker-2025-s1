@@ -36,9 +36,19 @@ class UnitController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Units $units)
+    public function show(string $id)
     {
-        //
+
+        $unit = Units::whereId($id)->get()->first();
+
+        if ($unit) {
+            return view('units.show', compact(['unit',]))
+                ->with('success', 'Unit found')
+                ;
+        }
+
+        return redirect(route('units.index'))
+            ->with('warning', 'Unit not found');
     }
 
     /**

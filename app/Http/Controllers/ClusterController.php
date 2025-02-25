@@ -39,11 +39,12 @@ class ClusterController extends Controller
 
         public function show(string $id)
         {
+
             $cluster = Clusters::whereId($id)->get()->first();
 
             if ($cluster) {
                 return view('clusters.show', compact(['cluster',]))
-//                    ->with('success', 'Cluster found')
+                    ->with('success', 'Cluster found')
             ;
             }
 

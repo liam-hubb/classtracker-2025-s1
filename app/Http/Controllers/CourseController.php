@@ -36,9 +36,19 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Courses $courses)
+    public function show(string $id)
     {
-        //
+
+        $course = Courses::whereId($id)->get()->first();
+
+        if ($course) {
+            return view('courses.show', compact(['course',]))
+                ->with('success', 'Course found')
+                ;
+        }
+
+        return redirect(route('courses.index'))
+            ->with('warning', 'Course not found');
     }
 
     /**

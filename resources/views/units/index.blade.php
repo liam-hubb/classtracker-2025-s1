@@ -32,8 +32,6 @@
                                 <th scope="col" class="px-6 py-4">National Code</th>
                                 <th scope="col" class="px-6 py-4">Title</th>
                                 <th scope="col" class="px-6 py-4">TGA Status</th>
-                                <th scope="col" class="px-6 py-4">State Code</th>
-                                <th scope="col" class="px-6 py-4">Nominal Hours</th>
                                 <th scope="col" class="px-6 py-4"></th>
 
 
@@ -47,8 +45,6 @@
                                     <td class="whitespace-nowrap px-6 py-4">{{ $unit->national_code }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $unit->title }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $unit->tga_status }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $unit->state_code }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $unit->nominal_hours }}</td>
                                     <td class="whitespace-nowrap px-0 py-4">
                                         <form action="{{ route('units.destroy', $unit) }}"
                                               method="POST"

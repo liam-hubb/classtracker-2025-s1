@@ -32,15 +32,6 @@
                                 <th scope="col" class="px-6 py-4">Code</th>
                                 <th scope="col" class="px-6 py-4">Title</th>
                                 <th scope="col" class="px-6 py-4">Qualification</th>
-                                <th scope="col" class="px-6 py-4">Qualification Code</th>
-                                <th scope="col" class="px-6 py-4">Unit 1</th>
-                                <th scope="col" class="px-6 py-4">Unit 2</th>
-                                <th scope="col" class="px-6 py-4">Unit 3</th>
-                                <th scope="col" class="px-6 py-4">Unit 4</th>
-                                <th scope="col" class="px-6 py-4">Unit 5</th>
-                                <th scope="col" class="px-6 py-4">Unit 6</th>
-                                <th scope="col" class="px-6 py-4">Unit 7</th>
-                                <th scope="col" class="px-6 py-4">Unit 8</th>
                                 <th scope="col" class="px-6 py-4"></th>
                             </tr>
                             </thead>
@@ -52,15 +43,6 @@
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->code }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->title }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->qualification }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->qualification_code }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->unit_1 }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->unit_2 }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->unit_3 }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->unit_4 }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->unit_5 }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->unit_6 }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->unit_7 }}</td>
-                                    <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->unit_8 }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">
                                         <form action="{{ route('clusters.destroy', $cluster) }}"
                                               method="POST"
