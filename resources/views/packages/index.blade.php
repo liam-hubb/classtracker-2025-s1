@@ -39,7 +39,7 @@
 
                             <tbody>
                             @foreach($packages as $package)
-                                <tr class="border-b border-zinc-300 dark:border-white/10">
+                                <tr class="border-b border-zinc-300 text-black dark:border-white/10">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $packages->firstItem() + $loop->index }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">{{ $package->national_code }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $package->title }}</td>
