@@ -4,6 +4,7 @@ use App\Http\Controllers\ClusterController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StaticPageController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesAndPermissionsController;
@@ -11,9 +12,11 @@ use App\Http\Controllers\SessionController;
 use App\Models\Clusters;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', [StaticPageController::class, 'home'])->name('static.home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
