@@ -44,7 +44,8 @@
                                         <x-input-label for="national_code">
                                             National Code
                                         </x-input-label>
-                                        <x-text-input id="national_code" name="national_code" value="{{ old('national_code') }}"/>
+                                        <x-text-input id="national_code" name="national_code" value="{{ old('national_code') }}" placeholder="e.g. FNS"
+                                                      class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('national_code')" class="mt-2"/>
                                     </div>
 
@@ -52,7 +53,8 @@
                                         <x-input-label for="title">
                                             Title
                                         </x-input-label>
-                                        <x-text-input id="title" name="title" value="{{ old('title') }}"/>
+                                        <x-text-input id="title" name="title" value="{{ old('title') }}" placeholder="e.g. Financial Services Training Package"
+                                                      class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                                     </div>
 
@@ -60,7 +62,12 @@
                                         <x-input-label for="tga_status">
                                             TGA Status
                                         </x-input-label>
-                                        <x-text-input id="tga_status" name="tga_status" value="{{ old('tga_status') }}"/>
+                                        <select id="tga_status" name="tga_status" class="rounded-md shadow-sm border-gray-300 text-black placeholder-gray-500">
+                                            <option value="Replaced">Replaced</option>
+                                            <option value="Current">Current</option>
+                                            <option value="Expired">Expired</option>
+                                            <option value="Not Provided">Not Provided</option>
+                                        </select>
                                         <x-input-error :messages="$errors->get('tga_status')" class="mt-2"/>
                                     </div>
 

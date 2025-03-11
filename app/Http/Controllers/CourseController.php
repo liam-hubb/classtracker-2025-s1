@@ -32,18 +32,23 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'national_code' => ['required', 'string', 'size:9'],
+            'national_code' => ['required', 'string', 'regex:/^[A-Z]{3}\d{5}$/'],
             'aqf_level' => ['required', 'min:5', 'max:255', 'string',],
             'title' => ['required', 'min:5', 'max:255', 'string',],
             'tga_status' => ['required', 'min:5', 'max:255', 'string',],
             'state_code' => ['required', 'string', 'size:4'],
             'nominal_hours' => ['required', 'min:1', 'max:2000', 'numeric',],
             'type' => ['required', 'min:5', 'max:255', 'string',],
-            'qa' => ['required', 'string', 'size:4'],
-            'nat_code' => ['required', 'string', 'size:9'],
-            'nat_title' => ['required', 'min:5', 'max:255', 'string',],
-            'nat_code_title' => ['required', 'min:5', 'max:255', 'string',],
+            'qa' => ['sometimes', 'nullable','string', 'size:4'],
+            'nat_code' => ['sometimes', 'nullable','string', 'regex:/^[A-Z]{3}\d{5}$/'],
+            'nat_title' => ['sometimes', 'nullable','min:5', 'max:255', 'string',],
+            'nat_code_title' => ['required','min:5', 'max:255', 'string',],
         ]);
+
+
+        $validated['qa'] = $validated['qa'] ?: $validated['state_code'];
+        $validated['nat_code'] = $validated['nat_code'] ?: $validated['national_code'];
+        $validated['nat_title'] = $validated['nat_title'] ?: $validated['title'];
 
         Courses::create($validated);
 
@@ -84,20 +89,25 @@ class CourseController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'national_code' => ['required', 'string', 'size:9'],
+            'national_code' => ['required', 'string', 'regex:/^[A-Z]{3}\d{5}$/'],
             'aqf_level' => ['required', 'min:5', 'max:255', 'string',],
             'title' => ['required', 'min:5', 'max:255', 'string',],
             'tga_status' => ['required', 'min:5', 'max:255', 'string',],
             'state_code' => ['required', 'string', 'size:4'],
             'nominal_hours' => ['required', 'min:1', 'max:2000', 'numeric',],
             'type' => ['required', 'min:5', 'max:255', 'string',],
-            'qa' => ['required', 'string', 'size:4'],
-            'nat_code' => ['required', 'string', 'size:9'],
-            'nat_title' => ['required', 'min:5', 'max:255', 'string',],
-            'nat_code_title' => ['required', 'min:5', 'max:255', 'string',],
+            'qa' => ['sometimes', 'nullable','string', 'size:4'],
+            'nat_code' => ['sometimes', 'nullable','string', 'regex:/^[A-Z]{3}\d{5}$/'],
+            'nat_title' => ['sometimes', 'nullable','min:5', 'max:255', 'string',],
+            'nat_code_title' => ['required','min:5', 'max:255', 'string',],
         ]);
 
+        $validated['qa'] = $validated['qa'] ?: $validated['state_code'];
+        $validated['nat_code'] = $validated['nat_code'] ?: $validated['national_code'];
+        $validated['nat_title'] = $validated['nat_title'] ?: $validated['title'];
+
         Courses::whereId($id)->update($validated);
+
 
         return redirect()->route('courses.index')
             ->with('success', 'Course updated successfully');
