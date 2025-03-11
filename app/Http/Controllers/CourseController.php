@@ -48,7 +48,7 @@ class CourseController extends Controller
 
         $validated['qa'] = $validated['qa'] ?: $validated['state_code'];
         $validated['nat_code'] = $validated['nat_code'] ?: $validated['national_code'];
-        $validated['nat_title'] = $validated['nat_title'] ?: $validated['title'];
+        $validated['nat_title'] = $validated['nat_title'] ?: $validated['title']
 
         Courses::create($validated);
 
@@ -107,8 +107,7 @@ class CourseController extends Controller
         $validated['nat_title'] = $validated['nat_title'] ?: $validated['title'];
 
         Courses::whereId($id)->update($validated);
-
-
+      
         return redirect()->route('courses.index')
             ->with('success', 'Course updated successfully');
     }
