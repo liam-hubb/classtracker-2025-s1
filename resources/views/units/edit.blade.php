@@ -45,7 +45,8 @@
                                         <x-input-label for="national_code">
                                             National Code
                                         </x-input-label>
-                                        <x-text-input id="national_code" name="national_code" value="{{ old('national_code') ?? $unit->national_code}}"/>
+                                        <x-text-input id="national_code" name="national_code" value="{{ old('national_code') ?? $unit->national_code}}" placeholder="e.g. BSBMKG000"
+                                                      class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('national_code')" class="mt-2"/>
                                     </div>
 
@@ -53,15 +54,20 @@
                                         <x-input-label for="title">
                                             Title
                                         </x-input-label>
-                                        <x-text-input id="title" name="title" value="{{ old('title') ?? $unit->title }}"/>
+                                        <x-text-input id="title" name="title" value="{{ old('title') ?? $unit->title }}" placeholder="e.g. Analyse consumer behaviour for specific markets"
+                                                      class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                                     </div>
 
                                     <div class="flex flex-col my-2">
-                                        <x-input-label for="tga_status">
-                                            TGA Status
-                                        </x-input-label>
-                                        <x-text-input id="tga_status" name="tga_status" value="{{ old('tga_status') ?? $unit->tga_status }}"/>
+                                        <x-input-label for="tga_status">TGA Status</x-input-label>
+
+                                        <select id="tga_status" name="tga_status" class="rounded-md shadow-sm border-gray-300 text-black placeholder-gray-500">
+                                            <option value="Current" {{ old('tga_status', $unit->tga_status) == 'Current' ? 'selected' : '' }}>Current</option>
+                                            <option value="Replaced" {{ old('tga_status', $unit->tga_status) == 'Replaced' ? 'selected' : '' }}>Replaced</option>
+                                            <option value="Expired" {{ old('tga_status', $unit->tga_status) == 'Expired' ? 'selected' : '' }}>Expired</option>
+                                            <option value="Not Provided" {{ old('tga_status', $unit->tga_status) == 'null' ? 'selected' : '' }}>Not Provided</option>
+                                        </select>
                                         <x-input-error :messages="$errors->get('tga_status')" class="mt-2"/>
                                     </div>
 
@@ -69,7 +75,8 @@
                                         <x-input-label for="state_code">
                                             State Code
                                         </x-input-label>
-                                        <x-text-input id="state_code" name="state_code" value="{{ old('state_code') ?? $unit->state_code }}"/>
+                                        <x-text-input id="state_code" name="state_code" value="{{ old('state_code') ?? $unit->state_code }}" placeholder="e.g. AUJ00"
+                                                      class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('state_code')" class="mt-2"/>
                                     </div>
 
@@ -77,7 +84,8 @@
                                         <x-input-label for="nominal_hours">
                                             Nominal Hours
                                         </x-input-label>
-                                        <x-text-input id="nominal_hours" name="nominal_hours" value="{{ old('nominal_hours') ?? $unit->nominal_hours }}"/>
+                                        <x-text-input id="nominal_hours" name="nominal_hours" value="{{ old('nominal_hours') ?? $unit->nominal_hours }}" placeholder="e.g. 50"
+                                                      class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('nominal_hours')" class="mt-2"/>
                                     </div>
 

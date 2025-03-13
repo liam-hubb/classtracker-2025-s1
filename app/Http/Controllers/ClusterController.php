@@ -34,18 +34,18 @@ class ClusterController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'code' => ['required', 'min:5', 'max:9', 'string',],
+            'code' => ['required', 'min:5', 'max:9', 'string', 'regex:/^[A-Z0-9-]+$/'],
             'title' => ['required', 'min:5', 'max:255', 'string',],
-            'qualification' => ['nullable', 'string', 'size:8'],
-            'qualification_code' => ['nullable', 'string', 'size:4'],
-            'unit_1' =>['nullable', 'string', 'size:9'],
-            'unit_2' => ['nullable', 'string', 'size:9'],
-            'unit_3' => ['nullable', 'string', 'size:9'],
-            'unit_4' => ['nullable', 'string', 'size:9'],
-            'unit_5' => ['nullable', 'string', 'size:9'],
-            'unit_6' => ['nullable', 'string', 'size:9'],
-            'unit_7' => ['nullable', 'string', 'size:9'],
-            'unit_8' => ['nullable', 'string', 'size:9'],
+            'qualification' => ['nullable', 'string', 'regex:/^ICT\d{5}$/'],
+            'qualification_code' => ['nullable', 'string', 'regex:/^AC\d{2}$/'],
+            'unit_1' =>['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_2' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_3' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_4' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_5' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_6' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_7' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_8' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
         ]);
 
 
@@ -88,18 +88,18 @@ class ClusterController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'code' => ['required', 'min:5', 'max:9', 'string',],
+            'code' => ['required', 'min:5', 'max:9', 'string', 'regex:/^[A-Z0-9-]+$/'],
             'title' => ['required', 'min:5', 'max:255', 'string',],
-            'qualification' => ['nullable', 'string', 'size:8'],
-            'qualification_code' => ['nullable', 'string', 'size:4'],
-            'unit_1' =>['nullable', 'string', 'size:9'],
-            'unit_2' => ['nullable', 'string', 'size:9'],
-            'unit_3' => ['nullable', 'string', 'size:9'],
-            'unit_4' => ['nullable', 'string', 'size:9'],
-            'unit_5' => ['nullable', 'string', 'size:9'],
-            'unit_6' => ['nullable', 'string', 'size:9'],
-            'unit_7' => ['nullable', 'string', 'size:9'],
-            'unit_8' => ['nullable', 'string', 'size:9'],
+            'qualification' => ['nullable', 'string', 'regex:/^ICT\d{5}$/'],
+            'qualification_code' => ['nullable', 'string', 'regex:/^AC\d{2}$/'],
+            'unit_1' =>['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_2' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_3' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_4' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_5' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_6' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_7' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_8' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
         ]);
 
         Clusters::whereId($id)->update($validated);
