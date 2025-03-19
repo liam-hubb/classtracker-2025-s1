@@ -27,8 +27,8 @@
                               method="POST"
                               class="flex gap-4">
 
-                            @method('patch')
                             @csrf
+                            @method('PATCH')
 
                             <div class="min-w-full text-left text-sm font-light text-surface dark:text-white">
                                 <header
@@ -45,7 +45,8 @@
                                         <x-input-label for="code">
                                             Code
                                         </x-input-label>
-                                        <x-text-input id="code" name="code" value="{{ old('code') ?? $cluster->code}}"/>
+                                        <x-text-input id="code" name="code" value="{{ old('code') ?? $cluster->code}}" placeholder="e.g. ADVPROG"
+                                                      class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('code')" class="mt-2"/>
                                     </div>
 
@@ -53,12 +54,41 @@
                                         <x-input-label for="title">
                                             Title
                                         </x-input-label>
-                                        <x-text-input id="title" name="title" value="{{ old('title') ?? $cluster->title }}"/>
+                                        <x-text-input id="title" name="title" value="{{ old('title') ?? $cluster->title }}" placeholder="e.g. Advanced Programming"
+                                                      class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                                     </div>
 
+                                    <div class="flex flex-col my-2">
+                                        <x-input-label for="qualification">
+                                            Qualification
+                                        </x-input-label>
+                                        <x-text-input id="qualification" name="qualification" value="{{ old('qualification') ?? $cluster->qualification }}" placeholder="e.g. ICT00000 - It has to start with ICT"
+                                                      class="placeholder-gray-500 text-black"/>
+                                        <x-input-error :messages="$errors->get('qualification')" class="mt-2"/>
+                                    </div>
 
+                                    <div class="flex flex-col my-2">
+                                        <x-input-label for="qualification_code">
+                                            Qualification Code
+                                        </x-input-label>
+                                        <x-text-input id="qualification_code" name="qualification_code" value="{{ old('qualification_code') ?? $cluster->qualification_code }}" placeholder="e.g. AC00 -It has to start with AC"
+                                                      class="placeholder-gray-500 text-black"/>
+                                        <x-input-error :messages="$errors->get('qualification_code')" class="mt-2"/>
+                                    </div>
 
+                                    @foreach(range(1, 8) as $unit)
+                                        @if(($cluster->{'unit_' . $unit}) || !filled($cluster->{'unit_' . $unit}))
+                                            <div class="flex flex-col my-2">
+                                                <x-input-label for="{{ 'unit_' . $unit }}">
+                                                    Unit {{ $unit }}
+                                                </x-input-label>
+                                                <x-text-input id="{{ 'unit_' . $unit }}" name="{{ 'unit_' . $unit }}" value="{{ old('unit_' . $unit) ?? $cluster->{'unit_' . $unit} }}" placeholder="e.g. ICTPRG000"
+                                                              class="placeholder-gray-500 text-black"/>
+                                                <x-input-error :messages="$errors->get('unit_' . $unit)" class="mt-2"/>
+                                            </div>
+                                        @endif
+                                    @endforeach
 
                                 </section>
 

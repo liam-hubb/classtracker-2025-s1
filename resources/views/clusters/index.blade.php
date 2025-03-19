@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('clusters Management') }}
+            {{ __('Clusters Management') }}
         </h2>
     </x-slot>
 
@@ -38,7 +38,7 @@
 
                             <tbody>
                             @foreach($clusters as $cluster)
-                                <tr class="border-b border-zinc-300 dark:border-white/10">
+                                <tr class="border-b border-zinc-300 text-black dark:border-white/10">
                                     <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $clusters->firstItem() + $loop->index }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->code }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $cluster->title }}</td>
