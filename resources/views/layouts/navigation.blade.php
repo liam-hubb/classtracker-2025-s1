@@ -28,6 +28,13 @@
                         {{ __('Roles & Permission') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('lessons.index')" :active="request()->routeIs('lessons.index')">
+                        {{ __('Lessons') }}
+                    </x-nav-link>
+                </div>
+
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('cluster')"
                                 :active="request()->routeIs('cluster')">

@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Session;
-use App\Http\Requests\StoreSessionRequest;
-use App\Http\Requests\UpdateSessionRequest;
+use App\Models\Clusters;
+use App\Models\Lesson;
+use App\Http\Requests\StoreLessonRequest;
+use App\Http\Requests\UpdateLessonRequest;
 
-class SessionController extends Controller
+class LessonController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('sessions.index');
+        $data = Lesson::orderBy('name', 'asc')->paginate(6);
+        return view('lessons.index', compact(['data']));
     }
 
     /**
@@ -27,7 +29,7 @@ class SessionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSessionRequest $request)
+    public function store(StoreLessonRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class SessionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Session $session)
+    public function show(Lesson $lesson)
     {
         //
     }
@@ -43,7 +45,7 @@ class SessionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Session $session)
+    public function edit(Lesson $lesson)
     {
         //
     }
@@ -51,7 +53,7 @@ class SessionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSessionRequest $request, Session $session)
+    public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
         //
     }
@@ -59,7 +61,7 @@ class SessionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Session $session)
+    public function destroy(Lesson $lesson)
     {
         //
     }

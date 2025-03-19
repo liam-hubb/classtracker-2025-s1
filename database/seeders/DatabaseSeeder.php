@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
                 CoursesSeeder::class,
                 UnitsSeeder::class,
                 PackagesSeeder::class,
-//                SessionSeeder::class,
+                LessonSeeder::class,
             ]
         );
 
