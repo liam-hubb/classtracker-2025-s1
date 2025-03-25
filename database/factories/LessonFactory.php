@@ -44,17 +44,17 @@ class LessonFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Lesson $lesson) {
-            $users = User::inRandomOrder()->take(2)->pluck('id');
+            $users = User::inRandomOrder()->take(5)->pluck('id');
             $lesson->users()->attach($users);
         });
     }
 
     const WEEKDAYS = [
-        1 => 'Mon',
-        2 => 'Tues',
-        3 => 'Wed',
-        4 => 'Thu',
-        5 => 'Fri',
+        1 => 'Monday',
+        2 => 'Tuesday',
+        3 => 'Wednesday',
+        4 => 'Thursday',
+        5 => 'Friday',
 //        6 => 'Sat',
 //        7 => 'Sun',
     ];

@@ -18,9 +18,8 @@ class Lesson extends Model
         'start_date',
         'start_time',
         'weekday',
-        'session_duration',
         'end_date',
-        'user_id',
+        'duration'
     ];
 
     public function clusters()

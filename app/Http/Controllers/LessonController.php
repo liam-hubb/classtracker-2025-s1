@@ -6,6 +6,7 @@ use App\Models\Clusters;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
+use Carbon\Carbon;
 
 class LessonController extends Controller
 {
@@ -23,7 +24,8 @@ class LessonController extends Controller
      */
     public function create()
     {
-        //
+        $clusters = Clusters::all();
+        return view('lessons.create', compact(['clusters']));
     }
 
     /**
@@ -31,7 +33,16 @@ class LessonController extends Controller
      */
     public function store(StoreLessonRequest $request)
     {
-        //
+        $input = $request->validated();
+
+        if (!empty($input['start_time'])) {
+            $input['start_time'] = Carbon::createFromFormat('H:i', $input['start_time'])->format('H:i');
+        }
+
+        Lesson::create($input);
+
+        return redirect()->route('lessons.index')
+            ->with('success', 'Lesson created successfully');
     }
 
     /**
@@ -39,7 +50,7 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+        return view('lessons.show', compact('lesson'));
     }
 
     /**
@@ -47,7 +58,8 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        //
+        $clusters = Clusters::all();
+        return view('lessons.edit', compact(['lesson', 'clusters']));
     }
 
     /**
@@ -55,7 +67,15 @@ class LessonController extends Controller
      */
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
-        //
+        $input = $request->validated();
+        if (!empty($input['start_time'])) {
+            $input['start_time'] = Carbon::createFromFormat('H:i', $input['start_time'])->format('H:i');
+        }
+
+        $lesson->update($input);
+
+        return redirect()->route('lessons.index')
+            ->with('success', 'Lesson updated successfully');
     }
 
     /**
@@ -63,6 +83,8 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->delete();
+        return redirect()->route('lessons.index')
+            ->with('success', 'Lesson deleted successfully');
     }
 }

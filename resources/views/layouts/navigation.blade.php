@@ -41,31 +41,31 @@
                     </x-nav-link>
                 </div>
 
-
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('cluster')"
-                                :active="request()->routeIs('cluster')">
-                        {{ __('Clusters') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('unit')"
-                                :active="request()->routeIs('unit')">
-                        {{ __('Units') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative group">
                     <x-nav-link :href="route('course')"
                                 :active="request()->routeIs('course')">
                         {{ __('Courses') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('package')"
-                                :active="request()->routeIs('package')">
-                        {{ __('Packages') }}
-                    </x-nav-link>
-                </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('cluster')"
+                                    :active="request()->routeIs('cluster')">
+                            {{ __('Clusters') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('unit')"
+                                    :active="request()->routeIs('unit')">
+                            {{ __('Units') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('package')"
+                                    :active="request()->routeIs('package')">
+                            {{ __('Packages') }}
+                        </x-nav-link>
+                    </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

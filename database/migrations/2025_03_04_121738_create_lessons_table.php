@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('end_date');
             $table->timestamp('start_time')->nullable();
             $table->string('weekday')->nullable();
-            $table->string('duration');
+            $table->float('duration');
         });
     }
 

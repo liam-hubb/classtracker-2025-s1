@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         $userSuperAdmin = User::create([
             'id' => 111,
             'given_name' => 'Administrator',
-            'family_name' => '',
+            'family_name' => 'Ad',
             'preferred_name' => 'Administrator',
             'pronouns' => 'they/them',
             'email' => 'admin@example.com',
@@ -71,12 +71,42 @@ class UserSeeder extends Seeder
         ]);
         $userStudent->assignRole([$roleStudent]);
 
+        $userStudent = User::create([
+                'given_name' => 'Test1',
+                'family_name' => 'User1',
+                'preferred_name' => 'Test1',
+                'pronouns' => 'he/him',
+                'email' => 'test1@example.com',
+                'password' => Hash::make('Password1'),
+                'email_verified_at' => now(),
+        ]);
+        $userStudent->assignRole([$roleStudent]);
+
+        $userStudent = User::create([
+                'given_name' => 'Test2',
+                'family_name' => 'User2',
+                'preferred_name' => 'Test2',
+                'pronouns' => 'she/her',
+                'email' => 'test2@example.com',
+                'password' => Hash::make('Password1'),
+                'email_verified_at' => now(),
+        ]);
+        $userStudent->assignRole([$roleStudent]);
+
+        $userStudent = User::create([
+                'given_name' => 'Test3',
+                'family_name' => 'User3',
+                'preferred_name' => 'Test3',
+                'pronouns' => 'they/them',
+                'email' => 'test3@example.com',
+                'password' => Hash::make('Password1'),
+                'email_verified_at' => now(),
+        ]);
+        $userStudent->assignRole([$roleStudent]);
+
 //        User::factory()->createMany([
 //            [
-//                'name' => 'Test User',
-//                'email' => 'test@example.com',
-//                'password'=>'Password1',
-//            ],
+//
 //        ]);
     }
 }
