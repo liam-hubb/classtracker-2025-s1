@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Units;
+use App\Models\Cluster;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class UnitsPolicy
+class ClusterPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class UnitsPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Units $units): bool
+    public function view(User $user, Cluster $clusters): bool
     {
         return false;
     }
@@ -35,7 +35,7 @@ class UnitsPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Units $units): bool
+    public function update(User $user, Cluster $clusters): bool
     {
         return false;
     }
@@ -43,7 +43,7 @@ class UnitsPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Units $units): bool
+    public function delete(User $user, Cluster $clusters): bool
     {
         return false;
     }
@@ -51,7 +51,7 @@ class UnitsPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Units $units): bool
+    public function restore(User $user, Cluster $clusters): bool
     {
         return false;
     }
@@ -59,7 +59,7 @@ class UnitsPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Units $units): bool
+    public function forceDelete(User $user, Cluster $clusters): bool
     {
         return false;
     }

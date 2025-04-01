@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Clusters extends Model
+class Cluster extends Model
 {
-    /** @use HasFactory<\Database\Factories\ClustersFactory> */
+    /** @use HasFactory<\Database\Factories\ClusterFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -25,14 +27,16 @@ class Clusters extends Model
         "unit_8",
     ];
 
-    public function course()
-    {
-        return $this->belongsTo(Courses::class);
-    }
 
 
-    public function unit()
+//    public function courses():BelongsTo
+//    {
+//        return $this->belongsTo(Course::class);
+//    }
+
+
+    public function units(): HasMany
     {
-        return $this->hasMany(Units::class);
+        return $this->hasMany(Unit::class);
     }
 }

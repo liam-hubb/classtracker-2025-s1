@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clusters;
+use App\Models\Cluster;
 use App\Http\Requests\StoreClustersRequest;
 use App\Http\Requests\UpdateClustersRequest;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class ClusterController extends Controller
      */
     public function index()
     {
-        $clusters = Clusters::paginate(6);
+        $clusters = Cluster::paginate(6);
         return view('clusters.index', compact(['clusters', ]));
     }
 
@@ -49,7 +49,7 @@ class ClusterController extends Controller
         ]);
 
 
-        Clusters::create($validated);
+        Cluster::create($validated);
 
         return redirect()->route('clusters.index')
             ->with('success', 'Cluster created successfully');
@@ -63,7 +63,7 @@ class ClusterController extends Controller
         public function show(string $id)
         {
 
-            $cluster = Clusters::find($id);
+            $cluster = Cluster::find($id);
 
             if ($cluster) {
                 return view('clusters.show', compact(['cluster',]))
@@ -77,7 +77,7 @@ class ClusterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Clusters $cluster)
+    public function edit(Cluster $cluster)
     {
         return view('clusters.edit', compact('cluster'));
     }
@@ -102,7 +102,7 @@ class ClusterController extends Controller
             'unit_8' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
         ]);
 
-        Clusters::whereId($id)->update($validated);
+        Cluster::whereId($id)->update($validated);
 
         return redirect()->route('clusters.index')
             ->with('success', 'Cluster updated successfully');
@@ -111,7 +111,7 @@ class ClusterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Clusters $cluster)
+    public function destroy(Cluster $cluster)
     {
         $cluster->delete();
         return redirect()->route('clusters.index')

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Courses;
+use App\Models\Course;
 use App\Http\Requests\StoreCoursesRequest;
 use App\Http\Requests\UpdateCoursesRequest;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Courses::paginate(6);
+        $courses = Course::paginate(6);
         return view('courses.index', compact(['courses', ]));
     }
 
@@ -50,7 +50,7 @@ class CourseController extends Controller
         $validated['nat_code'] = $validated['nat_code'] ?: $validated['national_code'];
         $validated['nat_title'] = $validated['nat_title'] ?: $validated['title'];
 
-        Courses::create($validated);
+        Course::create($validated);
 
         return redirect()->route('courses.index')
             ->with('success', 'Course created successfully');
@@ -62,7 +62,7 @@ class CourseController extends Controller
     public function show(string $id)
     {
 
-        $course = Courses::whereId($id)->get()->first();
+        $course = Course::whereId($id)->get()->first();
 
         if ($course) {
             return view('courses.show', compact(['course',]))
@@ -77,7 +77,7 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Courses $course)
+    public function edit(Course $course)
     {
         return view('courses.edit', compact('course'));
 
@@ -106,7 +106,7 @@ class CourseController extends Controller
         $validated['nat_code'] = $validated['nat_code'] ?: $validated['national_code'];
         $validated['nat_title'] = $validated['nat_title'] ?: $validated['title'];
 
-        Courses::whereId($id)->update($validated);
+        Course::whereId($id)->update($validated);
 
 
         return redirect()->route('courses.index')
@@ -116,7 +116,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Courses $course)
+    public function destroy(Course $course)
     {
         $course->delete();
         return redirect()->route('courses.index')

@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Courses;
-use App\Models\Packages;
+use App\Models\Course;
+use App\Models\Package;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Clusters>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cluster>
  */
-class ClustersFactory extends Factory
+class ClusterFactory extends Factory
 {
     /**
      * Define the model's default state.

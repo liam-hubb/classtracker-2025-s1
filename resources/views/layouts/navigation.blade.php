@@ -38,25 +38,25 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('cluster')"
                                 :active="request()->routeIs('cluster')">
-                        {{ __('Clusters') }}
+                        {{ __('Cluster') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('unit')"
                                 :active="request()->routeIs('unit')">
-                        {{ __('Units') }}
+                        {{ __('Unit') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('course')"
                                 :active="request()->routeIs('course')">
-                        {{ __('Courses') }}
+                        {{ __('Course') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('package')"
                                 :active="request()->routeIs('package')">
-                        {{ __('Packages') }}
+                        {{ __('Package') }}
                     </x-nav-link>
                 </div>
             </div>

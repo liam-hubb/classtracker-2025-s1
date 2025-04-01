@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Packages;
+use App\Models\Package;
 use App\Http\Requests\StorePackagesRequest;
 use App\Http\Requests\UpdatePackagesRequest;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $packages = Packages::paginate(10);
+        $packages = Package::paginate(10);
         return view('packages.index', compact(['packages', ]));
     }
 
@@ -39,7 +39,7 @@ class PackageController extends Controller
             'tga_status' => ['required', 'min:5', 'max:255', 'string',]
         ]);
 
-        Packages::create($validated);
+        Package::create($validated);
 
         return redirect()->route('packages.index')
             ->with('success', 'Package created successfully');
@@ -52,7 +52,7 @@ class PackageController extends Controller
     {
         {
 
-            $package = Packages::whereId($id)->get()->first();
+            $package = Package::whereId($id)->get()->first();
 
             if ($package) {
                 return view('packages.show', compact(['package',]))
@@ -67,7 +67,7 @@ class PackageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Packages $package)
+    public function edit(Package $package)
     {
         return view('packages.edit', compact('package'));
     }
@@ -83,7 +83,7 @@ class PackageController extends Controller
             'tga_status' => ['required', 'min:5', 'max:255', 'string',]
         ]);
 
-        Packages::whereId($id)->update($validated);
+        Package::whereId($id)->update($validated);
 
 //        $package->update($validated);
 
@@ -94,7 +94,7 @@ class PackageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Packages $package)
+    public function destroy(Package $package)
     {
         $package->delete();
         return redirect()->route('packages.index')
