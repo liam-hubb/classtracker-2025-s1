@@ -54,4 +54,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Lesson::class, 'lesson_user');
     }
+
+    public function staff(){
+        return $this->roles()->where('name', 'Staff');
+    }
+
+    public function students()
+    {
+        return $this->roles()->where('name', 'Student');
+    }
 }
