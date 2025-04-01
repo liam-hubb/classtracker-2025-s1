@@ -72,20 +72,20 @@ class UserSeeder extends Seeder
         $userStudent->assignRole([$roleStudent]);
 
         $userStudent = User::create([
-                'given_name' => 'Test1',
+                'given_name' => 'Staff1',
                 'family_name' => 'User1',
-                'preferred_name' => 'Test1',
+                'preferred_name' => 'Staff1',
                 'pronouns' => 'he/him',
                 'email' => 'test1@example.com',
                 'password' => Hash::make('Password1'),
                 'email_verified_at' => now(),
         ]);
-        $userStudent->assignRole([$roleStudent]);
+        $userStudent->assignRole([$roleStaff]);
 
         $userStudent = User::create([
-                'given_name' => 'Test2',
+                'given_name' => 'Student2',
                 'family_name' => 'User2',
-                'preferred_name' => 'Test2',
+                'preferred_name' => 'Student2',
                 'pronouns' => 'she/her',
                 'email' => 'test2@example.com',
                 'password' => Hash::make('Password1'),
@@ -94,13 +94,24 @@ class UserSeeder extends Seeder
         $userStudent->assignRole([$roleStudent]);
 
         $userStudent = User::create([
-                'given_name' => 'Test3',
+                'given_name' => 'Student3',
                 'family_name' => 'User3',
-                'preferred_name' => 'Test3',
+                'preferred_name' => 'Student3',
                 'pronouns' => 'they/them',
                 'email' => 'test3@example.com',
                 'password' => Hash::make('Password1'),
                 'email_verified_at' => now(),
+        ]);
+        $userStudent->assignRole([$roleStudent]);
+
+        $userStudent = User::create([
+            'given_name' => 'Student4',
+            'family_name' => 'User4',
+            'preferred_name' => 'Student4',
+            'pronouns' => 'they/them',
+            'email' => 'test4@example.com',
+            'password' => Hash::make('Password1'),
+            'email_verified_at' => now(),
         ]);
         $userStudent->assignRole([$roleStudent]);
 
