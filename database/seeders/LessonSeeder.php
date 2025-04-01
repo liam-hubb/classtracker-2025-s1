@@ -2,17 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\Session;
+use App\Models\Lesson;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SessionSeeder extends Seeder
+class LessonSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Session::factory()->count(2)->create();
+        // Truncate the lessons table before seeding
+        Lesson::truncate();
+
+        Lesson::factory()->count(20)->create();
     }
 }

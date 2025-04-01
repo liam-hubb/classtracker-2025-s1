@@ -35,4 +35,9 @@ class Clusters extends Model
     {
         return $this->hasMany(Units::class);
     }
+
+    public function lesson()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }
