@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClusterController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaticPageController;
@@ -57,7 +58,7 @@ Route::post('/roles-permissions/store', [RolesAndPermissionsController::class, '
 Route::delete('/roles-permissions/destroy', [RolesAndPermissionsController::class, 'removeRole'])->name('roles-permissions.removeRole');
 
 Route::resource('users', UserController::class);
-Route::resource('sessions', SessionController::class);
+Route::resource('lessons', LessonController::class);
 
 
 

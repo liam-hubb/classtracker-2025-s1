@@ -82,12 +82,20 @@
                                                 <x-input-label for="{{ 'unit_' . $unit }}">
                                                     Unit {{ $unit }}
                                                 </x-input-label>
-                                                <x-text-input id="{{ 'unit_' . $unit }}" name="{{ 'unit_' . $unit }}" value="{{ old('unit_' . $unit) }}" placeholder="e.g. ICTPRG000"
-                                                              class="placeholder-gray-500 text-black"/>
+{{--                                                <x-text-input id="{{ 'unit_' . $unit }}" name="{{ 'unit_' . $unit }}" value="{{ old('unit_' . $unit) }}" placeholder="e.g. ICTPRG000"--}}
+{{--                                                              class="placeholder-gray-500 text-black"/>--}}
+                                                <select name="unit_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                                                    <option value="">Select Unit</option>
+                                                    @foreach ($units as $unit)
+                                                        <option value="{{ $unit->national_code }}">{{ $unit->national_code }}</option>
+                                                    @endforeach
+                                                </select>
                                                 <x-input-error :messages="$errors->get('unit_' . $unit)" class="mt-2"/>
                                             </div>
                                         @endif
                                     @endforeach
+
+
 
                                 </section>
 

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
                 CoursesSeeder::class,
                 UnitsSeeder::class,
                 PackagesSeeder::class,
-                PivotSeeder::class,
+//                PivotSeeder::class,
 //                SessionSeeder::class,
             ]
         );

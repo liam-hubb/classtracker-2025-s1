@@ -108,7 +108,6 @@ class CourseController extends Controller
 
         Course::whereId($id)->update($validated);
 
-
         return redirect()->route('courses.index')
             ->with('success', 'Course updated successfully');
     }

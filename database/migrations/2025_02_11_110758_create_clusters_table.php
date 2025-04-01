@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('unit_6')->nullable();
             $table->string('unit_7')->nullable();
             $table->string('unit_8')->nullable();
+            $table->string('unit_id')->nullable();
             $table->timestamps();
         });
     }

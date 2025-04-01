@@ -25,6 +25,8 @@ class Cluster extends Model
         "unit_6",
         "unit_7",
         "unit_8",
+        'unit_id',
+
     ];
 
 
@@ -38,5 +40,10 @@ class Cluster extends Model
     public function units(): HasMany
     {
         return $this->hasMany(Unit::class);
+    }
+
+    public function lesson()
+    {
+        return $this->hasMany(Lesson::class);
     }
 }

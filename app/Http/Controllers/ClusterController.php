@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cluster;
 use App\Http\Requests\StoreClustersRequest;
 use App\Http\Requests\UpdateClustersRequest;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -25,7 +26,8 @@ class ClusterController extends Controller
      */
     public function create()
     {
-        return view('clusters.create');
+        $units = Unit::all();
+        return view('clusters.create', compact(['units']));
     }
 
     /**
@@ -79,7 +81,8 @@ class ClusterController extends Controller
      */
     public function edit(Cluster $cluster)
     {
-        return view('clusters.edit', compact('cluster'));
+        $units = Unit::all();
+        return view('clusters.edit', compact(['cluster', 'units']));
     }
 
     /**

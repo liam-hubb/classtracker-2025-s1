@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Course;
 use App\Models\Package;
+use App\Models\Unit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,9 @@ class ClusterFactory extends Factory
      */
     public function definition(): array
     {
+
+        $unit = Unit::inRandomOrder()->first();
+
         return [
             "code" => fake()->unique(),
             "title" => fake()->word(),
@@ -31,6 +35,7 @@ class ClusterFactory extends Factory
             "unit_6" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
             "unit_7" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
             "unit_8" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
+            'unit_id' => $unit->national_code,
         ];
     }
 }
