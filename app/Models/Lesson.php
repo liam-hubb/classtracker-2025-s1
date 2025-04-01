@@ -31,4 +31,32 @@ class Lesson extends Model
     {
         return $this->belongsToMany(User::class, 'lesson_user');
     }
+
+    public function staff()
+    {
+        return $this->users()->whereHas('roles', function ($query) {
+            $query->where('name', 'Staff');
+        });
+    }
+
+    public function students()
+    {
+        return $this->users()->whereHas('roles', function ($query) {
+            $query->where('name', 'Student');
+        });
+    }
+
+//    public function staff()
+//    {
+//        return $this->belongsToMany(User::class, 'lesson_user')->whereHas('roles', function ($query) {
+//            $query->where('name', 'staff');
+//        });
+//    }
+//
+//    public function students()
+//    {
+//        return $this->belongsToMany(User::class, 'lesson_user')->whereHas('roles', function ($query) {
+//            $query->where('name', 'student');
+//        });
+//    }
 }

@@ -34,7 +34,7 @@ class LessonFactory extends Factory
             'cluster_id' => $cluster->code,
             'name' => $cluster->title,
             'start_date' => $startDate,
-            'start_time' => Carbon::createFromTime($this->faker->numberBetween(8,18),0)->format('H:i'),
+            'start_time' => Carbon::createFromTime($this->faker->numberBetween(8, 18), 0)->format('H:i'),
             'weekday' => self::WEEKDAYS[$this->faker->numberBetween(1, 5)],
             'duration' => $this->faker->randomElement([2.0, 2.5, 4.0]),
             'end_date' => $endDate,
@@ -44,8 +44,19 @@ class LessonFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Lesson $lesson) {
-            $users = User::inRandomOrder()->take(5)->pluck('id');
-            $lesson->users()->attach($users);
+            $staff = User::whereHas('roles', function ($query) {
+                $query->where('name', 'Staff');
+            })->inRandomOrder()->take(2)->pluck('id');
+
+            $student = User::whereHas('roles', function ($query) {
+                $query->where('name', 'Student');
+            })->inRandomOrder()->take(3)->pluck('id');
+
+            //$users = User::inRandomOrder()->take(5)->pluck('id');
+
+            $lesson->staff()->attach($staff);
+            $lesson->students()->attach($student);
+            //$lesson->users()->attach($users);
         });
     }
 
