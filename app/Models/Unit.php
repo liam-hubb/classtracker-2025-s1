@@ -23,9 +23,9 @@ class Unit extends Model
         'qa',
     ];
 
-    public  function clusters(): BelongsTo
+    public function clusters(): BelongsToMany
     {
-        return $this->belongsTo(Cluster::class);
+        return $this->belongsToMany(Cluster::class);
     }
 
     public  function courses(): BelongsToMany

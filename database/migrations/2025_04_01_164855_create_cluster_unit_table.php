@@ -9,15 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('cluster_unit', function (Blueprint $table) {
             $table->id();
-            $table->string('national_code');
-            $table->string('title');
-            $table->string('tga_status')->nullable();
-            $table->string('state_code')->nullable();
-            $table->string('nominal_hours')->nullable();
+            $table->foreignId('cluster_id')->constrained()->onDelete('cascade');
+            $table->foreignId('unit_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +24,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('cluster_unit');
     }
 };
+
+
