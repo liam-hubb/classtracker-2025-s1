@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Clusters;
-use App\Models\Courses;
+use App\Models\Cluster;
+use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\User;
 use Carbon\Carbon;
@@ -22,8 +22,8 @@ class LessonFactory extends Factory
     public function definition(): array
     {
         // Fetch random records once
-        $course = Courses::inRandomOrder()->first();
-        $cluster = Clusters::inRandomOrder()->first();
+        $course = Course::inRandomOrder()->first();
+        $cluster = Cluster::inRandomOrder()->first();
 
         // Semester start and end dates
         $startDate = '2025-02-03';

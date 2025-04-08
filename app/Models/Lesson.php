@@ -24,7 +24,7 @@ class Lesson extends Model
 
     public function clusters()
     {
-        return $this->belongsTo(Clusters::class);
+        return $this->belongsTo(Cluster::class);
     }
 
     public function users()

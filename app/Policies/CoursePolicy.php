@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Courses;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class CoursesPolicy
+class CoursePolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class CoursesPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Courses $courses): bool
+    public function view(User $user, Course $courses): bool
     {
         return false;
     }
@@ -35,7 +35,7 @@ class CoursesPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Courses $courses): bool
+    public function update(User $user, Course $courses): bool
     {
         return false;
     }
@@ -43,7 +43,7 @@ class CoursesPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Courses $courses): bool
+    public function delete(User $user, Course $courses): bool
     {
         return false;
     }
@@ -51,7 +51,7 @@ class CoursesPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Courses $courses): bool
+    public function restore(User $user, Course $courses): bool
     {
         return false;
     }
@@ -59,7 +59,7 @@ class CoursesPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Courses $courses): bool
+    public function forceDelete(User $user, Course $courses): bool
     {
         return false;
     }

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Packages;
+use App\Models\Package;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -36,7 +36,7 @@ class PackagesSeeder extends Seeder
             ],
             ];
 
-        $this->command->getOutput()->info("Shuffling Packages");
+        $this->command->getOutput()->info("Shuffling Package");
         shuffle($seedData);
         $this->command->getOutput()->info("Shuffling Complete");
 
@@ -44,7 +44,7 @@ class PackagesSeeder extends Seeder
         $this->command->getOutput()->progressStart($numRecords);
 
         foreach ($seedData as $newPackage) {
-            Packages::create($newPackage);
+            Package::create($newPackage);
             $this->command->getOutput()->progressAdvance();
         }
 

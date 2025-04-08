@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Units;
+use App\Models\Unit;
 use App\Http\Requests\StoreUnitsRequest;
 use App\Http\Requests\UpdateUnitsRequest;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $units = Units::paginate(6);
+        $units = Unit::paginate(6);
         return view('units.index', compact(['units', ]));
     }
 
@@ -39,7 +39,7 @@ class UnitController extends Controller
             'nominal_hours' => ['nullable', 'min:1', 'max:200', 'numeric',]
         ]);
 
-        Units::create($validated);
+        Unit::create($validated);
 
         return redirect()->route('units.index')
             ->with('success', 'Unit created successfully');
@@ -51,7 +51,7 @@ class UnitController extends Controller
     public function show(string $id)
     {
 
-        $unit = Units::whereId($id)->get()->first();
+        $unit = Unit::whereId($id)->get()->first();
 
         if ($unit) {
             return view('units.show', compact(['unit',]))
@@ -66,7 +66,7 @@ class UnitController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Units $unit)
+    public function edit(Unit $unit)
     {
         return view('units.edit', compact('unit'));
     }
@@ -83,7 +83,7 @@ class UnitController extends Controller
             'state_code' => ['nullable', 'string', 'size:5'],
             'nominal_hours' => ['nullable', 'min:1', 'max:200', 'numeric',]
         ]);
-        Units::whereId($id)->update($validated);
+        Unit::whereId($id)->update($validated);
 
         return redirect()->route('units.index')
             ->with('success', 'Unit updated successfully');
@@ -92,7 +92,7 @@ class UnitController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Units $unit)
+    public function destroy(Unit $unit)
     {
         $unit->delete();
         return redirect()->route('units.index')

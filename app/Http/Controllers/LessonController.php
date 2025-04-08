@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clusters;
+use App\Models\Cluster;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
@@ -24,7 +24,7 @@ class LessonController extends Controller
      */
     public function create()
     {
-        $clusters = Clusters::all();
+        $clusters = Cluster::all();
         return view('lessons.create', compact(['clusters']));
     }
 
@@ -60,7 +60,7 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        $clusters = Clusters::all();
+        $clusters = Cluster::all();
         return view('lessons.edit', compact(['lesson', 'clusters']));
     }
 

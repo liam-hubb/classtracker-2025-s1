@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Packages>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Unit>
  */
-class PackagesFactory extends Factory
+class UnitFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,6 +20,8 @@ class PackagesFactory extends Factory
             "national_code" => fake()->unique(),
             "title" => fake()->word(),
             "tga_status" => fake()->text(),
+            "state_code" => fake()->regexify('[A-Z]{3}[0-9]{2}'),
+            "nominal_hours" => fake()->numberBetween(1,200)
         ];
     }
 }

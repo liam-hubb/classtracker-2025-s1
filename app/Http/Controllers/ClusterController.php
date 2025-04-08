@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clusters;
+use App\Models\Cluster;
 use App\Http\Requests\StoreClustersRequest;
 use App\Http\Requests\UpdateClustersRequest;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -16,7 +17,7 @@ class ClusterController extends Controller
      */
     public function index()
     {
-        $clusters = Clusters::paginate(6);
+        $clusters = Cluster::paginate(6);
         return view('clusters.index', compact(['clusters', ]));
     }
 
@@ -25,7 +26,8 @@ class ClusterController extends Controller
      */
     public function create()
     {
-        return view('clusters.create');
+        $units = Unit::all();
+        return view('clusters.create', compact(['units']));
     }
 
     /**
@@ -38,18 +40,18 @@ class ClusterController extends Controller
             'title' => ['required', 'min:5', 'max:255', 'string',],
             'qualification' => ['nullable', 'string', 'regex:/^ICT\d{5}$/'],
             'qualification_code' => ['nullable', 'string', 'regex:/^AC\d{2}$/'],
-            'unit_1' =>['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_2' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_3' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_4' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_5' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_6' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_7' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_8' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_1' =>['nullable', 'string'],
+            'unit_2' => ['nullable', 'string'],
+            'unit_3' => ['nullable', 'string'],
+            'unit_4' => ['nullable', 'string'],
+            'unit_5' => ['nullable', 'string'],
+            'unit_6' => ['nullable', 'string'],
+            'unit_7' => ['nullable', 'string'],
+            'unit_8' => ['nullable', 'string'],
         ]);
 
 
-        Clusters::create($validated);
+        Cluster::create($validated);
 
         return redirect()->route('clusters.index')
             ->with('success', 'Cluster created successfully');
@@ -60,26 +62,42 @@ class ClusterController extends Controller
      * Display the specified resource.
      */
 
-        public function show(string $id)
-        {
+    public function show(string $id)
+    {
+        $cluster = Cluster::find($id);
 
-            $cluster = Clusters::find($id);
-
-            if ($cluster) {
-                return view('clusters.show', compact(['cluster',]))
-                    ->with('success', 'Cluster found');
+        if ($cluster) {
+            // Collect the unit IDs from the cluster (unit_1, unit_2, etc.)
+            $unitIds = [];
+            foreach (range(1, 8) as $unit) {
+                $unitId = $cluster->{'unit_' . $unit};
+                if ($unitId) {
+                    $unitIds[] = $unitId; // Add the unit ID to the array if it exists
+                }
             }
 
-            return redirect(route('clusters.index'))
-                ->with('warning', 'Cluster not found');
+            $units = Unit::whereIn('national_code', $unitIds)->get();
+
+//            dd($cluster);
+
+            return view('clusters.show', compact('cluster', 'units'))
+                ->with('success', 'Cluster found');
         }
+
+        return redirect(route('clusters.index'))
+            ->with('warning', 'Cluster not found');
+    }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Clusters $cluster)
+    public function edit(string $id)
     {
-        return view('clusters.edit', compact('cluster'));
+        $cluster = Cluster::findOrFail($id);
+        $units = Unit::all();
+
+        return view('clusters.edit', compact('cluster', 'units'));
     }
 
     /**
@@ -92,17 +110,17 @@ class ClusterController extends Controller
             'title' => ['required', 'min:5', 'max:255', 'string',],
             'qualification' => ['nullable', 'string', 'regex:/^ICT\d{5}$/'],
             'qualification_code' => ['nullable', 'string', 'regex:/^AC\d{2}$/'],
-            'unit_1' =>['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_2' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_3' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_4' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_5' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_6' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_7' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
-            'unit_8' => ['nullable', 'string', 'regex:/^[A-Z]{6}\d{3}$/'],
+            'unit_1' =>['nullable', 'string'],
+            'unit_2' => ['nullable', 'string'],
+            'unit_3' => ['nullable', 'string'],
+            'unit_4' => ['nullable', 'string'],
+            'unit_5' => ['nullable', 'string'],
+            'unit_6' => ['nullable', 'string'],
+            'unit_7' => ['nullable', 'string'],
+            'unit_8' => ['nullable', 'string'],
         ]);
 
-        Clusters::whereId($id)->update($validated);
+        Cluster::whereId($id)->update($validated);
 
         return redirect()->route('clusters.index')
             ->with('success', 'Cluster updated successfully');
@@ -111,7 +129,7 @@ class ClusterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Clusters $cluster)
+    public function destroy(Cluster $cluster)
     {
         $cluster->delete();
         return redirect()->route('clusters.index')
