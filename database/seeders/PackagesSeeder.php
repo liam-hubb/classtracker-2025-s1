@@ -18,21 +18,28 @@ class PackagesSeeder extends Seeder
                 "national_code" => "BSB",
                 "title" => "Business Services Training Package",
                 "tga_status" => "current",
+//                'course_id' => "BSB30715"
             ],
             [
                 "national_code" => "CUA",
                 "title" => "Creative Arts and Culture Training Package",
                 "tga_status" => "current",
+//                'course_id' => "BSB30715"
+
             ],
             [
                 "national_code" => "FNS",
                 "title" => "Financial Services Training Package",
                 "tga_status" => "current",
+//                'course_id' => "BSB30715"
+
             ],
             [
                 "national_code" => 'ICT',
                 "title" => "Information and Communications Technology",
                 "tga_status" => "current",
+//                'course_id' => "BSB30715"
+
             ],
             ];
 

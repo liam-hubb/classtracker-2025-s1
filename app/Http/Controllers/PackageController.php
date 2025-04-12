@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Package;
 use App\Http\Requests\StorePackagesRequest;
 use App\Http\Requests\UpdatePackagesRequest;
@@ -15,7 +16,7 @@ class PackageController extends Controller
     public function index()
     {
         $packages = Package::paginate(10);
-        return view('packages.index', compact(['packages', ]));
+        return view('packages.index', compact(['packages']));
     }
 
     /**
@@ -23,23 +24,30 @@ class PackageController extends Controller
      */
     public function create()
     {
-        return view('packages.create');
+        $courses = Course::all();
+        $package = new Package();
+        return view('packages.create',compact(['courses', 'package' ]));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-//    public function store(StorePackagesRequest $request)
     public function store(Request $request)
 
             {
         $validated = $request->validate([
-            'national_code' => ['required', 'string', 'size:3'],
+            'national_code' => ['required', 'string', 'size:3',  'regex:/^[A-Z]/'],
             'title' => ['required', 'min:5', 'max:255', 'string',],
-            'tga_status' => ['required', 'min:5', 'max:255', 'string',]
+            'tga_status' => ['required', 'min:5', 'max:255', 'string',],
+
         ]);
 
-        Package::create($validated);
+        $package = Package::create($validated);
+
+        foreach ($request->course_ids as $course_id) {
+            $course = Course::whereId($course_id);
+            $course->update(['package_id' => $package->id]);
+        }
 
         return redirect()->route('packages.index')
             ->with('success', 'Package created successfully');
@@ -48,14 +56,13 @@ class PackageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Package $package)
     {
         {
 
-            $package = Package::whereId($id)->get()->first();
-
+            $courses = $package->courses;
             if ($package) {
-                return view('packages.show', compact(['package',]))
+                return view('packages.show', compact(['package', 'courses']))
                     ->with('success', 'Package found')
                     ;
             }
@@ -69,23 +76,33 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
-        return view('packages.edit', compact('package'));
+        $courses = Course::all();
+        return view('packages.edit', compact('package', 'courses'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Package $package)
     {
+
         $validated = $request->validate([
-            'national_code' => ['required', 'string', 'size:3'],
+            'national_code' => ['required', 'string', 'size:3',  'regex:/^[A-Z]/'],
             'title' => ['required', 'min:5', 'max:255', 'string',],
-            'tga_status' => ['required', 'min:5', 'max:255', 'string',]
+            'tga_status' => ['required', 'min:5', 'max:255', 'string',],
         ]);
 
-        Package::whereId($id)->update($validated);
+        $oldCourses = Course::all()->where('package_id', $package->id);
+        foreach ($oldCourses as $oldCourse) {
+            $oldCourse->update(['package_id' => null]);
+        }
 
-//        $package->update($validated);
+        foreach ($request->course_ids as $course_id) {
+            $course = Course::whereId($course_id);
+            $course->update(['package_id' => $package->id]);
+        }
+
+        $package->update($validated);
 
         return redirect()->route('packages.index')
             ->with('success', 'Package updated successfully');
