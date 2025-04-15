@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\v1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePackagesRequest extends FormRequest
+class UpdatePackagesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StorePackagesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-        ];
+            'national_code' => ['required', 'string', 'size:3',  'regex:/^[A-Z]/'],
+            'title' => ['required', 'min:5', 'max:255', 'string',],
+            'tga_status' => ['required', 'min:5', 'max:255', 'string',],
+            ];
     }
 }

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Package;
-use App\Http\Requests\StorePackagesRequest;
-use App\Http\Requests\UpdatePackagesRequest;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller

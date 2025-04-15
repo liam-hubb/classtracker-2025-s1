@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Http\Requests\StoreCoursesRequest;
-use App\Http\Requests\UpdateCoursesRequest;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
