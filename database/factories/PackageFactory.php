@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,10 +17,14 @@ class PackageFactory extends Factory
      */
     public function definition(): array
     {
+
+        $course = Course::inRandomOrder()->first();
+
         return [
             "national_code" => fake()->unique(),
             "title" => fake()->word(),
             "tga_status" => fake()->text(),
+            'course_id' => $course->national_code,
         ];
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Unit extends Model
 {
@@ -23,13 +24,13 @@ class Unit extends Model
         'qa',
     ];
 
-    public function clusters(): BelongsToMany
+    public function clusters(): hasMany
     {
-        return $this->belongsToMany(Cluster::class);
+        return $this->hasMany(Cluster::class);
     }
 
-    public  function courses(): BelongsToMany
+    public  function courses(): BelongsTo
     {
-        return $this->belongsToMany(Course::class, 'course_unit')->withTimestamps();
+        return $this->belongsTo(Course::class);
     }
 }

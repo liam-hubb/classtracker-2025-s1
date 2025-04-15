@@ -23,7 +23,7 @@
                     @endif
 
                     <div class="overflow-x-auto">
-                        <form action="{{ route('packages.update', $package->id) }}"
+                        <form action="{{ route('packages.update', $package) }}"
                               method="POST"
                               class="flex gap-4">
 
@@ -70,6 +70,40 @@
                                             <option value="Not Provided" {{ old('tga_status', $package->tga_status) == 'null' ? 'selected' : '' }}>Not Provided</option>
                                         </select>
                                         <x-input-error :messages="$errors->get('tga_status')" class="mt-2"/>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-4">
+                                        <x-input-label for="course_id" class="w-full">
+                                            Course National Code
+                                        </x-input-label>
+                                        @for($i = 0; $i <= 3; $i++)
+                                            @if(isset($package->courses[$i]))
+                                                <div class="w-1/5">
+                                                    <select id="course_{{$i}}" name="course_ids[]" class="rounded-md shadow-sm border-gray-300 text-black placeholder-gray-500 w-full">
+                                                        <option value=null>No course</option>
+                                                    @foreach($courses as $availableCourse)
+                                                            <option value="{{ $availableCourse->id }}"
+                                                                {{ (old('course_' . $package->courses[$i]->id,$package->courses[$i]->id) == $availableCourse->id) ? 'selected' : '' }}>
+                                                                {{ $availableCourse->national_code }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <x-input-error :messages="$errors->get('course_' . $package->courses[$i])" class="mt-2"/>
+                                                </div>
+                                            @else
+                                                <div class="w-1/5">
+                                                    <select id="course_{{$i}}" name="course_ids[]" class="rounded-md shadow-sm border-gray-300 text-black placeholder-gray-500 w-full">
+                                                        <option value=null>No course</option>
+                                                        @foreach($courses as $availableCourse)
+                                                            <option value="{{ $availableCourse->id }}">
+                                                                {{ $availableCourse->national_code }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <x-input-error :messages="$errors->get('course_' . $i)" class="mt-2" />
+                                                </div>
+                                            @endif
+                                        @endfor
                                     </div>
 
                                 </section>

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,28 +27,25 @@ class Course extends Model
         'nat_code',
         'nat_title',
         'nat_code_title',
+        'package_id'
     ];
 
     /**
      * Define a relationship to the parent
      */
 
-    public  function packages():BelongsToMany
+    public  function package():BelongsTo
     {
-        return $this->belongsToMany(Package::class);
+        return $this->belongsTo(Package::class, 'package_id');
     }
 
     public function clusters():HasMany
     {
         return $this->hasMany(Cluster::class);
     }
-//    public  function units():HasMany
-//    {
-//        return $this->hasMany(Unit::class);
-//    }
 
-    public function units(): BelongsToMany
+    public function units(): HasMany
     {
-        return $this->belongsToMany(Unit::class, 'course_unit')->withTimestamps();
+        return $this->hasMany(Unit::class);
     }
 }

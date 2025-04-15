@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Course;
+use App\Models\Package;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -33,6 +35,11 @@ class CoursesSeeder extends Seeder
                 ]);
             }
             $line = false;
+        }
+
+        // Give a random id to some courses so we don't manually have to do it everytime we do a migration
+        for ($i = 1; $i <= 10; $i++) {
+            DB::table('courses')->where('id', $i)->update(['package_id' => rand(1,4)]);
         }
 
         fclose($csvFile);

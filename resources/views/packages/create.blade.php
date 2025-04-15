@@ -71,6 +71,25 @@
                                         <x-input-error :messages="$errors->get('tga_status')" class="mt-2"/>
                                     </div>
 
+                                    <div class="flex flex-wrap gap-4">
+                                        <x-input-label for="course_id" class="w-full">
+                                            Course National Code
+                                        </x-input-label>
+                                        @for($i = 0; $i <= 3; $i++)
+                                                <div class="w-1/5">
+                                                    <select id="course_{{$i}}" name="course_ids[]" class="rounded-md shadow-sm border-gray-300 text-black placeholder-gray-500 w-full">
+                                                        <option value=null>Select a course</option>
+                                                        @foreach($courses as $availableCourse)
+                                                            <option value="{{ $availableCourse->id }}">
+                                                                {{ $availableCourse->national_code }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <x-input-error :messages="$errors->get('course_' . $i)" class="mt-2" />
+                                                </div>
+                                        @endfor
+                                    </div>
+
                                 </section>
 
                                 <footer

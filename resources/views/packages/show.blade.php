@@ -32,6 +32,13 @@
                             <p class="col-span-5 whitespace-nowrap  px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $package->title }}</p>
                             <p class="col-span-1 bg-zinc-300 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">TGA Status</p>
                             <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $package->tga_status }}</p>
+                            <p class="col-span-1 bg-zinc-300 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">Course National Code</p>
+                            <div class="col-span-5 flex flex-wrap gap-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">
+                                @foreach($courses as $course)
+                                    <p class="inline-block bg-gray-200 text-gray-800 px-2 py-1 rounded-md text-xs">{{ $course->national_code }}</p>
+                                @endforeach
+                            </div>
+
                         </section>
 
                         <footer class="grid gid-cols-1 px-6 py-4 border-b border-neutral-200 font-medium text-zinc-800 dark:border-white/10">
