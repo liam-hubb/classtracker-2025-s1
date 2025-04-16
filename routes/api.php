@@ -5,6 +5,7 @@ use App\Classes\ApiResponse;
 use App\Http\Controllers\Api\RolesAndPermissionsApiController;
 use App\Http\Controllers\Api\UserApiController;
 
+
 Route::apiResource('users', UserApiController::class);
 
 Route::prefix('roles-permissions')->group(function () {
@@ -13,7 +14,6 @@ Route::prefix('roles-permissions')->group(function () {
     Route::delete('/remove', [RolesAndPermissionsApiController::class, 'removeRole']);
     Route::get('/user/{user}', [RolesAndPermissionsApiController::class, 'getUserRoles']);
 });
-
 
 
 

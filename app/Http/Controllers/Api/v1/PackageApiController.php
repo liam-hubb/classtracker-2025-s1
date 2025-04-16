@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\v1\DeletePackagesRequest;
 use App\Http\Requests\v1\StorePackagesRequest;
 use App\Http\Requests\v1\UpdatePackagesRequest;
+use App\Models\Course;
 use App\Models\Package;
 use Illuminate\Http\JsonResponse;
 
@@ -33,7 +34,7 @@ class PackageApiController extends Controller
      */
     public function index(): JsonResponse
     {
-        $packages = Package::all();
+        $packages = Package::with('courses')->get();
 
         if ($packages->isNotEmpty()) {
             return ApiResponse::success($packages, "All Packages Found");
@@ -47,8 +48,7 @@ class PackageApiController extends Controller
      */
     public function show($id): JsonResponse
     {
-        $package = Package::find($id);
-
+        $package = Package::with('courses')->find($id);
         if ($package) {
             return ApiResponse::success($package, "Specific Package Found");
         }
@@ -65,6 +65,15 @@ class PackageApiController extends Controller
     public function store(StorePackagesRequest $request): JsonResponse
     {
         $package = Package::create($request->validated());
+
+        foreach ($request->course_ids as $course_id) {
+            $course = Course::find($course_id);
+            $course->update(['package_id' => $package->id]);
+        }
+
+        //Load the courses relationship
+        $package->load('courses');
+
         return ApiResponse::success($package, "Package Added", 201);
     }
 
@@ -74,6 +83,21 @@ class PackageApiController extends Controller
     public function update(UpdatePackagesRequest $request, Package $package): JsonResponse
     {
         $package->update($request->validated());
+
+
+        $oldCourses = Course::where('package_id', $package->id)->get();
+        foreach ($oldCourses as $oldCourse) {
+            $oldCourse->update(['package_id' => null]);
+        }
+
+        foreach ($request->course_ids as $course_id) {
+            $course = Course::find($course_id);
+            $course->update(['package_id' => $package->id]);
+        }
+
+        //Load the courses relationship
+        $package->load('courses');
+
         return ApiResponse::success($package, "Package Updated");
     }
 

@@ -15,36 +15,38 @@
  *
  */
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\UserApiController;
+use App\Http\Controllers\Api\v1\AuthApiController;
 use App\Http\Controllers\Api\v1\PackageApiController;
 use App\Http\Controllers\Api\v1\CourseApiController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::post('/login', [AuthApiController::class, 'login']);
+
+
+Route::apiResource('users', UserApiController::class)
+    ->only(['index', 'show']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('users', UserApiController::class)
+        ->only(['store', 'update', 'destroy']);
+});
+
 
 Route::apiResource('courses', CourseApiController::class)
-    ->only(['index', 'show', 'store']);
+    ->only(['index', 'show']);
 
-Route::apiResource('courses', CourseApiController::class)
-    ->only(['update', 'destroy']);
-//    ->middleware('auth:sanctum');
-
-Route::apiResource('packages', PackageApiController::class)
-    ->only(['index', 'show', 'store']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('courses', CourseApiController::class)
+        ->only(['store', 'update', 'destroy']);
+});
 
 Route::apiResource('packages', PackageApiController::class)
-    ->only(['update', 'destroy']);
-//    ->middleware('auth:sanctum');
+    ->only(['index', 'show']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('packages', PackageApiController::class)
+        ->only(['store', 'update', 'destroy']);
+});
 
 
-
-//Route::group(['prefix' => 'v1'], function () {
-//    Route::apiResource('courses', \App\Http\Controllers\CourseApiController::class)
-//        ->except(['update', 'destroy']);
-//
-//    Route::apiResource('courses', \App\Http\Controllers\CourseApiController::class)
-//        ->only(['update', 'destroy'])
-//        ->middleware('auth:sanctum');
-//});

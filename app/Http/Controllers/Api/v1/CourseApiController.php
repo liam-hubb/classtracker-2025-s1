@@ -65,7 +65,15 @@ class CourseApiController extends Controller
      */
     public function store(StoreCoursesRequest $request): JsonResponse
     {
-        $course = Course::create($request->validated());
+        $validated = $request->validated();
+
+        $validated['qa'] = $validated['qa'] ?? $validated['state_code'];
+        $validated['nat_code'] = $validated['nat_code'] ?? $validated['national_code'];
+        $validated['nat_title'] = $validated['nat_title'] ?? $validated['title'];
+        $validated['nat_code_title'] = $validated['nat_code_title'] ?? "{$validated['nat_code']} {$validated['aqf_level']} {$validated['nat_title']}";
+
+        $course = Course::create($validated);
+
         return ApiResponse::success($course, "Course added", 201);
     }
 
@@ -74,7 +82,15 @@ class CourseApiController extends Controller
      */
     public function update(UpdateCoursesRequest $request, Course $course): JsonResponse
     {
-        $course->update($request->validated());
+        $validated = $request->validated();
+
+        $validated['qa'] = $validated['qa'] ?? $validated['state_code'];
+        $validated['nat_code'] = $validated['nat_code'] ?? $validated['national_code'];
+        $validated['nat_title'] = $validated['nat_title'] ?? $validated['title'];
+        $validated['nat_code_title'] = $validated['nat_code_title'] ?? "{$validated['nat_code']} {$validated['aqf_level']} {$validated['nat_title']}";
+
+        $course->update($validated);
+
         return ApiResponse::success($course, "Course updated");
     }
 
