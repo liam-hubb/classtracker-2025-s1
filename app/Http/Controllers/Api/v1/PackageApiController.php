@@ -10,6 +10,7 @@ use App\Http\Requests\v1\UpdatePackagesRequest;
 use App\Models\Course;
 use App\Models\Package;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 /**
  * PackageApiController
@@ -32,9 +33,23 @@ class PackageApiController extends Controller
     /**
      * Returns a list of the Packages.
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $packages = Package::with('courses')->get();
+
+        $packageNumber = $request->perPage;
+        $search = $request->search;
+
+        $query = Package::with('courses');
+
+        $searchableFields = ['course', 'national_code', 'title', 'tga_status'];
+
+        if ($search) {
+            foreach ($searchableFields as $field) {
+                $query->orWhere($field, 'like', '%' . $search . '%');
+            }
+        }
+
+        $packages = $query->paginate($packageNumber ?? 6);
 
         if ($packages->isNotEmpty()) {
             return ApiResponse::success($packages, "All Packages Found");

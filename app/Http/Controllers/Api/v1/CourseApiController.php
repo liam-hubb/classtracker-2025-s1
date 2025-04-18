@@ -9,6 +9,7 @@ use App\Http\Requests\v1\StoreCoursesRequest;
 use App\Http\Requests\v1\UpdateCoursesRequest;
 use App\Http\Requests\v1\DeleteCoursesRequest;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 /**
  * CourseApiController
@@ -31,9 +32,23 @@ class CourseApiController extends Controller
     /**
      * Returns a list of the Courses.
      */
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $courses = Course::all();
+
+        $courseNumber = $request->perPage;
+        $search = $request->search;
+
+        $query = Course::query();
+
+        $searchableFields = ['course', 'national_code', 'aqf_level', 'title', 'tga_status', 'state_code', 'nominal_hours', 'type', 'qa', 'nat_code', 'nat_title'];
+
+        if ($search) {
+            foreach ($searchableFields as $field) {
+                $query->orWhere($field, 'like', '%' . $search . '%');
+            }
+        }
+
+        $courses = $query->paginate($courseNumber ?? 6);
 
         if ($courses->isNotEmpty()) {
             return ApiResponse::success($courses, "All Courses Found");
