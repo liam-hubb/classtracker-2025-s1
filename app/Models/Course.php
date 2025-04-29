@@ -38,14 +38,4 @@ class Course extends Model
     {
         return $this->belongsTo(Package::class, 'package_id');
     }
-
-    public function clusters():HasMany
-    {
-        return $this->hasMany(Cluster::class);
-    }
-
-    public function units(): HasMany
-    {
-        return $this->hasMany(Unit::class);
-    }
 }

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Package;
-use App\Http\Requests\StorePackagesRequest;
-use App\Http\Requests\UpdatePackagesRequest;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
@@ -20,6 +18,7 @@ class PackageController extends Controller
         }
 
         $packages = Package::paginate(10);
+
         return view('packages.index', compact(['packages']));
     }
 
@@ -33,8 +32,8 @@ class PackageController extends Controller
         }
 
         $courses = Course::all();
-        $package = new Package();
-        return view('packages.create',compact(['courses', 'package' ]));
+//        $package = new Package();
+        return view('packages.create',compact(['courses']));
     }
 
     /**
@@ -42,11 +41,11 @@ class PackageController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'national_code' => ['required', 'string', 'size:3',  'regex:/^[A-Z]/'],
-            'title' => ['required', 'min:5', 'max:255', 'string',],
-            'tga_status' => ['required', 'min:5', 'max:255', 'string',],
 
+        $validated = $request->validate([
+            'national_code' => ['required', 'string', 'regex:/^[A-Z]{3}$/', 'unique:packages,national_code,'],
+            'title' => ['required', 'min:2', 'max:255', 'string',],
+            'tga_status' => ['required', 'min:5', 'max:255', 'string',],
         ]);
 
         $package = Package::create($validated);
@@ -70,10 +69,10 @@ class PackageController extends Controller
         }
 
         $courses = $package->courses;
+
             if ($package) {
                 return view('packages.show', compact(['package', 'courses']))
-                    ->with('success', 'Package found')
-                    ;
+                    ->with('success', 'Package found');
             }
 
             return redirect(route('packages.index'))
@@ -96,16 +95,17 @@ class PackageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Package $package)
+    public function update(Request $request, string $id)
     {
+        $package = Package::findOrFail($id);
 
         $validated = $request->validate([
-            'national_code' => ['required', 'string', 'size:3',  'regex:/^[A-Z]/'],
-            'title' => ['required', 'min:5', 'max:255', 'string',],
+            'national_code' => ['required', 'string', 'regex:/^[A-Z]{3}$/', 'unique:packages,national_code,' . $package->id],
+            'title' => ['required', 'min:2', 'max:255', 'string',],
             'tga_status' => ['required', 'min:5', 'max:255', 'string',],
         ]);
 
-        $oldCourses = Course::all()->where('package_id', $package->id);
+        $oldCourses = Course::where('package_id', $package->id)->get();
         foreach ($oldCourses as $oldCourse) {
             $oldCourse->update(['package_id' => null]);
         }
