@@ -13,7 +13,12 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $packages = Package::paginate(6);
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff')) {
+            return redirect('/')->with('error', 'Unauthorised to access this page.');
+        }
+
+        $packages = Package::paginate(10);
+
         return view('packages.index', compact(['packages']));
     }
 
@@ -22,6 +27,10 @@ class PackageController extends Controller
      */
     public function create()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to create package!');
+        }
+
         $courses = Course::all();
 //        $package = new Package();
         return view('packages.create',compact(['courses']));
@@ -30,7 +39,8 @@ class PackageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $validated = $request->validate([
             'national_code' => ['required', 'string', 'regex:/^[A-Z]{3}$/', 'unique:packages,national_code,'],
@@ -54,7 +64,12 @@ class PackageController extends Controller
      */
     public function show(Package $package)
     {
-            $courses = $package->courses;
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff')) {
+            return redirect('/')->with('error', 'Unauthorised to view package!');
+        }
+
+        $courses = $package->courses;
+
             if ($package) {
                 return view('packages.show', compact(['package', 'courses']))
                     ->with('success', 'Package found');
@@ -69,6 +84,10 @@ class PackageController extends Controller
      */
     public function edit(Package $package)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to edit package!');
+        }
+
         $courses = Course::all();
         return view('packages.edit', compact('package', 'courses'));
     }
@@ -107,6 +126,10 @@ class PackageController extends Controller
      */
     public function destroy(Package $package)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to delete package!');
+        }
+
         $package->delete();
         return redirect()->route('packages.index')
             ->with('success', 'Package deleted successfully');

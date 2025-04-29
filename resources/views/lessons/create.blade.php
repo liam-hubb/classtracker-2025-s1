@@ -125,6 +125,58 @@
                                         <x-input-error :messages="$errors->get('duration')" class="mt-2" />
                                     </div>
 
+                                    <div class="flex flex-col my-2">
+                                        <x-input-label for="lecture">
+                                            Assign Lecture
+                                        </x-input-label>
+                                        <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+
+                                            <div class="overflow-y-auto max-h-64" id="staffList">
+                                                @foreach($staffs as $staff)
+                                                    <label class="flex items-center p-3 hover:bg-blue-50 cursor-pointer border-b last:border-b-0 transition-colors group">
+                                                        <input
+                                                            type="radio"
+                                                            name="staff_ids[]"
+                                                            value="{{ $staff->id }}"
+                                                            class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                                            {{ in_array($staff->id, old('staff_ids', $lesson->staff->pluck('id')->toArray())) ? 'checked' : '' }}
+                                                        >
+                                                        <span class="ml-3 text-sm text-gray-700 group-hover:text-blue-800">
+                                                            {{ $staff->given_name .' '. $staff->family_name }}
+                                                            <span class="text-gray-400 text-xs">({{ $staff->email }})</span>
+                                                        </span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col my-2">
+                                        <x-input-label for="student">
+                                            Assign Students
+                                        </x-input-label>
+                                        <div class="bg-white rounded-lg border border-gray-200 shadow-sm">
+
+                                            <div class="overflow-y-auto max-h-64" id="studentList">
+                                                @foreach($students as $student)
+                                                    <label class="flex items-center p-3 hover:bg-blue-50 cursor-pointer border-b last:border-b-0 transition-colors group">
+                                                        <input
+                                                            type="checkbox"
+                                                            name="student_ids[]"
+                                                            value="{{ $student->id }}"
+                                                            class="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                                            {{ in_array($student->id, old('student_ids', $lesson->students->pluck('id')->toArray())) ? 'checked' : '' }}
+                                                        >
+                                                        <span class="ml-3 text-sm text-gray-700 group-hover:text-blue-800">
+                                                            {{ $student->given_name .' '. $student->family_name }}
+                                                            <span class="text-gray-400 text-xs">({{ $student->email }})</span>
+                                                        </span>
+                                                    </label>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </section>
 
                                 <footer
@@ -145,6 +197,7 @@
             </div>
         </div>
     </div>
+
 </x-app-layout>
 
 

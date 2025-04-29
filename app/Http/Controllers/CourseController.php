@@ -12,6 +12,10 @@ class CourseController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff|Student')) {
+            return redirect('/')->with('error', 'Unauthorised to access this page.');
+        }
+
         $courses = Course::paginate(6);
         return view('courses.index', compact(['courses', ]));
     }
@@ -21,6 +25,9 @@ class CourseController extends Controller
      */
     public function create()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to create courses.');
+        }
         return view('courses.create');
     }
 
@@ -61,6 +68,9 @@ class CourseController extends Controller
      */
     public function show(string $id)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff|Student')) {
+            return redirect('/')->with('error', 'Unauthorised to view course details.');
+        }
 
         $course = Course::whereId($id)->get()->first();
 
@@ -79,6 +89,10 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to edit courses.');
+        }
+
         return view('courses.edit', compact('course'));
 
     }
@@ -121,6 +135,10 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to delete courses.');
+        }
+
         $course->delete();
         return redirect()->route('courses.index')
             ->with('success', 'Course deleted successfully');

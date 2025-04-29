@@ -14,6 +14,10 @@ class UnitController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff|Student')) {
+            return redirect('/')->with('error', 'Unauthorised to access this page.');
+        }
+
         $units = Unit::paginate(6);
         return view('units.index', compact(['units', ]));
     }
@@ -23,6 +27,10 @@ class UnitController extends Controller
      */
     public function create()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to create unit.');
+        }
+
         return view('units.create');
     }
 
@@ -50,6 +58,9 @@ class UnitController extends Controller
      */
     public function show(string $id)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to view unit.');
+        }
 
         $unit = Unit::whereId($id)->get()->first();
 
@@ -68,6 +79,10 @@ class UnitController extends Controller
      */
     public function edit(Unit $unit)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to edit unit.');
+        }
+
         return view('units.edit', compact('unit'));
     }
 
@@ -94,6 +109,10 @@ class UnitController extends Controller
      */
     public function destroy(Unit $unit)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to delete unit.');
+        }
+
         $unit->delete();
         return redirect()->route('units.index')
             ->with('success', 'Unit deleted successfully');

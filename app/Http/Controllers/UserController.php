@@ -17,6 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff')) {
+            return redirect('/')->with('error', 'Unauthorised to access this page.');
+        }
+
         $data = User::latest()->paginate(5);
 
         return view('users.index', compact('data'));
@@ -27,6 +31,10 @@ class UserController extends Controller
     */
     public function create()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to create user!');
+        }
+
         return view('users.create');
     }
 
@@ -61,6 +69,10 @@ class UserController extends Controller
      */
     public function show(User $user): View
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff')) {
+            return redirect('/')->with('error', 'Unauthorised to view user.');
+        }
+
         return view('users.show', compact('user'));
     }
 
@@ -69,6 +81,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to edit user.');
+        }
+
         return view('users.edit', compact('user'));
     }
 
@@ -103,6 +119,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to delete user.');
+        }
+
         $user->delete();
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');

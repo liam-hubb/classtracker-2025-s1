@@ -30,10 +30,6 @@ class ClusterFactory extends Factory
             "unit_2" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
             "unit_3" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
             "unit_4" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
-            "unit_5" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
-            "unit_6" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
-            "unit_7" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
-            "unit_8" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
 //            'unit_id' => $unit->national_code,
         ];
     }
