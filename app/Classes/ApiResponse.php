@@ -42,7 +42,7 @@ class ApiResponse
 
     public static function success($result, $message,$code = 200)
     {
-        $success=true;
+        $success = true;
         return self::sendResponse($result,$message,$success, $code);
     }
 
@@ -51,6 +51,7 @@ class ApiResponse
         $success = false;
         return self::sendResponse($result, $message,$success, $code);
     }
+
 
 
     /**

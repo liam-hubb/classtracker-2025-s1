@@ -17,17 +17,6 @@ class UpdateCoursesRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Send a request that fails validation in Json format
-     *
-     */
-
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(
-            ApiResponse::error($validator->errors(), 'Validation failed', 422)
-        );
-    }
 
     /**
      * Get the validation rules that apply to the request.

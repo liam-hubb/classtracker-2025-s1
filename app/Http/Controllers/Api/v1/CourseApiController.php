@@ -112,8 +112,13 @@ class CourseApiController extends Controller
     /**
      * Delete the specified Course from storage.
      */
-    public function destroy(DeleteCoursesRequest $request, Course $course): JsonResponse
+    public function destroy(DeleteCoursesRequest $request, $courseId): JsonResponse
     {
+        $course = Course::find($courseId);
+
+        if (!$course) {
+            return ApiResponse::error($course, 'Specific Course Not Found', 404);
+        }
         $course->delete();
         return ApiResponse::success($course, "Course deleted");
     }

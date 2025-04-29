@@ -81,10 +81,13 @@ class PackageApiController extends Controller
     {
         $package = Package::create($request->validated());
 
-        foreach ($request->course_ids as $course_id) {
-            $course = Course::find($course_id);
-            $course->update(['package_id' => $package->id]);
+        if ($request->filled('course_ids')) {
+            foreach ($request->course_ids as $course_id) {
+                $course = Course::find($course_id);
+                $course->update(['package_id' => $package->id]);
+            }
         }
+
 
         //Load the courses relationship
         $package->load('courses');
@@ -104,10 +107,11 @@ class PackageApiController extends Controller
         foreach ($oldCourses as $oldCourse) {
             $oldCourse->update(['package_id' => null]);
         }
-
-        foreach ($request->course_ids as $course_id) {
-            $course = Course::find($course_id);
-            $course->update(['package_id' => $package->id]);
+        if ($request->filled('course_ids')) {
+            foreach ($request->course_ids as $course_id) {
+                $course = Course::find($course_id);
+                $course->update(['package_id' => $package->id]);
+            }
         }
 
         //Load the courses relationship
@@ -119,9 +123,15 @@ class PackageApiController extends Controller
     /**
      * Delete the specified Package from storage.
      */
-    public function destroy(DeletePackagesRequest $request, Package $package): JsonResponse
+    public function destroy(DeletePackagesRequest $request, $packageId): JsonResponse
     {
+        $package = Package::find($packageId);
+
+        if (!$package) {
+            return ApiResponse::error($package, 'Specific Package Not Found', 404);
+        }
         $package->delete();
         return ApiResponse::success($package, "Package Deleted");
     }
+
 }

@@ -21,7 +21,10 @@ use App\Http\Controllers\Api\v1\PackageApiController;
 use App\Http\Controllers\Api\v1\CourseApiController;
 use Illuminate\Support\Facades\Route;
 
+//Route::post('/register', [AuthApiController::class, 'register']);
 Route::post('/login', [AuthApiController::class, 'login']);
+Route::get('/profile', [AuthApiController::class, 'profile'])->middleware(['auth:sanctum',]);
+//Route::post('/logout', [AuthApiController::class, 'logout'])->middleware(['auth:sanctum',]);
 
 
 Route::apiResource('users', UserApiController::class)
@@ -32,21 +35,38 @@ Route::middleware('auth:sanctum')->group(function () {
         ->only(['store', 'update', 'destroy']);
 });
 
-
 Route::apiResource('courses', CourseApiController::class)
-    ->only(['index', 'show']);
+    ->only(['index', 'show'])
+    ->names([
+        'index' => 'api.v1.courses.index',
+        'show' => 'api.v1.courses.show',
+    ]);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('courses', CourseApiController::class)
-        ->only(['store', 'update', 'destroy']);
+        ->only(['store', 'update', 'destroy'])
+        ->names([
+            'store' => 'api.v1.courses.store',
+            'update' => 'api.v1.courses.update',
+            'destroy' => 'api.v1.courses.destroy',
+        ]);
 });
 
 Route::apiResource('packages', PackageApiController::class)
-    ->only(['index', 'show']);
+    ->only(['index', 'show'])
+    ->names([
+        'index' => 'api.v1.packages.index',
+        'show' => 'api.v1.packages.show',
+    ]);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('packages', PackageApiController::class)
-        ->only(['store', 'update', 'destroy']);
+        ->only(['store', 'update', 'destroy'])
+        ->names([
+            'store' => 'api.v1.packages.store',
+            'update' => 'api.v1.packages.update',
+            'destroy' => 'api.v1.packages.destroy',
+        ]);
 });
 
 

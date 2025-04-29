@@ -18,17 +18,6 @@ class StoreCoursesRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Send a request that fails validation in Json format
-     *
-     */
-
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(
-            ApiResponse::error($validator->errors(), 'Validation failed', 422)
-        );
-    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -45,10 +34,10 @@ class StoreCoursesRequest extends FormRequest
             'state_code' => ['required', 'string', 'size:4', 'unique:courses'],
             'nominal_hours' => ['required', 'min:1', 'max:2000', 'numeric',],
             'type' => ['required', 'min:5', 'max:255', 'string',],
-            'qa' => ['sometimes', 'nullable','string', 'size:4', 'unique:courses'],
-            'nat_code' => ['sometimes', 'nullable','string', 'regex:/^[A-Z]{3}\d{5}$/', 'unique:courses'],
-            'nat_title' => ['sometimes', 'nullable','min:2', 'max:255', 'string',],
-            'nat_code_title' => ['sometimes','nullable','min:5', 'max:255', 'string',],
+            'qa' => ['nullable','string', 'size:4', 'unique:courses'],
+            'nat_code' => ['nullable','string', 'regex:/^[A-Z]{3}\d{5}$/', 'unique:courses'],
+            'nat_title' => ['nullable','min:2', 'max:255', 'string',],
+            'nat_code_title' => ['nullable','min:5', 'max:255', 'string',],
         ];
     }
 

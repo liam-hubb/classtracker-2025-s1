@@ -17,13 +17,13 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            "national_code" => fake()->unique(),
+            "national_code" => fake()->unique()->regexify('[A-Z]{3}[0-9]{5}'),
             "aqf_level" => fake()->text(),
             "title" => fake()->word(),
             "tga_status" => fake()->text(),
             "state_code" => fake()->regexify('[A-Z]{3}[0-9]{1}'),
             "nominal_hours" => fake()->numberBetween(1,2000),
-            "type" => fake()->numberBetween(1,200),
+            'type' => fake()->lexify('?????'),
             "qa" => fake()->regexify('[A-Z]{3}[0-9]{1}'),
             "nat_code" => fake()->regexify('[A-Z]{3}[0-9]{5}'),
             "nat_title" => fake()->text(),
