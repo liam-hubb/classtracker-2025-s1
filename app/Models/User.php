@@ -60,7 +60,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->roles()->where('name', 'Staff');
     }
 
-    public function students()
+    public function student()
     {
         return $this->roles()->where('name', 'Student');
     }

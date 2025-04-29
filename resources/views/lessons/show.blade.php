@@ -40,18 +40,23 @@
                             <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{$lesson->weekday}} {{ $lesson->start_time }} </p>
                             <p class="col-span-1 bg-zinc-300 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">Duration</p>
                             <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $lesson->duration }} Hours </p>
-                            <p class="col-span-1 bg-zinc-300 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">Lecture</p>
-                            <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $lesson->staff()->first()?->given_name ?? '#' }}</p>
-                            <p class="col-span-1 bg-zinc-300 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">In Class Group</p>
+                        </section>
+
+                        <section class="grid grid-cols-6 border-b border-neutral-200 bg-white font-medium text-zinc-800 dark:border-white/10">
+                            <p class="col-span-6 px-6 py-4 border-b border-zinc-200 bg-blue-600 text-white dark:border-white/10">In Class Group</p>
+
+                            <p class="col-span-1 bg-blue-200 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">Lecture</p>
+                            <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $lesson->staff()->first()?->given_name .' '. $lesson->staff()->first()?->family_name?? '#' }}</p>
+                            <p class="col-span-1 bg-blue-200 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">Group Members</p>
                             <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">
                                 @foreach ($lesson->students as $user)
-                                    <span class="inline-block bg-gray-200 text-gray-800 px-2 py-1 rounded-md text-xs">{{ $user->given_name .' '. $user->family_name}}</span>
+                                    <span class="inline-block bg-gray-200 text-gray-800 px-2 py-1 my-0.5 rounded-md text-xs">{{ $user->given_name .' '. $user->family_name}}</span><br>
                                 @endforeach
                             </p>
                         </section>
 
                         <footer class="grid gid-cols-1 px-6 py-4 border-b border-neutral-200 font-medium text-zinc-800 dark:border-white/10">
-                            <form action="{{ route('users.destroy', $lesson) }}"
+                            <form action="{{ route('lessons.destroy', $lesson) }}"
                                   method="POST"
                                   class="flex gap-4">
                                 @csrf
