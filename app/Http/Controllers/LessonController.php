@@ -15,6 +15,9 @@ class LessonController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff|Student')) {
+            return redirect('/')->with('error', 'Unauthorised to access this page.');
+        }
         $data = Lesson::orderBy('name', 'asc')->paginate(6);
         return view('lessons.index', compact(['data']));
     }
@@ -24,8 +27,12 @@ class LessonController extends Controller
      */
     public function create()
     {
-        $clusters = Cluster::all();
-        return view('lessons.create', compact(['clusters']));
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to create lesson.');
+        }
+
+        $lessons = Lesson::all();
+        return view('lessons.create', compact(['lessons']));
     }
 
     /**
@@ -50,6 +57,10 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff|Student')) {
+            return redirect('/')->with('error', 'Unauthorised to view lesson.');
+        }
+
         $lesson = Lesson::with(['staff','students',])->where('id',$lesson->id)->first();
 //        dd($lesson);
      return view('lessons.show', compact('lesson'));
@@ -60,6 +71,9 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to edit lesson.');
+        }
         $clusters = Cluster::all();
         return view('lessons.edit', compact(['lesson', 'clusters']));
     }
@@ -85,6 +99,9 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to delete lesson.');
+        }
         $lesson->delete();
         return redirect()->route('lessons.index')
             ->with('success', 'Lesson deleted successfully');
