@@ -44,6 +44,9 @@ class LessonFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Lesson $lesson) {
+            // Useful small conversation with ChatGPT to be able to extract the Staff and Students separately for a lesson/class session/lecture for display
+            // https://chatgpt.com/share/67eb6949-f0c4-8001-b77c-cbd035a50646
+
             $staff = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Staff');
             })->inRandomOrder()->take(2)->pluck('id');
@@ -56,7 +59,6 @@ class LessonFactory extends Factory
 
             $lesson->staff()->attach($staff);
             $lesson->students()->attach($student);
-            //$lesson->users()->attach($users);
         });
     }
 

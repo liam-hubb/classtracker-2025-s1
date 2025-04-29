@@ -46,17 +46,4 @@ class Lesson extends Model
         });
     }
 
-//    public function staff()
-//    {
-//        return $this->belongsToMany(User::class, 'lesson_user')->whereHas('roles', function ($query) {
-//            $query->where('name', 'staff');
-//        });
-//    }
-//
-//    public function students()
-//    {
-//        return $this->belongsToMany(User::class, 'lesson_user')->whereHas('roles', function ($query) {
-//            $query->where('name', 'student');
-//        });
-//    }
 }

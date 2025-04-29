@@ -30,6 +30,8 @@ class StoreLessonRequest extends FormRequest
             'weekday' => ['required'],
             'duration' => ['required', 'numeric', 'min:1', 'max:4'],
             'end_date' => ['required', 'date', 'after:start_date'],
+            'staff_ids' => ['min:1', 'array'],
+            'student_ids' => ['nullable', 'array'],
         ];
     }
 }

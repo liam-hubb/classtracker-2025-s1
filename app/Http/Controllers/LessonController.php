@@ -6,6 +6,7 @@ use App\Models\Clusters;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
+use App\Models\User;
 use Carbon\Carbon;
 
 class LessonController extends Controller
@@ -22,16 +23,19 @@ class LessonController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Lesson $lesson)
     {
         $clusters = Clusters::all();
-        return view('lessons.create', compact(['clusters']));
+        $staffs = User::whereHas('staff')->get();
+        $students = User::whereHas('student')->get();
+
+        return view('lessons.create', compact(['clusters', 'staffs', 'students', 'lesson']));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLessonRequest $request)
+    public function store(StoreLessonRequest $request, Lesson $lesson)
     {
         $input = $request->validated();
 
@@ -39,7 +43,14 @@ class LessonController extends Controller
             $input['start_time'] = Carbon::createFromFormat('H:i', $input['start_time'])->format('H:i');
         }
 
-        Lesson::create($input);
+        $lesson = Lesson::create($input);
+
+        // Synchronising associated users
+        $staffIds = $request->input('staff_ids', []);
+        $studentIds = $request->input('student_ids', []);
+        $allUserIds = array_unique(array_merge($staffIds, $studentIds));
+
+        $lesson->users()->sync($allUserIds);
 
         return redirect()->route('lessons.index')
             ->with('success', 'Lesson created successfully');
@@ -51,8 +62,7 @@ class LessonController extends Controller
     public function show(Lesson $lesson)
     {
         $lesson = Lesson::with(['staff','students',])->where('id',$lesson->id)->first();
-//        dd($lesson);
-     return view('lessons.show', compact('lesson'));
+        return view('lessons.show', compact('lesson'));
     }
 
     /**
@@ -61,7 +71,10 @@ class LessonController extends Controller
     public function edit(Lesson $lesson)
     {
         $clusters = Clusters::all();
-        return view('lessons.edit', compact(['lesson', 'clusters']));
+        $staffs = User::whereHas('staff')->get();
+        $students = User::whereHas('student')->get();
+
+        return view('lessons.edit', compact(['lesson', 'clusters', 'students', 'staffs']));
     }
 
     /**
@@ -75,6 +88,13 @@ class LessonController extends Controller
         }
 
         $lesson->update($input);
+
+        // Synchronising associated users
+        $staffIds = $request->input('staff_ids', []);
+        $studentIds = $request->input('student_ids', []);
+        $allUserIds = array_unique(array_merge($staffIds, $studentIds));
+
+        $lesson->users()->sync($allUserIds);
 
         return redirect()->route('lessons.index')
             ->with('success', 'Lesson updated successfully');
