@@ -29,6 +29,7 @@ class UnitsSeeder extends Seeder
                     "tga_status" => $tga_status,
                     "state_code" => $state_code,
                     "nominal_hours" => $nominal_hours,
+//                    'cluster_id' => 1,
                 ]);
             }
             $firstLine = false;

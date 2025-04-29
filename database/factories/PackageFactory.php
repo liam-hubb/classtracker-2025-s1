@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Course;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Units>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Package>
  */
-class UnitsFactory extends Factory
+class PackageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,12 +17,14 @@ class UnitsFactory extends Factory
      */
     public function definition(): array
     {
+
+        $course = Course::inRandomOrder()->first();
+
         return [
             "national_code" => fake()->unique(),
             "title" => fake()->word(),
             "tga_status" => fake()->text(),
-            "state_code" => fake()->regexify('[A-Z]{3}[0-9]{2}'),
-            "nominal_hours" => fake()->numberBetween(1,200)
+            'course_id' => $course->national_code,
         ];
     }
 }

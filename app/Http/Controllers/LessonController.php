@@ -6,7 +6,6 @@ use App\Models\Clusters;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
-use App\Models\User;
 use Carbon\Carbon;
 
 class LessonController extends Controller
@@ -62,7 +61,8 @@ class LessonController extends Controller
     public function show(Lesson $lesson)
     {
         $lesson = Lesson::with(['staff','students',])->where('id',$lesson->id)->first();
-        return view('lessons.show', compact('lesson'));
+//        dd($lesson);
+     return view('lessons.show', compact('lesson'));
     }
 
     /**

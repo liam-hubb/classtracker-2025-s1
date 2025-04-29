@@ -2,14 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\Courses;
-use App\Models\Packages;
+use App\Models\Course;
+use App\Models\Package;
+use App\Models\Unit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Clusters>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Cluster>
  */
-class ClustersFactory extends Factory
+class ClusterFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,6 +19,8 @@ class ClustersFactory extends Factory
      */
     public function definition(): array
     {
+
+        $unit = Unit::inRandomOrder()->first();
         return [
             "code" => fake()->unique(),
             "title" => fake()->word(),
@@ -31,6 +34,7 @@ class ClustersFactory extends Factory
             "unit_6" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
             "unit_7" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
             "unit_8" => fake()->regexify('[A-Z]{4}[0-9]{3}'),
+//            'unit_id' => $unit->national_code,
         ];
     }
 }

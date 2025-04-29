@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Courses extends Model
+class Course extends Model
 {
-    /** @use HasFactory<\Database\Factories\CoursesFactory> */
+    /** @use HasFactory<\Database\Factories\CourseFactory> */
     use HasFactory;
 
     protected $fillable = [
@@ -24,19 +27,25 @@ class Courses extends Model
         'nat_code',
         'nat_title',
         'nat_code_title',
+        'package_id'
     ];
 
     /**
      * Define a relationship to the parent
      */
 
-    public  function parent()
+    public  function package():BelongsTo
     {
-        return $this->belongsTo(Packages::class);
+        return $this->belongsTo(Package::class, 'package_id');
     }
 
-    public function cluster()
+    public function clusters():HasMany
     {
-        return $this->hasMany(Clusters::class);
+        return $this->hasMany(Cluster::class);
+    }
+
+    public function units(): HasMany
+    {
+        return $this->hasMany(Unit::class);
     }
 }

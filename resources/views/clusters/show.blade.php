@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Clusters Management') }}
+            {{ __('Cluster Management') }}
         </h2>
     </x-slot>
 
@@ -34,12 +34,14 @@
                             <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $cluster->qualification }}</p>
                             <p class="col-span-1 bg-zinc-300 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">Qualification Code</p>
                             <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $cluster->qualification_code }}</p>
-                            @foreach(range(1, 8) as $unit)
-                                @if(filled($cluster->{'unit_' . $unit}))
-                                    <p class="col-span-1 bg-zinc-300 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">Unit {{ $unit }}</p>
-                                    <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $cluster->{'unit_' . $unit} }}</p>
-                                @endif
+                            @foreach($units as $unit)
+                                <p class="col-span-1 bg-zinc-300 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">Unit {{ $loop->index + 1 }}</p>
+                                <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $unit->national_code }} - {{ $unit->title }}</p>
                             @endforeach
+{{--                            @foreach($cluster->units as $unit)--}}
+{{--                                <p class="col-span-1 bg-zinc-300 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">Unit {{ $loop->index + 1 }}</p>--}}
+{{--                                <p class="col-span-5 whitespace-nowrap px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $unit->national_code }} - {{ $unit->title }}</p>--}}
+{{--                            @endforeach--}}
                         </section>
 
                         <footer class="grid gid-cols-1 px-6 py-4 border-b border-neutral-200 font-medium text-zinc-800 dark:border-white/10">

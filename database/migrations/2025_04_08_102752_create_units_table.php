@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('tga_status')->nullable();
             $table->string('state_code')->nullable();
             $table->string('nominal_hours')->nullable();
+            $table->foreignId('cluster_id')->nullable();
             $table->timestamps();
         });
     }
