@@ -10,6 +10,10 @@ class RolesAndPermissionsController extends Controller
 {
     public function index()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|')) {
+            return redirect('/')->with('error', 'Unauthorised to access this page.');
+        }
+
         $roles = Role::all();
         $users = User::all();
         return view('roles-permissions.index', compact('roles', 'users'));
@@ -17,6 +21,10 @@ class RolesAndPermissionsController extends Controller
 
     public function assignRole(Request $request)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to assign roles.');
+        }
+
         $request->validate([
             'user' => 'required|exists:users,id',
             'role' => 'required|exists:roles,name',
@@ -47,6 +55,10 @@ class RolesAndPermissionsController extends Controller
 
     public function removeRole(Request $request)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to remove roles.');
+        }
+
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'role' => 'required|exists:roles,name',

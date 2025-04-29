@@ -15,6 +15,7 @@ class Package extends Model
         'national_code',
         'title',
         'tga_status',
+        'course_id'
     ];
 
     public function courses():HasMany

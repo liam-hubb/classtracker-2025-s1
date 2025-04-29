@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cluster;
+use App\Models\Clusters;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
@@ -15,6 +15,9 @@ class LessonController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff|Student')) {
+            return redirect('/')->with('error', 'Unauthorised to access this page.');
+        }
         $data = Lesson::orderBy('name', 'asc')->paginate(6);
         return view('lessons.index', compact(['data']));
     }
@@ -22,16 +25,23 @@ class LessonController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Lesson $lesson)
     {
-        $clusters = Cluster::all();
-        return view('lessons.create', compact(['clusters']));
+        $clusters = Clusters::all();
+        $staffs = User::whereHas('staff')->get();
+        $students = User::whereHas('student')->get();
+
+         if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to create lesson.');
+        }
+        return view('lessons.create', compact(['clusters', 'staffs', 'students', 'lesson']));
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLessonRequest $request)
+    public function store(StoreLessonRequest $request, Lesson $lesson)
     {
         $input = $request->validated();
 
@@ -39,7 +49,14 @@ class LessonController extends Controller
             $input['start_time'] = Carbon::createFromFormat('H:i', $input['start_time'])->format('H:i');
         }
 
-        Lesson::create($input);
+        $lesson = Lesson::create($input);
+
+        // Synchronising associated users
+        $staffIds = $request->input('staff_ids', []);
+        $studentIds = $request->input('student_ids', []);
+        $allUserIds = array_unique(array_merge($staffIds, $studentIds));
+
+        $lesson->users()->sync($allUserIds);
 
         return redirect()->route('lessons.index')
             ->with('success', 'Lesson created successfully');
@@ -50,6 +67,10 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff|Student')) {
+            return redirect('/')->with('error', 'Unauthorised to view lesson.');
+        }
+
         $lesson = Lesson::with(['staff','students',])->where('id',$lesson->id)->first();
 //        dd($lesson);
      return view('lessons.show', compact('lesson'));
@@ -60,8 +81,15 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        $clusters = Cluster::all();
-        return view('lessons.edit', compact(['lesson', 'clusters']));
+        $clusters = Clusters::all();
+        $staffs = User::whereHas('staff')->get();
+        $students = User::whereHas('student')->get();
+
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to edit lesson.');
+        }
+      
+        return view('lessons.edit', compact(['lesson', 'clusters', 'students', 'staffs']));
     }
 
     /**
@@ -76,6 +104,13 @@ class LessonController extends Controller
 
         $lesson->update($input);
 
+        // Synchronising associated users
+        $staffIds = $request->input('staff_ids', []);
+        $studentIds = $request->input('student_ids', []);
+        $allUserIds = array_unique(array_merge($staffIds, $studentIds));
+
+        $lesson->users()->sync($allUserIds);
+
         return redirect()->route('lessons.index')
             ->with('success', 'Lesson updated successfully');
     }
@@ -85,6 +120,9 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to delete lesson.');
+        }
         $lesson->delete();
         return redirect()->route('lessons.index')
             ->with('success', 'Lesson deleted successfully');

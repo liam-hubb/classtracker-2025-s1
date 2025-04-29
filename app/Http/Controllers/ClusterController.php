@@ -17,6 +17,9 @@ class ClusterController extends Controller
      */
     public function index()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff|Student')) {
+            return redirect('/')->with('error', 'Unauthorised to access this page.');
+        }
         $clusters = Cluster::paginate(6);
         return view('clusters.index', compact(['clusters', ]));
     }
@@ -26,6 +29,9 @@ class ClusterController extends Controller
      */
     public function create()
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to create clusters');
+        }
         $units = Unit::all();
         return view('clusters.create', compact(['units']));
     }
@@ -60,6 +66,9 @@ class ClusterController extends Controller
 
     public function show(string $id)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin|Staff|Student')) {
+            return redirect('/')->with('error', 'Unauthorised to view clusters details.');
+        }
         $cluster = Cluster::find($id);
 
         if ($cluster) {
@@ -90,6 +99,10 @@ class ClusterController extends Controller
      */
     public function edit(string $id)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to edit clusters.');
+        }
+
         $cluster = Cluster::findOrFail($id);
         $units = Unit::all();
 
@@ -123,6 +136,9 @@ class ClusterController extends Controller
      */
     public function destroy(Cluster $cluster)
     {
+        if (!auth()->user()->hasRole('Super Admin|Admin')) {
+            return redirect('/')->with('error', 'Unauthorised to delete clusters.');
+        }
         $cluster->delete();
         return redirect()->route('clusters.index')
             ->with('success', 'Cluster deleted successfully');

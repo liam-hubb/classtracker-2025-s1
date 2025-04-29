@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('static.home') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-blue-500" />
                     </a>
                 </div>
@@ -23,49 +23,69 @@
                     </x-nav-link>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
-                        {{ __('Users') }}
-                    </x-nav-link>
-                </div>
+                <!-- Users Link (Only for Super Admin and Admin) -->
+                @role('Super Admin|Admin|Staff')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    </div>
+                @endrole
 
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('roles-permissions.index')" :active="request()->routeIs('roles-permissions.index')">
-                        {{ __('Roles & Permission') }}
-                    </x-nav-link>
-                </div>
+                <!-- Roles & Permissions (Only for Super Admin) -->
+                @role('Super Admin')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('roles-permissions.index')" :active="request()->routeIs('roles-permissions.index')">
+                            {{ __('Roles & Permission') }}
+                        </x-nav-link>
+                    </div>
+                @endrole
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('lessons.index')" :active="request()->routeIs('lessons.index')">
-                        {{ __('Lessons') }}
-                    </x-nav-link>
-                </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex relative group">
-                    <x-nav-link :href="route('course')"
-                                :active="request()->routeIs('course')">
-                        {{ __('Courses') }}
-                    </x-nav-link>
-                </div>
-
+                <!-- Lessons (Available to Super Admin, Admin, Staff, and Student) -->
+                @role('Super Admin|Admin|Staff|Student')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('cluster')"
-                                    :active="request()->routeIs('cluster')">
+                        <x-nav-link :href="route('lessons.index')" :active="request()->routeIs('lessons.index')">
+                            {{ __('Lessons') }}
+                        </x-nav-link>
+                    </div>
+                @endrole
+
+                <!-- Courses (Only for Super Admin, Admin, Staff and Student) -->
+                @role('Super Admin|Admin|Staff|Student')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('course')" :active="request()->routeIs('course')">
+                            {{ __('Courses') }}
+                        </x-nav-link>
+                    </div>
+                @endrole
+
+                <!-- Clusters -->
+                @role('Super Admin|Admin|Staff|Student')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('cluster')" :active="request()->routeIs('cluster')">
                             {{ __('Clusters') }}
                         </x-nav-link>
                     </div>
+                @endrole
+
+                <!-- Units -->
+                @role('Super Admin|Admin|Staff')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('unit')"
-                                    :active="request()->routeIs('unit')">
+                        <x-nav-link :href="route('unit')" :active="request()->routeIs('unit')">
                             {{ __('Units') }}
                         </x-nav-link>
                     </div>
+                @endrole
+
+                <!-- Packages -->
+                @role('Super Admin|Admin|Staff')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('package')"
-                                    :active="request()->routeIs('package')">
+                        <x-nav-link :href="route('package')" :active="request()->routeIs('package')">
                             {{ __('Packages') }}
                         </x-nav-link>
                     </div>
+                @endrole
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

@@ -42,34 +42,34 @@
 
                                     <div class="flex flex-col my-2">
                                         <x-input-label for="national_code">
-                                            National Code
+                                            National Code <span class="text-red-600">*</span>
                                         </x-input-label>
-                                        <x-text-input id="national_code" name="national_code" value="{{ old('national_code') }}" placeholder="e.g. BSB00000"
+                                        <x-text-input id="national_code" name="national_code" value="{{ old('national_code') }}" placeholder="E.g. BSB00000"
                                                       class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('national_code')" class="mt-2"/>
                                     </div>
 
                                     <div class="flex flex-col my-2">
                                         <x-input-label for="aqf_level">
-                                            AQF Level
+                                            AQF Level <span class="text-red-600">*</span>
                                         </x-input-label>
-                                        <x-text-input id="aqf_level" name="aqf_level" value="{{ old('aqf_level') }}" placeholder="e.g. Certificate I in"
+                                        <x-text-input id="aqf_level" name="aqf_level" value="{{ old('aqf_level') }}" placeholder="E.g. Certificate I in"
                                                       class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('aqf_level')" class="mt-2"/>
                                     </div>
 
                                     <div class="flex flex-col my-2">
                                         <x-input-label for="title">
-                                            Title
+                                            Title <span class="text-red-600">*</span>
                                         </x-input-label>
-                                        <x-text-input id="title" name="title" value="{{ old('title') }}" placeholder="e.g. Business"
+                                        <x-text-input id="title" name="title" value="{{ old('title') }}" placeholder="E.g. Business"
                                                       class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                                     </div>
 
                                     <div class="flex flex-col my-2">
                                         <x-input-label for="tga_status">
-                                            TGA Status
+                                            TGA Status <span class="text-red-600">*</span>
                                         </x-input-label>
                                         <select id="tga_status" name="tga_status" class="rounded-md shadow-sm border-gray-300 text-black placeholder-gray-500">
                                             <option value="Replaced">Replaced</option>
@@ -82,25 +82,25 @@
 
                                     <div class="flex flex-col my-2">
                                         <x-input-label for="state_code">
-                                            State Code
+                                            State Code <span class="text-red-600">*</span>
                                         </x-input-label>
-                                        <x-text-input id="state_code" name="state_code" value="{{ old('state_code') }}" placeholder="e.g. AVU0"
+                                        <x-text-input id="state_code" name="state_code" value="{{ old('state_code') }}" placeholder="E.g. AVU0"
                                                       class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('state_code')" class="mt-2"/>
                                     </div>
 
                                     <div class="flex flex-col my-2">
                                         <x-input-label for="nominal_hours">
-                                            Nominal Hours
+                                            Nominal Hours <span class="text-red-600">*</span>
                                         </x-input-label>
-                                        <x-text-input id="nominal_hours" name="nominal_hours" value="{{ old('nominal_hours') }}" placeholder="e.g. 150"
+                                        <x-text-input id="nominal_hours" name="nominal_hours" value="{{ old('nominal_hours') }}" placeholder="E.g. 150"
                                                       class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('nominal_hours')" class="mt-2"/>
                                     </div>
 
                                     <div class="flex flex-col my-2">
                                         <x-input-label for="type">
-                                            Type
+                                            Type <span class="text-red-600">*</span>
                                         </x-input-label>
                                         <select id="type" name="type" class="rounded-md shadow-sm border-gray-300 text-black placeholder-gray-500">
                                             <option value="Qualification">Qualification</option>
@@ -113,7 +113,7 @@
                                         <x-input-label for="qa">
                                             QA
                                         </x-input-label>
-                                        <x-text-input id="qa" name="qa" value="{{ old('qa') }}" placeholder="e.g. AVU0"
+                                        <x-text-input id="qa" name="qa" value="{{ old('qa') }}" placeholder="E.g. AVU0"
                                                       class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('qa')" class="mt-2"/>
                                     </div>
@@ -122,7 +122,7 @@
                                         <x-input-label for="nat_code">
                                             Nat Code
                                         </x-input-label>
-                                        <x-text-input id="nat_code" name="nat_code" value="{{ old('nat_code') }}" placeholder="e.g. BSB00000"
+                                        <x-text-input id="nat_code" name="nat_code" value="{{ old('nat_code') }}" placeholder="E.g. BSB00000"
                                                       class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('nat_code')" class="mt-2"/>
                                     </div>
@@ -131,7 +131,7 @@
                                         <x-input-label for="nat_title">
                                             Nat Title
                                         </x-input-label>
-                                        <x-text-input id="nat_title" name="nat_title" value="{{ old('nat_title') }}" placeholder="e.g. Business"
+                                        <x-text-input id="nat_title" name="nat_title" value="{{ old('nat_title') }}" placeholder="E.g. Business"
                                                       class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('nat_title')" class="mt-2"/>
                                     </div>
@@ -140,7 +140,7 @@
                                         <x-input-label for="nat_code_title">
                                             Nat Code Title
                                         </x-input-label>
-                                        <x-text-input id="nat_code_title" name="nat_code_title" value="{{ old('nat_code_title') }}" placeholder="e.g. BSB00000 Certificate I in Business"
+                                        <x-text-input id="nat_code_title" name="nat_code_title" value="{{ old('nat_code_title') }}" placeholder="E.g. BSB00000 Certificate I in Business"
                                                       class="placeholder-gray-500 text-black"/>
                                         <x-input-error :messages="$errors->get('nat_code_title')" class="mt-2"/>
                                     </div>
