@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('cluster_id')->constrained()->onDelete('cascade');
             $table->foreignId('unit_id')->constrained()->onDelete('cascade');
             $table->timestamps();
+
+            $table->unique(['cluster_id', 'unit_id']);
         });
     }
 

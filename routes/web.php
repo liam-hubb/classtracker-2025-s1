@@ -33,6 +33,9 @@ Route::get('/cluster', [\App\Http\Controllers\ClusterController::class, 'index']
     ->name('cluster');
 Route::resource('clusters', ClusterController::class)
     ->only(['index', 'show', 'create', 'store', 'edit', 'update', 'destroy',]);
+Route::post('/clusters/{cluster_id}/unit/{unit_id}', [ClusterController::class, 'store']);
+Route::get('/cluster/{cluster_id}/units', [ClusterController::class, 'getUnitsByCluster']);
+Route::get('/unit/{unit_id}/clusters', [ClusterController::class, 'getClustersByUnit']);
 
 
 Route::get('/unit', [\App\Http\Controllers\UnitController::class, 'index'])

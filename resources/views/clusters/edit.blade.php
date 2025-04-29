@@ -77,7 +77,7 @@
                                         <x-input-error :messages="$errors->get('qualification_code')" class="mt-2"/>
                                     </div>
 
-                                    @foreach(range(1, 8) as $unit)
+                                    @foreach(range(1, 4) as $unit)
                                         @if(($cluster->{'unit_' . $unit}) || !filled($cluster->{'unit_' . $unit}))
                                             <div class="flex flex-col my-2">
                                                 <x-input-label for="{{ 'unit_' . $unit }}">

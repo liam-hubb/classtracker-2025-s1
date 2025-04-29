@@ -27,11 +27,6 @@ class ClustersSeeder extends Seeder
                     "unit_2" => $data[5],
                     "unit_3" => $data[6],
                     "unit_4" => $data[7],
-                    "unit_5" => $data[8],
-                    "unit_6" => $data[9],
-                    "unit_7" => $data[10],
-                    "unit_8" => $data[11],
-
                 ]);
             }
             $line = false;
