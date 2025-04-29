@@ -74,17 +74,17 @@
                             </tbody>
 
                             <tfoot>
-                            {{--                        <tr class="bg-zinc-100">--}}
-                            {{--                            <td colspan="5" class="px-6 py-2">--}}
-                            {{--                                @if( $packages>hasPages() )--}}
-                            {{--                                    {{ $packages->links() }}--}}
-                            {{--                                @elseif( $packages->total() === 0 )--}}
-                            {{--                                    <p class="text-xl">No packages found</p>--}}
-                            {{--                                @else--}}
-                            {{--                                    <p class="py-2 text-zinc-800 text-sm">All packages shown</p>--}}
-                            {{--                                @endif--}}
-                            {{--                            </td>--}}
-                            {{--                        </tr>--}}
+                            <tr class="bg-zinc-100">
+                                <td colspan="14" class="px-6 py-2 text-center">
+                                    @if( $packages->hasPages() )
+                                        {{ $packages->links() }}
+                                    @elseif( $packages->total() === 0 )
+                                        <p class="text-xl">No packages found</p>
+                                    @else
+                                        <p class="py-2 text-zinc-800 text-sm">All packages shown</p>
+                                    @endif
+                                </td>
+                            </tr>
                             </tfoot>
 
                         </table>
