@@ -15,10 +15,11 @@
  *
  */
 
-use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\v1\AuthApiController;
-use App\Http\Controllers\Api\v1\PackageApiController;
 use App\Http\Controllers\Api\v1\CourseApiController;
+use App\Http\Controllers\Api\v1\PackageApiController;
+use App\Http\Controllers\Api\v1\RolesAndPermissionsApiController;
+use App\Http\Controllers\Api\v1\UserApiController;
 use Illuminate\Support\Facades\Route;
 
 //Route::post('/register', [AuthApiController::class, 'register']);
@@ -69,4 +70,12 @@ Route::middleware('auth:sanctum')->group(function () {
         ]);
 });
 
+Route::apiResource('users', UserApiController::class);
+
+Route::prefix('roles-permissions')->group(function () {
+    Route::get('/', [RolesAndPermissionsApiController::class, 'index']);
+    Route::post('/assign', [RolesAndPermissionsApiController::class, 'assignRole']);
+    Route::delete('/remove', [RolesAndPermissionsApiController::class, 'removeRole']);
+    Route::get('/user/{user}', [RolesAndPermissionsApiController::class, 'getUserRoles']);
+});
 
