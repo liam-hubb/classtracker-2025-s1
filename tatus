@@ -1,0 +1,127 @@
+*   [33maa660dc[m[33m ([m[1;36mHEAD -> [m[1;32mCluster/Unit/Package/Class-Management[m[33m)[m Merge branch 'main' of https://github.com/AdyGCode/classtracker-2025-s1 into Cluster/Unit/Package/Class-Management
+[31m|[m[32m\[m  
+[31m|[m *   [33mf297551[m[33m ([m[1;31mupstream/main[m[33m)[m feat: clusters an unit
+[31m|[m [33m|[m[34m\[m  
+[31m|[m [33m|[m *   [33m26ce977[m Merge pull request #26 from availedgray/feature/lessons-management
+[31m|[m [33m|[m [35m|[m[36m\[m  
+[31m|[m [33m|[m [35m|[m *   [33me338bb6[m Merge branch 'main' into feature/lessons-management
+[31m|[m [33m|[m [35m|[m [1;31m|[m[35m\[m  
+[31m|[m [33m|[m [35m|[m [1;31m|[m[35m/[m  
+[31m|[m [33m|[m [35m|[m[35m/[m[1;31m|[m   
+[31m|[m [33m|[m * [1;31m|[m   [33mc8d97e0[m Merge pull request #25 from ninihub1/enhancing-roles-permissions
+[31m|[m [33m|[m [1;33m|[m[1;34m\[m [1;31m\[m  
+[31m|[m [33m|[m [1;33m|[m * [1;31m\[m   [33ma85474d[m Merge branch 'main' into enhancing-roles-permissions
+[31m|[m [33m|[m [1;33m|[m [1;35m|[m[1;33m\[m [1;31m\[m  
+[31m|[m [33m|[m [1;33m|[m [1;35m|[m[1;33m/[m [1;31m/[m  
+[31m|[m [33m|[m [1;33m|[m[1;33m/[m[1;35m|[m [1;31m|[m   
+[31m|[m [33m|[m * [1;35m|[m [1;31m|[m   [33mb92dc53[m Merge pull request #24 from YuiMigaki/Cluster/Unit/Package/Class-Management
+[31m|[m [33m|[m [31m|[m[32m\[m [1;35m\[m [1;31m\[m  
+[31m|[m [33m|[m * [32m|[m [1;35m|[m [1;31m|[m [33m4d11f48[m docs(readme): Update Readme - Add Developers
+[31m|[m [33m|[m [32m|[m [32m|[m * [1;31m|[m [33m3af77bd[m feat:Roles and Permission enhanced.
+[31m|[m [33m|[m [32m|[m [32m|[m[32m/[m [1;31m/[m  
+[31m|[m [33m|[m [32m|[m[32m/[m[32m|[m [1;31m|[m   
+[31m|[m [33m|[m [32m|[m [32m|[m *   [33m00812e6[m - fix conflicts and merge with main brunch
+[31m|[m [33m|[m [32m|[m [32m|[m [33m|[m[32m\[m  
+[31m|[m [33m|[m [32m|[m [32m|[m[32m_[m[33m|[m[32m/[m  
+[31m|[m [33m|[m [32m|[m[32m/[m[32m|[m [33m|[m   
+[31m|[m [33m|[m [32m|[m [32m|[m * [33m6d48663[m wip: Lessons Management feature
+[31m|[m * [32m|[m [32m|[m [34m|[m [33m4d1179c[m feat: clusters an unit
+* [34m|[m [32m|[m [32m|[m [34m|[m [33m27e9d0c[m[33m ([m[1;31morigin/Cluster/Unit/Package/Class-Management[m[33m)[m added Pest Test features for courses and packages
+[32m|[m [34m|[m[32m_[m[32m|[m[32m/[m [34m/[m  
+[32m|[m[32m/[m[34m|[m [32m|[m [34m|[m   
+* [34m|[m [32m|[m [34m|[m [33mb99c8e3[m added Pest Test features for courses and packages
+* [34m|[m [32m|[m [34m|[m [33mf51ce38[m feat: added perPage and search parameters for pagination and search features in CourseApiController and PackageApiController
+* [34m|[m [32m|[m [34m|[m [33mc4d1f18[m feat: Added API endpoints for courses and packages.
+* [34m|[m [32m|[m [34m|[m   [33m1f903ac[m Merged the latest version
+[35m|[m[32m\[m [34m\[m [32m\[m [34m\[m  
+[35m|[m [32m|[m [34m|[m[32m/[m [34m/[m  
+[35m|[m [32m|[m[32m/[m[34m|[m [34m|[m   
+[35m|[m * [34m|[m [34m|[m   [33me52828f[m Merge pull request #23 from YuiMigaki/Cluster/Unit/Package/Class-Management
+[35m|[m [1;31m|[m[1;32m\[m [34m\[m [34m\[m  
+[35m|[m * [1;32m\[m [34m\[m [34m\[m   [33m09b32ae[m Merge pull request #22 from ninihub1/feature-api
+[35m|[m [34m|[m[1;34m\[m [1;32m\[m [34m\[m [34m\[m  
+[35m|[m [34m|[m [1;34m|[m[34m_[m[1;32m|[m[34m/[m [34m/[m  
+[35m|[m [34m|[m[34m/[m[1;34m|[m [1;32m|[m [34m|[m   
+[35m|[m [34m|[m * [1;32m|[m [34m|[m [33m759f2e9[m feat: Added API endpoints for roles and permissions, and user management. Created routes for managing user roles and permissions.
+[35m|[m * [1;34m|[m [1;32m|[m [34m|[m   [33m7c32876[m Merge pull request #20 from YuiMigaki/Cluster/Unit/Package/Class-Management
+[35m|[m [1;35m|[m[1;36m\[m [1;34m\[m [1;32m\[m [34m\[m  
+* [1;35m|[m [1;36m|[m [1;34m|[m [1;32m|[m [34m|[m [33meeffc58[m Added course and package endpoints
+* [1;35m|[m [1;36m|[m [1;34m|[m [1;32m|[m [34m|[m [33m09417be[m Added API courses and packages endpoints
+[1;32m|[m [1;35m|[m[1;32m_[m[1;36m|[m[1;32m_[m[1;34m|[m[1;32m/[m [34m/[m  
+[1;32m|[m[1;32m/[m[1;35m|[m [1;36m|[m [1;34m|[m [34m|[m   
+* [1;35m|[m [1;36m|[m [1;34m|[m [34m|[m [33mbf1f8ee[m feat:added course selection in package view
+[1;36m|[m [1;35m|[m[1;36m/[m [1;34m/[m [34m/[m  
+[1;36m|[m[1;36m/[m[1;35m|[m [1;34m|[m [34m|[m   
+* [1;35m|[m [1;34m|[m [34m|[m [33mee3b817[m feat: added more features
+* [1;35m|[m [1;34m|[m [34m|[m [33m284bc30[m Merge remote-tracking branch 'upstream/main' into Cluster/Unit/Package/Class-Management
+[31m|[m[1;35m\[m[1;35m|[m [1;34m|[m [34m|[m 
+[31m|[m * [1;34m|[m [34m|[m   [33m6af6223[m Merge pull request #19 from availedgray/feature/lessons-management
+[31m|[m [1;34m|[m[34m\[m [1;34m\[m [34m\[m  
+[31m|[m [1;34m|[m [34m|[m[1;34m/[m [34m/[m  
+[31m|[m [1;34m|[m[1;34m/[m[34m|[m [34m/[m   
+[31m|[m [1;34m|[m [34m|[m[34m/[m    
+[31m|[m [1;34m|[m * [33m1fe2900[m wip: Lessons Management feature
+* [1;34m|[m [34m|[m [33mbd7060c[m feat:updating in progress
+[35m|[m[1;34m\[m[1;34m|[m [34m|[m 
+[35m|[m * [34m|[m [33m3b23d10[m Merge pull request #18 from availedgray/feature/lessons-management
+[35m|[m [1;31m|[m[34m\[m[34m|[m 
+[35m|[m [1;31m|[m * [33ma38b882[m feat: Lessons Management feature
+[35m|[m [1;31m|[m *   [33m6a62ab4[m Merge from remote upstream
+[35m|[m [1;31m|[m [1;33m|[m[1;31m\[m  
+[35m|[m [1;31m|[m [1;33m|[m[1;31m/[m  
+[35m|[m [1;31m|[m[1;31m/[m[1;33m|[m   
+[35m|[m * [1;33m|[m   [33m1d9ee8c[m Merge pull request #17 from YuiMigaki/Cluster/Unit/Package/Class-Management
+[35m|[m [1;35m|[m[1;36m\[m [1;33m\[m  
+[35m|[m [1;35m|[m * [1;33m\[m   [33m7099850[m Merge branch 'main' into Cluster/Unit/Package/Class-Management
+[35m|[m [1;35m|[m [31m|[m[1;35m\[m [1;33m\[m  
+[35m|[m [1;35m|[m [31m|[m[1;35m/[m [1;33m/[m  
+[35m|[m [1;35m|[m[1;35m/[m[31m|[m [1;33m|[m   
+[35m|[m * [31m|[m [1;33m|[m   [33m4cd72d3[m Merge pull request #16 from YuiMigaki/Cluster/Unit/Package/Class-Management
+[35m|[m [33m|[m[34m\[m [31m\[m [1;33m\[m  
+[35m|[m [33m|[m [34m|[m [31m|[m * [33md1f6571[m feat: Lessons Management - index, migration, seeder
+[35m|[m [33m|[m [34m|[m [31m|[m *   [33mbad53ce[m Resolved conflicts
+[35m|[m [33m|[m [34m|[m [31m|[m [35m|[m[36m\[m  
+[35m|[m [33m|[m [34m|[m [31m|[m * [36m|[m [33m1d2cba8[m feat: Add User Management feature
+* [33m|[m [34m|[m [31m|[m [36m|[m [36m|[m [33mf080682[m editting progress
+[31m|[m [33m|[m[31m_[m[34m|[m[31m/[m [36m/[m [36m/[m  
+[31m|[m[31m/[m[33m|[m [34m|[m [36m|[m [36m|[m   
+* [33m|[m [34m|[m [36m|[m [36m|[m [33mb38c5e8[m feat: Added input placeholders and reduced duplicate lines in Blade templates.
+* [33m|[m [34m|[m [36m|[m [36m|[m [33m788f024[m Merge remote-tracking branch 'upstream/main' into Cluster/Unit/Package/Class-Management
+[34m|[m[33m\[m[33m|[m [34m|[m [36m|[m [36m|[m 
+[34m|[m [33m|[m[34m/[m [36m/[m [36m/[m  
+[34m|[m[34m/[m[33m|[m [36m|[m [36m|[m   
+[34m|[m * [36m|[m [36m|[m   [33m2e6660a[m Merge pull request #15 from ninihub1/ui-improvements
+[34m|[m [36m|[m[1;34m\[m [36m\[m [36m\[m  
+[34m|[m [36m|[m [1;34m|[m[36m_[m[36m|[m[36m/[m  
+[34m|[m [36m|[m[36m/[m[1;34m|[m [36m|[m   
+[34m|[m [36m|[m * [36m|[m [33m08583d7[m feat: Implemented a home page.
+[34m|[m [36m|[m[36m/[m [36m/[m  
+* [36m/[m [36m/[m [33mc3a2c91[m feat:Added edit,create features for cluster, unit, course, and package
+[36m|[m[36m/[m [36m/[m  
+* [36m|[m   [33mcee3eef[m Merge pull request #13 from YuiMigaki/Cluster/Unit/Package/Class-Management
+[1;35m|[m[1;36m\[m [36m\[m  
+[1;35m|[m * [36m|[m [33m08f8050[m feat: Removed units from cluster index page and added edit features.
+[1;35m|[m * [36m|[m [33mf81ed37[m resolved conflicts
+[1;35m|[m[1;35m/[m [36m/[m  
+[1;35m|[m [36m|[m *   [33mc7514a3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Add app/Models/Clusters.php
+[1;35m|[m [36m|[m [31m|[m[1;35m\[m  
+[1;35m|[m [36m|[m[1;35m_[m[31m|[m[1;35m/[m  
+[1;35m|[m[1;35m/[m[36m|[m [31m|[m   
+* [36m|[m [31m|[m   [33mb765861[m Merge pull request #11 from availedgray/feature/user-management
+[33m|[m[34m\[m [36m\[m [31m\[m  
+[33m|[m * [36m|[m [31m|[m [33md892dd2[m feat: Add User Management feature
+[33m|[m [36m|[m[36m/[m [31m/[m  
+[33m|[m * [31m|[m   [33mcd3b25c[m Resolved merge conflicts with upstream/main
+[33m|[m [35m|[m[33m\[m [31m\[m  
+[33m|[m [35m|[m[33m/[m [31m/[m  
+[33m|[m[33m/[m[35m|[m [31m|[m   
+* [35m|[m [31m|[m   [33mac4aad5[m Merge pull request #10 from ninihub1/roles-permissions-branch
+[1;31m|[m[1;32m\[m [35m\[m [31m\[m  
+[1;31m|[m * [35m|[m [31m|[m [33m27a7a54[m feat: Added Roles & Permissions Controller and Seeders, Integrated FontAwesome for Flash Messages
+* [1;32m|[m [35m|[m [31m|[m [33m3813fe8[m Update README.md
+[1;32m|[m[1;32m/[m [35m/[m [31m/[m  
+[1;32m|[m * [31m/[m [33m1d46485[m feat: Added Session Controller and Seeder, User Controller and Seeder
+[1;32m|[m[1;32m/[m [31m/[m  
+[1;32m|[m * [33mb98a137[m first commit
+[1;32m|[m[1;32m/[m  
+* [33m94ec2aa[m init: CLASSTRACKER Base Code
