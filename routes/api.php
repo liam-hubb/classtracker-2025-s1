@@ -1,22 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Classes\ApiResponse;
-use App\Http\Controllers\Api\RolesAndPermissionsApiController;
-use App\Http\Controllers\Api\UserApiController;
-
-
-Route::apiResource('users', UserApiController::class);
-
-Route::prefix('roles-permissions')->group(function () {
-    Route::get('/', [RolesAndPermissionsApiController::class, 'index']);
-    Route::post('/assign', [RolesAndPermissionsApiController::class, 'assignRole']);
-    Route::delete('/remove', [RolesAndPermissionsApiController::class, 'removeRole']);
-    Route::get('/user/{user}', [RolesAndPermissionsApiController::class, 'getUserRoles']);
-});
-
-
-
+use App\Http\Controllers\Api\v1\RolesAndPermissionsApiController;
+use App\Http\Controllers\Api\v1\UserApiController;
+use Illuminate\Support\Facades\Route;
 /**
  * API Routes defined by version in separate files.
  *
