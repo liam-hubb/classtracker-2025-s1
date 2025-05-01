@@ -25,7 +25,7 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 - Given Name [GITHUB USERNAME](https://github.com/GITHUB_USERNAME) (Developer)
 - Given Name [GITHUB USERNAME](https://github.com/GITHUB_USERNAME) (Developer)
 - Given Name [GITHUB USERNAME](https://github.com/GITHUB_USERNAME) (Developer)
-- Given Name [YuiMigaki](https://github.com/YuiMigaki) (Developer)
+- Yui Migaki [YuiMigaki](https://github.com/YuiMigaki) (Developer)
 
 ## Roles and Permissions
 
