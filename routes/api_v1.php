@@ -16,8 +16,9 @@
  */
 
 use App\Http\Controllers\Api\v1\AuthApiController;
-use App\Http\Controllers\Api\v1\CourseApiController;
+use App\Http\Controllers\Api\v1\LessonApiController;
 use App\Http\Controllers\Api\v1\PackageApiController;
+use App\Http\Controllers\Api\v1\CourseApiController;
 use App\Http\Controllers\Api\v1\RolesAndPermissionsApiController;
 use App\Http\Controllers\Api\v1\UserApiController;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +68,23 @@ Route::middleware('auth:sanctum')->group(function () {
             'store' => 'api.v1.packages.store',
             'update' => 'api.v1.packages.update',
             'destroy' => 'api.v1.packages.destroy',
+        ]);
+});
+
+Route::apiResource('lessons', LessonApiController::class)
+    ->only(['index', 'show',
+    ])
+    ->names([
+        'index' => 'api.v1.lessons.index',
+        'show' => 'api.v1.lessons.show',
+    ]);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('lessons', LessonApiController::class)
+        ->only(['store', 'update', 'destroy'])
+        ->names([
+            'store' => 'api.v1.lessons.store',
+            'update' => 'api.v1.lessons.update',
+            'destroy' => 'api.v1.lessons.destroy',
         ]);
 });
 

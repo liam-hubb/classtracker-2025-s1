@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clusters;
+use App\Models\Cluster;
 use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
+use App\Models\User;
 use Carbon\Carbon;
 
 class LessonController extends Controller
@@ -27,7 +28,7 @@ class LessonController extends Controller
      */
     public function create(Lesson $lesson)
     {
-        $clusters = Clusters::all();
+        $clusters = Cluster::all();
         $staffs = User::whereHas('staff')->get();
         $students = User::whereHas('student')->get();
 
@@ -81,7 +82,7 @@ class LessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        $clusters = Clusters::all();
+        $clusters = Cluster::all();
         $staffs = User::whereHas('staff')->get();
         $students = User::whereHas('student')->get();
 

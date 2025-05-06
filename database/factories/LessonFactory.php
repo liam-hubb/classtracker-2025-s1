@@ -49,7 +49,7 @@ class LessonFactory extends Factory
 
             $staff = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Staff');
-            })->inRandomOrder()->take(2)->pluck('id');
+            })->inRandomOrder()->take(1)->pluck('id');
 
             $student = User::whereHas('roles', function ($query) {
                 $query->where('name', 'Student');
