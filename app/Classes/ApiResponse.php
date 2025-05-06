@@ -2,6 +2,7 @@
 
 namespace App\Classes;
 
+use HttpResponseException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
