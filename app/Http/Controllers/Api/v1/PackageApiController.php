@@ -36,7 +36,9 @@ class PackageApiController extends Controller
     public function index(Request $request): JsonResponse
     {
 
+        // set perPage parameter and specific number per page
         $packageNumber = $request->perPage;
+        // set search parameter
         $search = $request->search;
 
         $query = Package::with('courses');
@@ -49,6 +51,7 @@ class PackageApiController extends Controller
             }
         }
 
+        //If there is no page, set to 6 items per page
         $packages = $query->paginate($packageNumber ?? 6);
 
         if ($packages->isNotEmpty()) {
@@ -81,14 +84,13 @@ class PackageApiController extends Controller
     {
         $package = Package::create($request->validated());
 
+        //Loop each course id and find specific course, and then update the course's package id field.
         if ($request->filled('course_ids')) {
             foreach ($request->course_ids as $course_id) {
                 $course = Course::find($course_id);
                 $course->update(['package_id' => $package->id]);
             }
         }
-
-
         //Load the courses relationship
         $package->load('courses');
 
@@ -102,11 +104,12 @@ class PackageApiController extends Controller
     {
         $package->update($request->validated());
 
-
+        // Get the specific package id field and remove old ones that have been set previously.
         $oldCourses = Course::where('package_id', $package->id)->get();
         foreach ($oldCourses as $oldCourse) {
             $oldCourse->update(['package_id' => null]);
         }
+        //Loop each course id and find specific course, and then update the course's package id field.
         if ($request->filled('course_ids')) {
             foreach ($request->course_ids as $course_id) {
                 $course = Course::find($course_id);

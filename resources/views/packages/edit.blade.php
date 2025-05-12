@@ -76,14 +76,15 @@
                                         <x-input-label for="course_id" class="w-full">
                                             Course National Code
                                         </x-input-label>
-                                        @for($i = 0; $i <= 3; $i++)
-                                            @if(isset($package->courses[$i]))
+                                        @for($i = 0; $i <= 3; $i++) <!--creating 4 drop down-->
+                                            @if(isset($package->courses[$i])) <!-- check if the package has courses-->
                                                 <div class="w-1/5">
                                                     <select id="course_{{$i}}" name="course_ids[]" class="rounded-md shadow-sm border-gray-300 text-black placeholder-gray-500 w-full">
                                                         <option value=null>No course</option>
                                                     @foreach($courses as $availableCourse)
+                                                            <!--Check the previous course id(course_1) or default course id is selected and compare old value or default If there is no old input, it defaults to the current course id.-->
                                                             <option value="{{ $availableCourse->id }}"
-                                                                {{ (old('course_' . $package->courses[$i]->id,$package->courses[$i]->id) == $availableCourse->id) ? 'selected' : '' }}>
+                                                                {{ (old('course_' . $package->courses[$i]->id, $package->courses[$i]->id) == $availableCourse->id) ? 'selected' : '' }}>
                                                                 {{ $availableCourse->national_code }}
                                                             </option>
                                                         @endforeach
