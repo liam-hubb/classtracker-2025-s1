@@ -34,8 +34,9 @@ class CourseApiController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-
+        // set perPage parameter and specific number per page
         $courseNumber = $request->perPage;
+        // set search parameter
         $search = $request->search;
 
         $query = Course::query();
@@ -48,6 +49,7 @@ class CourseApiController extends Controller
             }
         }
 
+        //If there is no page, set to 6 items per page
         $courses = $query->paginate($courseNumber ?? 6);
 
         if ($courses->isNotEmpty()) {
