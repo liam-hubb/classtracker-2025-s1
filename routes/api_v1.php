@@ -88,7 +88,8 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::name('api.v1.')->group(function () {
-        Route::apiResource('users', UserApiController::class)->names([
+        Route::apiResource('users', UserApiController::class)
+            ->names([
             'index' => 'users.index',
             'store' => 'users.store',
             'show' => 'users.show',
