@@ -20,6 +20,11 @@ class LessonApiController extends Controller
         $data = Lesson::with(['staff', 'students'])
             ->orderBy('name', 'asc')
             ->paginate(6);
+
+        if ($data->isEmpty()) {
+            return ApiResponse::error([], 'No Lessons Found', 404);
+        }
+
         return ApiResponse::success($data, "All lessons found successfully.");
     }
 
@@ -40,7 +45,8 @@ class LessonApiController extends Controller
 
         // Sync the users (staff and students) with the lesson
         $lesson->users()->sync($allUserIds);
-        return ApiResponse::success($lesson, "Lesson created successfully.");
+        $lesson->load('staff', 'students');
+        return ApiResponse::success($lesson, "Lesson created successfully.", 201);
     }
 
     /**

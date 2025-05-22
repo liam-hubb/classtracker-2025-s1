@@ -22,7 +22,7 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 ### Team Members
 
 - Adrian Gould [AdyGCode](https://github.com/AdyGCode) (Consulting Senior Dev)
-- Given Name [availedgray](https://github.com/availedgray) (Developer)
+- Yang Wang [availedgray](https://github.com/availedgray) (Developer)
 - Blony Maunela [ninihub1](https://github.com/ninihub1) (Developer)
 - Given Name [GITHUB USERNAME](https://github.com/GITHUB_USERNAME) (Developer)
 - Yui Migaki [YuiMigaki](https://github.com/YuiMigaki) (Developer)
