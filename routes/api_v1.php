@@ -16,10 +16,12 @@
  */
 
 use App\Http\Controllers\Api\v1\AuthApiController;
+use App\Http\Controllers\Api\v1\ClusterApiController;
 use App\Http\Controllers\Api\v1\LessonApiController;
 use App\Http\Controllers\Api\v1\PackageApiController;
 use App\Http\Controllers\Api\v1\CourseApiController;
 use App\Http\Controllers\Api\v1\RolesAndPermissionsApiController;
+use App\Http\Controllers\Api\v1\UnitApiController;
 use App\Http\Controllers\Api\v1\UserApiController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +46,15 @@ Route::middleware('auth:sanctum')->group(function () {
             'destroy' => 'api.v1.courses.destroy',
         ]);
 });
+
+Route::apiResource('units', UnitApiController::class)
+    ->names([
+        'index' => 'api.v1.units.index',
+        'show' => 'api.v1.units.show',
+        'store' => 'api.v1.units.store',
+        'update' => 'api.v1.units.update',
+    ]);
+
 
 Route::apiResource('packages', PackageApiController::class)
     ->only(['index', 'show'])
@@ -97,5 +108,7 @@ Route::middleware('auth:sanctum')->group(function () {
         ]);
     });
 });
+
+Route::apiResource('clusters', ClusterApiController::class);
 
 

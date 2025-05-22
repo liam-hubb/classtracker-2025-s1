@@ -50,7 +50,12 @@ class ClusterController extends Controller
             'unit_2' => ['nullable', 'string'],
             'unit_3' => ['nullable', 'string'],
             'unit_4' => ['nullable', 'string'],
+            'unit_5' => ['nullable', 'string'],
+            'unit_6' => ['nullable', 'string'],
+            'unit_7' => ['nullable', 'string'],
+            'unit_8' => ['nullable', 'string'],
         ]);
+
 
 
         Cluster::create($validated);
@@ -74,7 +79,7 @@ class ClusterController extends Controller
         if ($cluster) {
             // Collect the unit IDs from the cluster (unit_1, unit_2, etc.)
             $unitIds = [];
-            foreach (range(1, 5) as $unit) {
+            foreach (range(1, 8) as $unit) {
                 $unitId = $cluster->{'unit_' . $unit};
                 if ($unitId) {
                     $unitIds[] = $unitId; // Add the unit ID to the array if it exists
@@ -123,6 +128,10 @@ class ClusterController extends Controller
             'unit_2' => ['nullable', 'string'],
             'unit_3' => ['nullable', 'string'],
             'unit_4' => ['nullable', 'string'],
+            'unit_5' => ['nullable', 'string'],
+            'unit_6' => ['nullable', 'string'],
+            'unit_7' => ['nullable', 'string'],
+            'unit_8' => ['nullable', 'string'],
         ]);
 
         Cluster::whereId($id)->update($validated);
