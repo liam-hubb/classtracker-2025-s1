@@ -23,7 +23,7 @@ class UnitApiController extends Controller
 
         $query = Unit::query();
 
-        $searchableFields = ['unit', 'national_code', 'title', 'tga_status', 'state_code', 'nominal_hours' ];
+        $searchableFields = ['unit', 'national_code', 'aqf_level', 'title', 'tga_status', 'state_code', 'nominal_hours', 'type', 'qa' ];
 
         if ($search) {
             foreach ($searchableFields as $field) {
