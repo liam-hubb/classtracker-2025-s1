@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\Users\m_h3\Source\Repos\classtracker-2025-s1\app\Http\Controllers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../_css/bootstrap.min.css?v=11.0.9" rel="stylesheet" type="text/css">
+  <link href="../../_css/nv.d3.min.css?v=11.0.9" rel="stylesheet" type="text/css">
+  <link href="../../_css/style.css?v=11.0.9" rel="stylesheet" type="text/css">
+  <link href="../../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../../index.html">C:\Users\m_h3\Source\Repos\classtracker-2025-s1\app</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">Http</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Controllers</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#13">App\Http\Controllers\Api\v1\ClusterApiController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/UnitApiController.php.html#13">App\Http\Controllers\Api\v1\UnitApiController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Auth/EmailVerificationNotificationController.php.html#9">App\Http\Controllers\Auth\EmailVerificationNotificationController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClusterController.php.html#13">App\Http\Controllers\ClusterController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseController.php.html#8">App\Http\Controllers\CourseController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonController.php.html#12">App\Http\Controllers\LessonController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PackageController.php.html#9">App\Http\Controllers\PackageController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RolesAndPermissionsController.php.html#9">App\Http\Controllers\RolesAndPermissionsController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UnitController.php.html#10">App\Http\Controllers\UnitController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserController.php.html#13">App\Http\Controllers\UserController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/AuthApiController.php.html#12">App\Http\Controllers\Api\v1\AuthApiController</a></td><td class="text-right">19%</td></tr>
+       <tr><td><a href="Auth/EmailVerificationPromptController.php.html#10">App\Http\Controllers\Auth\EmailVerificationPromptController</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#11">App\Http\Controllers\Api\v1\UserApiController</a></td><td class="text-right">73%</td></tr>
+       <tr><td><a href="Api/v1/PackageApiController.php.html#31">App\Http\Controllers\Api\v1\PackageApiController</a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Auth/RegisteredUserController.php.html#15">App\Http\Controllers\Auth\RegisteredUserController</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Auth/VerifyEmailController.php.html#10">App\Http\Controllers\Auth\VerifyEmailController</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Api/v1/RolesAndPermissionsApiController.php.html#11">App\Http\Controllers\Api\v1\RolesAndPermissionsApiController</a></td><td class="text-right">84%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="RolesAndPermissionsController.php.html#9">App\Http\Controllers\RolesAndPermissionsController</a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="ClusterController.php.html#13">App\Http\Controllers\ClusterController</a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="PackageController.php.html#9">App\Http\Controllers\PackageController</a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="LessonController.php.html#12">App\Http\Controllers\LessonController</a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="CourseController.php.html#8">App\Http\Controllers\CourseController</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="UnitController.php.html#10">App\Http\Controllers\UnitController</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="UserController.php.html#13">App\Http\Controllers\UserController</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#13">App\Http\Controllers\Api\v1\ClusterApiController</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Api/v1/UnitApiController.php.html#13">App\Http\Controllers\Api\v1\UnitApiController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Api/v1/PackageApiController.php.html#31">App\Http\Controllers\Api\v1\PackageApiController</a></td><td class="text-right">18</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#11">App\Http\Controllers\Api\v1\UserApiController</a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="Api/v1/RolesAndPermissionsApiController.php.html#11">App\Http\Controllers\Api\v1\RolesAndPermissionsApiController</a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="Api/v1/AuthApiController.php.html#12">App\Http\Controllers\Api\v1\AuthApiController</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Auth/EmailVerificationNotificationController.php.html#9">App\Http\Controllers\Auth\EmailVerificationNotificationController</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Auth/VerifyEmailController.php.html#10">App\Http\Controllers\Auth\VerifyEmailController</a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Auth/EmailVerificationPromptController.php.html#10">App\Http\Controllers\Auth\EmailVerificationPromptController</a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Api/v1/AuthApiController.php.html#37"><abbr title="App\Http\Controllers\Api\v1\AuthApiController::profile">profile</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#18"><abbr title="App\Http\Controllers\Api\v1\ClusterApiController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#46"><abbr title="App\Http\Controllers\Api\v1\ClusterApiController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#61"><abbr title="App\Http\Controllers\Api\v1\ClusterApiController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#76"><abbr title="App\Http\Controllers\Api\v1\ClusterApiController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#91"><abbr title="App\Http\Controllers\Api\v1\ClusterApiController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/UnitApiController.php.html#18"><abbr title="App\Http\Controllers\Api\v1\UnitApiController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/UnitApiController.php.html#46"><abbr title="App\Http\Controllers\Api\v1\UnitApiController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/UnitApiController.php.html#64"><abbr title="App\Http\Controllers\Api\v1\UnitApiController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/UnitApiController.php.html#78"><abbr title="App\Http\Controllers\Api\v1\UnitApiController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/UnitApiController.php.html#96"><abbr title="App\Http\Controllers\Api\v1\UnitApiController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Auth/EmailVerificationNotificationController.php.html#14"><abbr title="App\Http\Controllers\Auth\EmailVerificationNotificationController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClusterController.php.html#18"><abbr title="App\Http\Controllers\ClusterController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClusterController.php.html#30"><abbr title="App\Http\Controllers\ClusterController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClusterController.php.html#42"><abbr title="App\Http\Controllers\ClusterController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClusterController.php.html#72"><abbr title="App\Http\Controllers\ClusterController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClusterController.php.html#105"><abbr title="App\Http\Controllers\ClusterController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClusterController.php.html#120"><abbr title="App\Http\Controllers\ClusterController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClusterController.php.html#146"><abbr title="App\Http\Controllers\ClusterController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="ClusterController.php.html#156"><abbr title="App\Http\Controllers\ClusterController::addUnitToController">addUnitToController</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseController.php.html#13"><abbr title="App\Http\Controllers\CourseController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseController.php.html#26"><abbr title="App\Http\Controllers\CourseController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseController.php.html#37"><abbr title="App\Http\Controllers\CourseController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseController.php.html#69"><abbr title="App\Http\Controllers\CourseController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseController.php.html#90"><abbr title="App\Http\Controllers\CourseController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseController.php.html#103"><abbr title="App\Http\Controllers\CourseController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="CourseController.php.html#136"><abbr title="App\Http\Controllers\CourseController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonController.php.html#17"><abbr title="App\Http\Controllers\LessonController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonController.php.html#29"><abbr title="App\Http\Controllers\LessonController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonController.php.html#45"><abbr title="App\Http\Controllers\LessonController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonController.php.html#69"><abbr title="App\Http\Controllers\LessonController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonController.php.html#83"><abbr title="App\Http\Controllers\LessonController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonController.php.html#99"><abbr title="App\Http\Controllers\LessonController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="LessonController.php.html#122"><abbr title="App\Http\Controllers\LessonController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PackageController.php.html#14"><abbr title="App\Http\Controllers\PackageController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PackageController.php.html#28"><abbr title="App\Http\Controllers\PackageController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PackageController.php.html#42"><abbr title="App\Http\Controllers\PackageController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PackageController.php.html#65"><abbr title="App\Http\Controllers\PackageController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PackageController.php.html#85"><abbr title="App\Http\Controllers\PackageController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PackageController.php.html#98"><abbr title="App\Http\Controllers\PackageController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="PackageController.php.html#127"><abbr title="App\Http\Controllers\PackageController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RolesAndPermissionsController.php.html#11"><abbr title="App\Http\Controllers\RolesAndPermissionsController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RolesAndPermissionsController.php.html#22"><abbr title="App\Http\Controllers\RolesAndPermissionsController::assignRole">assignRole</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="RolesAndPermissionsController.php.html#56"><abbr title="App\Http\Controllers\RolesAndPermissionsController::removeRole">removeRole</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UnitController.php.html#15"><abbr title="App\Http\Controllers\UnitController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UnitController.php.html#28"><abbr title="App\Http\Controllers\UnitController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UnitController.php.html#40"><abbr title="App\Http\Controllers\UnitController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UnitController.php.html#59"><abbr title="App\Http\Controllers\UnitController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UnitController.php.html#80"><abbr title="App\Http\Controllers\UnitController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UnitController.php.html#92"><abbr title="App\Http\Controllers\UnitController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UnitController.php.html#110"><abbr title="App\Http\Controllers\UnitController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserController.php.html#18"><abbr title="App\Http\Controllers\UserController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserController.php.html#32"><abbr title="App\Http\Controllers\UserController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserController.php.html#44"><abbr title="App\Http\Controllers\UserController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserController.php.html#70"><abbr title="App\Http\Controllers\UserController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserController.php.html#82"><abbr title="App\Http\Controllers\UserController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserController.php.html#94"><abbr title="App\Http\Controllers\UserController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="UserController.php.html#120"><abbr title="App\Http\Controllers\UserController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Api/v1/AuthApiController.php.html#14"><abbr title="App\Http\Controllers\Api\v1\AuthApiController::login">login</abbr></a></td><td class="text-right">25%</td></tr>
+       <tr><td><a href="Api/v1/PackageApiController.php.html#80"><abbr title="App\Http\Controllers\Api\v1\PackageApiController::store">store</abbr></a></td><td class="text-right">57%</td></tr>
+       <tr><td><a href="Api/v1/PackageApiController.php.html#101"><abbr title="App\Http\Controllers\Api\v1\PackageApiController::update">update</abbr></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#44"><abbr title="App\Http\Controllers\Api\v1\UserApiController::show">show</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Auth/EmailVerificationPromptController.php.html#15"><abbr title="App\Http\Controllers\Auth\EmailVerificationPromptController::__invoke">__invoke</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#16"><abbr title="App\Http\Controllers\Api\v1\UserApiController::index">index</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#30"><abbr title="App\Http\Controllers\Api\v1\UserApiController::store">store</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#56"><abbr title="App\Http\Controllers\Api\v1\UserApiController::update">update</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#70"><abbr title="App\Http\Controllers\Api\v1\UserApiController::destroy">destroy</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Auth/RegisteredUserController.php.html#30"><abbr title="App\Http\Controllers\Auth\RegisteredUserController::store">store</abbr></a></td><td class="text-right">76%</td></tr>
+       <tr><td><a href="Api/v1/RolesAndPermissionsApiController.php.html#31"><abbr title="App\Http\Controllers\Api\v1\RolesAndPermissionsApiController::assignRole">assignRole</abbr></a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Auth/VerifyEmailController.php.html#15"><abbr title="App\Http\Controllers\Auth\VerifyEmailController::__invoke">__invoke</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Api/v1/CourseApiController.php.html#35"><abbr title="App\Http\Controllers\Api\v1\CourseApiController::index">index</abbr></a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Api/v1/PackageApiController.php.html#36"><abbr title="App\Http\Controllers\Api\v1\PackageApiController::index">index</abbr></a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Api/v1/RolesAndPermissionsApiController.php.html#57"><abbr title="App\Http\Controllers\Api\v1\RolesAndPermissionsApiController::removeRole">removeRole</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Api/v1/RolesAndPermissionsApiController.php.html#16"><abbr title="App\Http\Controllers\Api\v1\RolesAndPermissionsApiController::index">index</abbr></a></td><td class="text-right">87%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="RolesAndPermissionsController.php.html#22"><abbr title="App\Http\Controllers\RolesAndPermissionsController::assignRole">assignRole</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="RolesAndPermissionsController.php.html#56"><abbr title="App\Http\Controllers\RolesAndPermissionsController::removeRole">removeRole</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="ClusterController.php.html#72"><abbr title="App\Http\Controllers\ClusterController::show">show</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#18"><abbr title="App\Http\Controllers\Api\v1\ClusterApiController::index">index</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Api/v1/UnitApiController.php.html#18"><abbr title="App\Http\Controllers\Api\v1\UnitApiController::index">index</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="CourseController.php.html#69"><abbr title="App\Http\Controllers\CourseController::show">show</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PackageController.php.html#65"><abbr title="App\Http\Controllers\PackageController::show">show</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="PackageController.php.html#98"><abbr title="App\Http\Controllers\PackageController::update">update</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="UnitController.php.html#59"><abbr title="App\Http\Controllers\UnitController::show">show</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#61"><abbr title="App\Http\Controllers\Api\v1\ClusterApiController::show">show</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Api/v1/ClusterApiController.php.html#91"><abbr title="App\Http\Controllers\Api\v1\ClusterApiController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Api/v1/UnitApiController.php.html#64"><abbr title="App\Http\Controllers\Api\v1\UnitApiController::show">show</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Auth/EmailVerificationNotificationController.php.html#14"><abbr title="App\Http\Controllers\Auth\EmailVerificationNotificationController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ClusterController.php.html#18"><abbr title="App\Http\Controllers\ClusterController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ClusterController.php.html#30"><abbr title="App\Http\Controllers\ClusterController::create">create</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ClusterController.php.html#105"><abbr title="App\Http\Controllers\ClusterController::edit">edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="ClusterController.php.html#146"><abbr title="App\Http\Controllers\ClusterController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CourseController.php.html#13"><abbr title="App\Http\Controllers\CourseController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CourseController.php.html#26"><abbr title="App\Http\Controllers\CourseController::create">create</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CourseController.php.html#90"><abbr title="App\Http\Controllers\CourseController::edit">edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="CourseController.php.html#136"><abbr title="App\Http\Controllers\CourseController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LessonController.php.html#17"><abbr title="App\Http\Controllers\LessonController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LessonController.php.html#29"><abbr title="App\Http\Controllers\LessonController::create">create</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LessonController.php.html#45"><abbr title="App\Http\Controllers\LessonController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LessonController.php.html#69"><abbr title="App\Http\Controllers\LessonController::show">show</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LessonController.php.html#83"><abbr title="App\Http\Controllers\LessonController::edit">edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LessonController.php.html#99"><abbr title="App\Http\Controllers\LessonController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="LessonController.php.html#122"><abbr title="App\Http\Controllers\LessonController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PackageController.php.html#14"><abbr title="App\Http\Controllers\PackageController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PackageController.php.html#28"><abbr title="App\Http\Controllers\PackageController::create">create</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PackageController.php.html#42"><abbr title="App\Http\Controllers\PackageController::store">store</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PackageController.php.html#85"><abbr title="App\Http\Controllers\PackageController::edit">edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="PackageController.php.html#127"><abbr title="App\Http\Controllers\PackageController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="RolesAndPermissionsController.php.html#11"><abbr title="App\Http\Controllers\RolesAndPermissionsController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UnitController.php.html#15"><abbr title="App\Http\Controllers\UnitController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UnitController.php.html#28"><abbr title="App\Http\Controllers\UnitController::create">create</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UnitController.php.html#80"><abbr title="App\Http\Controllers\UnitController::edit">edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UnitController.php.html#110"><abbr title="App\Http\Controllers\UnitController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UserController.php.html#18"><abbr title="App\Http\Controllers\UserController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UserController.php.html#32"><abbr title="App\Http\Controllers\UserController::create">create</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UserController.php.html#70"><abbr title="App\Http\Controllers\UserController::show">show</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UserController.php.html#82"><abbr title="App\Http\Controllers\UserController::edit">edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UserController.php.html#94"><abbr title="App\Http\Controllers\UserController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="UserController.php.html#120"><abbr title="App\Http\Controllers\UserController::destroy">destroy</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Api/v1/PackageApiController.php.html#101"><abbr title="App\Http\Controllers\Api\v1\PackageApiController::update">update</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="Api/v1/RolesAndPermissionsApiController.php.html#31"><abbr title="App\Http\Controllers\Api\v1\RolesAndPermissionsApiController::assignRole">assignRole</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Api/v1/CourseApiController.php.html#35"><abbr title="App\Http\Controllers\Api\v1\CourseApiController::index">index</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Api/v1/PackageApiController.php.html#36"><abbr title="App\Http\Controllers\Api\v1\PackageApiController::index">index</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Api/v1/PackageApiController.php.html#80"><abbr title="App\Http\Controllers\Api\v1\PackageApiController::store">store</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Api/v1/AuthApiController.php.html#14"><abbr title="App\Http\Controllers\Api\v1\AuthApiController::login">login</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Auth/VerifyEmailController.php.html#15"><abbr title="App\Http\Controllers\Auth\VerifyEmailController::__invoke">__invoke</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Api/v1/RolesAndPermissionsApiController.php.html#57"><abbr title="App\Http\Controllers\Api\v1\RolesAndPermissionsApiController::removeRole">removeRole</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Api/v1/RolesAndPermissionsApiController.php.html#16"><abbr title="App\Http\Controllers\Api\v1\RolesAndPermissionsApiController::index">index</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#44"><abbr title="App\Http\Controllers\Api\v1\UserApiController::show">show</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Auth/EmailVerificationPromptController.php.html#15"><abbr title="App\Http\Controllers\Auth\EmailVerificationPromptController::__invoke">__invoke</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#16"><abbr title="App\Http\Controllers\Api\v1\UserApiController::index">index</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#30"><abbr title="App\Http\Controllers\Api\v1\UserApiController::store">store</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#56"><abbr title="App\Http\Controllers\Api\v1\UserApiController::update">update</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Api/v1/UserApiController.php.html#70"><abbr title="App\Http\Controllers\Api\v1\UserApiController::destroy">destroy</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 11.0.9</a> using <a href="https://www.php.net/" target="_top">PHP 8.3.11</a> and <a href="https://phpunit.de/">PHPUnit 11.5.15</a> at Tue Jun 17 14:07:00 AWST 2025.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../_js/jquery.min.js?v=11.0.9" type="text/javascript"></script>
+  <script src="../../_js/d3.min.js?v=11.0.9" type="text/javascript"></script>
+  <script src="../../_js/nv.d3.min.js?v=11.0.9" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([10,0,1,0,0,0,0,1,3,2,1,9], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([58,0,0,1,0,0,1,3,6,5,0,27], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[19.047619047619047,3,"<a href=\"Api\/v1\/AuthApiController.php.html#12\">App\\Http\\Controllers\\Api\\v1\\AuthApiController<\/a>"],[0,10,"<a href=\"Api\/v1\/ClusterApiController.php.html#13\">App\\Http\\Controllers\\Api\\v1\\ClusterApiController<\/a>"],[94.11764705882352,10,"<a href=\"Api\/v1\/CourseApiController.php.html#30\">App\\Http\\Controllers\\Api\\v1\\CourseApiController<\/a>"],[100,6,"<a href=\"Api\/v1\/LessonApiController.php.html#13\">App\\Http\\Controllers\\Api\\v1\\LessonApiController<\/a>"],[75.67567567567568,15,"<a href=\"Api\/v1\/PackageApiController.php.html#31\">App\\Http\\Controllers\\Api\\v1\\PackageApiController<\/a>"],[84.21052631578947,11,"<a href=\"Api\/v1\/RolesAndPermissionsApiController.php.html#11\">App\\Http\\Controllers\\Api\\v1\\RolesAndPermissionsApiController<\/a>"],[0,9,"<a href=\"Api\/v1\/UnitApiController.php.html#13\">App\\Http\\Controllers\\Api\\v1\\UnitApiController<\/a>"],[73.68421052631578,10,"<a href=\"Api\/v1\/UserApiController.php.html#11\">App\\Http\\Controllers\\Api\\v1\\UserApiController<\/a>"],[100,3,"<a href=\"Auth\/AuthenticatedSessionController.php.html#12\">App\\Http\\Controllers\\Auth\\AuthenticatedSessionController<\/a>"],[100,3,"<a href=\"Auth\/ConfirmablePasswordController.php.html#12\">App\\Http\\Controllers\\Auth\\ConfirmablePasswordController<\/a>"],[0,2,"<a href=\"Auth\/EmailVerificationNotificationController.php.html#9\">App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController<\/a>"],[66.66666666666666,2,"<a href=\"Auth\/EmailVerificationPromptController.php.html#10\">App\\Http\\Controllers\\Auth\\EmailVerificationPromptController<\/a>"],[100,3,"<a href=\"Auth\/NewPasswordController.php.html#16\">App\\Http\\Controllers\\Auth\\NewPasswordController<\/a>"],[100,1,"<a href=\"Auth\/PasswordController.php.html#11\">App\\Http\\Controllers\\Auth\\PasswordController<\/a>"],[100,3,"<a href=\"Auth\/PasswordResetLinkController.php.html#11\">App\\Http\\Controllers\\Auth\\PasswordResetLinkController<\/a>"],[78.57142857142857,2,"<a href=\"Auth\/RegisteredUserController.php.html#15\">App\\Http\\Controllers\\Auth\\RegisteredUserController<\/a>"],[80,3,"<a href=\"Auth\/VerifyEmailController.php.html#10\">App\\Http\\Controllers\\Auth\\VerifyEmailController<\/a>"],[0,16,"<a href=\"ClusterController.php.html#13\">App\\Http\\Controllers\\ClusterController<\/a>"],[100,0,"<a href=\"Controller.php.html#5\">App\\Http\\Controllers\\Controller<\/a>"],[0,13,"<a href=\"CourseController.php.html#8\">App\\Http\\Controllers\\CourseController<\/a>"],[0,14,"<a href=\"LessonController.php.html#12\">App\\Http\\Controllers\\LessonController<\/a>"],[0,16,"<a href=\"PackageController.php.html#9\">App\\Http\\Controllers\\PackageController<\/a>"],[100,4,"<a href=\"ProfileController.php.html#12\">App\\Http\\Controllers\\ProfileController<\/a>"],[0,17,"<a href=\"RolesAndPermissionsController.php.html#9\">App\\Http\\Controllers\\RolesAndPermissionsController<\/a>"],[100,1,"<a href=\"StaticPageController.php.html#8\">App\\Http\\Controllers\\StaticPageController<\/a>"],[0,13,"<a href=\"UnitController.php.html#10\">App\\Http\\Controllers\\UnitController<\/a>"],[0,13,"<a href=\"UserController.php.html#13\">App\\Http\\Controllers\\UserController<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[25,2,"<a href=\"Api\/v1\/AuthApiController.php.html#14\">App\\Http\\Controllers\\Api\\v1\\AuthApiController::login<\/a>"],[0,1,"<a href=\"Api\/v1\/AuthApiController.php.html#37\">App\\Http\\Controllers\\Api\\v1\\AuthApiController::profile<\/a>"],[0,4,"<a href=\"Api\/v1\/ClusterApiController.php.html#18\">App\\Http\\Controllers\\Api\\v1\\ClusterApiController::index<\/a>"],[0,1,"<a href=\"Api\/v1\/ClusterApiController.php.html#46\">App\\Http\\Controllers\\Api\\v1\\ClusterApiController::store<\/a>"],[0,2,"<a href=\"Api\/v1\/ClusterApiController.php.html#61\">App\\Http\\Controllers\\Api\\v1\\ClusterApiController::show<\/a>"],[0,1,"<a href=\"Api\/v1\/ClusterApiController.php.html#76\">App\\Http\\Controllers\\Api\\v1\\ClusterApiController::update<\/a>"],[0,2,"<a href=\"Api\/v1\/ClusterApiController.php.html#91\">App\\Http\\Controllers\\Api\\v1\\ClusterApiController::destroy<\/a>"],[81.81818181818183,4,"<a href=\"Api\/v1\/CourseApiController.php.html#35\">App\\Http\\Controllers\\Api\\v1\\CourseApiController::index<\/a>"],[100,2,"<a href=\"Api\/v1\/CourseApiController.php.html#63\">App\\Http\\Controllers\\Api\\v1\\CourseApiController::show<\/a>"],[100,1,"<a href=\"Api\/v1\/CourseApiController.php.html#81\">App\\Http\\Controllers\\Api\\v1\\CourseApiController::store<\/a>"],[100,1,"<a href=\"Api\/v1\/CourseApiController.php.html#98\">App\\Http\\Controllers\\Api\\v1\\CourseApiController::update<\/a>"],[100,2,"<a href=\"Api\/v1\/CourseApiController.php.html#115\">App\\Http\\Controllers\\Api\\v1\\CourseApiController::destroy<\/a>"],[100,2,"<a href=\"Api\/v1\/LessonApiController.php.html#18\">App\\Http\\Controllers\\Api\\v1\\LessonApiController::index<\/a>"],[100,1,"<a href=\"Api\/v1\/LessonApiController.php.html#34\">App\\Http\\Controllers\\Api\\v1\\LessonApiController::store<\/a>"],[100,1,"<a href=\"Api\/v1\/LessonApiController.php.html#55\">App\\Http\\Controllers\\Api\\v1\\LessonApiController::show<\/a>"],[100,1,"<a href=\"Api\/v1\/LessonApiController.php.html#64\">App\\Http\\Controllers\\Api\\v1\\LessonApiController::update<\/a>"],[100,1,"<a href=\"Api\/v1\/LessonApiController.php.html#85\">App\\Http\\Controllers\\Api\\v1\\LessonApiController::destroy<\/a>"],[81.81818181818183,4,"<a href=\"Api\/v1\/PackageApiController.php.html#36\">App\\Http\\Controllers\\Api\\v1\\PackageApiController::index<\/a>"],[100,2,"<a href=\"Api\/v1\/PackageApiController.php.html#64\">App\\Http\\Controllers\\Api\\v1\\PackageApiController::show<\/a>"],[57.14285714285714,3,"<a href=\"Api\/v1\/PackageApiController.php.html#80\">App\\Http\\Controllers\\Api\\v1\\PackageApiController::store<\/a>"],[60,4,"<a href=\"Api\/v1\/PackageApiController.php.html#101\">App\\Http\\Controllers\\Api\\v1\\PackageApiController::update<\/a>"],[100,2,"<a href=\"Api\/v1\/PackageApiController.php.html#126\">App\\Http\\Controllers\\Api\\v1\\PackageApiController::destroy<\/a>"],[87.5,3,"<a href=\"Api\/v1\/RolesAndPermissionsApiController.php.html#16\">App\\Http\\Controllers\\Api\\v1\\RolesAndPermissionsApiController::index<\/a>"],[78.57142857142857,4,"<a href=\"Api\/v1\/RolesAndPermissionsApiController.php.html#31\">App\\Http\\Controllers\\Api\\v1\\RolesAndPermissionsApiController::assignRole<\/a>"],[83.33333333333334,3,"<a href=\"Api\/v1\/RolesAndPermissionsApiController.php.html#57\">App\\Http\\Controllers\\Api\\v1\\RolesAndPermissionsApiController::removeRole<\/a>"],[100,1,"<a href=\"Api\/v1\/RolesAndPermissionsApiController.php.html#79\">App\\Http\\Controllers\\Api\\v1\\RolesAndPermissionsApiController::getUserRoles<\/a>"],[0,4,"<a href=\"Api\/v1\/UnitApiController.php.html#18\">App\\Http\\Controllers\\Api\\v1\\UnitApiController::index<\/a>"],[0,1,"<a href=\"Api\/v1\/UnitApiController.php.html#46\">App\\Http\\Controllers\\Api\\v1\\UnitApiController::store<\/a>"],[0,2,"<a href=\"Api\/v1\/UnitApiController.php.html#64\">App\\Http\\Controllers\\Api\\v1\\UnitApiController::show<\/a>"],[0,1,"<a href=\"Api\/v1\/UnitApiController.php.html#78\">App\\Http\\Controllers\\Api\\v1\\UnitApiController::update<\/a>"],[0,1,"<a href=\"Api\/v1\/UnitApiController.php.html#96\">App\\Http\\Controllers\\Api\\v1\\UnitApiController::destroy<\/a>"],[75,2,"<a href=\"Api\/v1\/UserApiController.php.html#16\">App\\Http\\Controllers\\Api\\v1\\UserApiController::index<\/a>"],[75,2,"<a href=\"Api\/v1\/UserApiController.php.html#30\">App\\Http\\Controllers\\Api\\v1\\UserApiController::store<\/a>"],[66.66666666666666,2,"<a href=\"Api\/v1\/UserApiController.php.html#44\">App\\Http\\Controllers\\Api\\v1\\UserApiController::show<\/a>"],[75,2,"<a href=\"Api\/v1\/UserApiController.php.html#56\">App\\Http\\Controllers\\Api\\v1\\UserApiController::update<\/a>"],[75,2,"<a href=\"Api\/v1\/UserApiController.php.html#70\">App\\Http\\Controllers\\Api\\v1\\UserApiController::destroy<\/a>"],[100,1,"<a href=\"Auth\/AuthenticatedSessionController.php.html#17\">App\\Http\\Controllers\\Auth\\AuthenticatedSessionController::create<\/a>"],[100,1,"<a href=\"Auth\/AuthenticatedSessionController.php.html#25\">App\\Http\\Controllers\\Auth\\AuthenticatedSessionController::store<\/a>"],[100,1,"<a href=\"Auth\/AuthenticatedSessionController.php.html#37\">App\\Http\\Controllers\\Auth\\AuthenticatedSessionController::destroy<\/a>"],[100,1,"<a href=\"Auth\/ConfirmablePasswordController.php.html#17\">App\\Http\\Controllers\\Auth\\ConfirmablePasswordController::show<\/a>"],[100,2,"<a href=\"Auth\/ConfirmablePasswordController.php.html#25\">App\\Http\\Controllers\\Auth\\ConfirmablePasswordController::store<\/a>"],[0,2,"<a href=\"Auth\/EmailVerificationNotificationController.php.html#14\">App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController::store<\/a>"],[66.66666666666666,2,"<a href=\"Auth\/EmailVerificationPromptController.php.html#15\">App\\Http\\Controllers\\Auth\\EmailVerificationPromptController::__invoke<\/a>"],[100,1,"<a href=\"Auth\/NewPasswordController.php.html#21\">App\\Http\\Controllers\\Auth\\NewPasswordController::create<\/a>"],[100,2,"<a href=\"Auth\/NewPasswordController.php.html#31\">App\\Http\\Controllers\\Auth\\NewPasswordController::store<\/a>"],[100,1,"<a href=\"Auth\/PasswordController.php.html#16\">App\\Http\\Controllers\\Auth\\PasswordController::update<\/a>"],[100,1,"<a href=\"Auth\/PasswordResetLinkController.php.html#16\">App\\Http\\Controllers\\Auth\\PasswordResetLinkController::create<\/a>"],[100,2,"<a href=\"Auth\/PasswordResetLinkController.php.html#26\">App\\Http\\Controllers\\Auth\\PasswordResetLinkController::store<\/a>"],[100,1,"<a href=\"Auth\/RegisteredUserController.php.html#20\">App\\Http\\Controllers\\Auth\\RegisteredUserController::create<\/a>"],[76.92307692307693,1,"<a href=\"Auth\/RegisteredUserController.php.html#30\">App\\Http\\Controllers\\Auth\\RegisteredUserController::store<\/a>"],[80,3,"<a href=\"Auth\/VerifyEmailController.php.html#15\">App\\Http\\Controllers\\Auth\\VerifyEmailController::__invoke<\/a>"],[0,2,"<a href=\"ClusterController.php.html#18\">App\\Http\\Controllers\\ClusterController::index<\/a>"],[0,2,"<a href=\"ClusterController.php.html#30\">App\\Http\\Controllers\\ClusterController::create<\/a>"],[0,1,"<a href=\"ClusterController.php.html#42\">App\\Http\\Controllers\\ClusterController::store<\/a>"],[0,5,"<a href=\"ClusterController.php.html#72\">App\\Http\\Controllers\\ClusterController::show<\/a>"],[0,2,"<a href=\"ClusterController.php.html#105\">App\\Http\\Controllers\\ClusterController::edit<\/a>"],[0,1,"<a href=\"ClusterController.php.html#120\">App\\Http\\Controllers\\ClusterController::update<\/a>"],[0,2,"<a href=\"ClusterController.php.html#146\">App\\Http\\Controllers\\ClusterController::destroy<\/a>"],[0,1,"<a href=\"ClusterController.php.html#156\">App\\Http\\Controllers\\ClusterController::addUnitToController<\/a>"],[0,2,"<a href=\"CourseController.php.html#13\">App\\Http\\Controllers\\CourseController::index<\/a>"],[0,2,"<a href=\"CourseController.php.html#26\">App\\Http\\Controllers\\CourseController::create<\/a>"],[0,1,"<a href=\"CourseController.php.html#37\">App\\Http\\Controllers\\CourseController::store<\/a>"],[0,3,"<a href=\"CourseController.php.html#69\">App\\Http\\Controllers\\CourseController::show<\/a>"],[0,2,"<a href=\"CourseController.php.html#90\">App\\Http\\Controllers\\CourseController::edit<\/a>"],[0,1,"<a href=\"CourseController.php.html#103\">App\\Http\\Controllers\\CourseController::update<\/a>"],[0,2,"<a href=\"CourseController.php.html#136\">App\\Http\\Controllers\\CourseController::destroy<\/a>"],[0,2,"<a href=\"LessonController.php.html#17\">App\\Http\\Controllers\\LessonController::index<\/a>"],[0,2,"<a href=\"LessonController.php.html#29\">App\\Http\\Controllers\\LessonController::create<\/a>"],[0,2,"<a href=\"LessonController.php.html#45\">App\\Http\\Controllers\\LessonController::store<\/a>"],[0,2,"<a href=\"LessonController.php.html#69\">App\\Http\\Controllers\\LessonController::show<\/a>"],[0,2,"<a href=\"LessonController.php.html#83\">App\\Http\\Controllers\\LessonController::edit<\/a>"],[0,2,"<a href=\"LessonController.php.html#99\">App\\Http\\Controllers\\LessonController::update<\/a>"],[0,2,"<a href=\"LessonController.php.html#122\">App\\Http\\Controllers\\LessonController::destroy<\/a>"],[0,2,"<a href=\"PackageController.php.html#14\">App\\Http\\Controllers\\PackageController::index<\/a>"],[0,2,"<a href=\"PackageController.php.html#28\">App\\Http\\Controllers\\PackageController::create<\/a>"],[0,2,"<a href=\"PackageController.php.html#42\">App\\Http\\Controllers\\PackageController::store<\/a>"],[0,3,"<a href=\"PackageController.php.html#65\">App\\Http\\Controllers\\PackageController::show<\/a>"],[0,2,"<a href=\"PackageController.php.html#85\">App\\Http\\Controllers\\PackageController::edit<\/a>"],[0,3,"<a href=\"PackageController.php.html#98\">App\\Http\\Controllers\\PackageController::update<\/a>"],[0,2,"<a href=\"PackageController.php.html#127\">App\\Http\\Controllers\\PackageController::destroy<\/a>"],[100,1,"<a href=\"ProfileController.php.html#17\">App\\Http\\Controllers\\ProfileController::edit<\/a>"],[100,2,"<a href=\"ProfileController.php.html#27\">App\\Http\\Controllers\\ProfileController::update<\/a>"],[100,1,"<a href=\"ProfileController.php.html#43\">App\\Http\\Controllers\\ProfileController::destroy<\/a>"],[0,2,"<a href=\"RolesAndPermissionsController.php.html#11\">App\\Http\\Controllers\\RolesAndPermissionsController::index<\/a>"],[0,8,"<a href=\"RolesAndPermissionsController.php.html#22\">App\\Http\\Controllers\\RolesAndPermissionsController::assignRole<\/a>"],[0,7,"<a href=\"RolesAndPermissionsController.php.html#56\">App\\Http\\Controllers\\RolesAndPermissionsController::removeRole<\/a>"],[100,1,"<a href=\"StaticPageController.php.html#10\">App\\Http\\Controllers\\StaticPageController::home<\/a>"],[0,2,"<a href=\"UnitController.php.html#15\">App\\Http\\Controllers\\UnitController::index<\/a>"],[0,2,"<a href=\"UnitController.php.html#28\">App\\Http\\Controllers\\UnitController::create<\/a>"],[0,1,"<a href=\"UnitController.php.html#40\">App\\Http\\Controllers\\UnitController::store<\/a>"],[0,3,"<a href=\"UnitController.php.html#59\">App\\Http\\Controllers\\UnitController::show<\/a>"],[0,2,"<a href=\"UnitController.php.html#80\">App\\Http\\Controllers\\UnitController::edit<\/a>"],[0,1,"<a href=\"UnitController.php.html#92\">App\\Http\\Controllers\\UnitController::update<\/a>"],[0,2,"<a href=\"UnitController.php.html#110\">App\\Http\\Controllers\\UnitController::destroy<\/a>"],[0,2,"<a href=\"UserController.php.html#18\">App\\Http\\Controllers\\UserController::index<\/a>"],[0,2,"<a href=\"UserController.php.html#32\">App\\Http\\Controllers\\UserController::create<\/a>"],[0,1,"<a href=\"UserController.php.html#44\">App\\Http\\Controllers\\UserController::store<\/a>"],[0,2,"<a href=\"UserController.php.html#70\">App\\Http\\Controllers\\UserController::show<\/a>"],[0,2,"<a href=\"UserController.php.html#82\">App\\Http\\Controllers\\UserController::edit<\/a>"],[0,2,"<a href=\"UserController.php.html#94\">App\\Http\\Controllers\\UserController::update<\/a>"],[0,2,"<a href=\"UserController.php.html#120\">App\\Http\\Controllers\\UserController::destroy<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
