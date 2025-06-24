@@ -3,10 +3,16 @@
         @csrf
 
         <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        <div class="mt-4">
+            <x-input-label for="given_name" :value="__('Given Name')" />
+            <x-text-input id="given_name" class="block mt-1 w-full" type="text" name="given_name" :value="old('given_name')" required autofocus autocomplete="given_name" />
+            <x-input-error :messages="$errors->get('given_name')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="family_name" :value="__('Family Name')" />
+            <x-text-input id="family_name" class="block mt-1 w-full" type="text" name="family_name" :value="old('family_name')" required autofocus autocomplete="family_name" />
+            <x-input-error :messages="$errors->get('family_name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -14,6 +20,18 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="pronouns" :value="__('Pronouns')" />
+            <select id="pronouns" name="pronouns" required
+                    class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+                <option value="" disabled selected>Select your pronouns</option>
+                <option value="she/her/hers" {{ old('pronouns') == 'she/her/hers' ? 'selected' : '' }}>she/her/hers</option>
+                <option value="he/him/his" {{ old('pronouns') == 'he/him/his' ? 'selected' : '' }}>he/him/his</option>
+                <option value="they/them/theirs" {{ old('pronouns') == 'they/them/theirs' ? 'selected' : '' }}>they/them/theirs</option>
+            </select>
+            <x-input-error :messages="$errors->get('pronouns')" class="mt-2" />
         </div>
 
         <!-- Password -->
