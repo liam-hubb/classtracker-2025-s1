@@ -1,4 +1,17 @@
 <?php
+/**
+ * Assessment Title: Portfolio Part 1
+ * Cluster:          SaaS - BED: APIs & NoSQL - 2025 S1
+ * Qualification:    ICT50220 (Advanced Programming)
+ * Name:             Yui Migaki
+ * Student ID:       20098757
+ * Year/Semester:    2025/S1
+ *
+ * YOUR SUMMARY OF PORTFOLIO ACTIVITY
+ * This portfolio work was conducted within a team called classTracker with 4 people.
+ * I contributed by adding features for courses and packages as well as APIs for those features.
+ * This project includes implementing a REST API and a management interface to create a new “Student Tracking” system.
+ */
 
 namespace App\Http\Controllers\Api\v1;
 
@@ -12,19 +25,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
- * CourseApiController
- *
- * Handles operations related to Course management.
- *
- * Filename:        CourseApiController.php
- * Location:        app/Http/Controllers/CourseApiController.php
- * Project:         classtracker-2025-s1
- * Date Created:    14/04/2025
- *
- * Author:          Yui_Migaki
- */
-
-/**
  * API Version 1 - CourseApiController
  */
 class CourseApiController extends Controller
@@ -34,8 +34,9 @@ class CourseApiController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-
+        // set perPage parameter and specific number per page
         $courseNumber = $request->perPage;
+        // set search parameter
         $search = $request->search;
 
         $query = Course::query();
@@ -48,6 +49,7 @@ class CourseApiController extends Controller
             }
         }
 
+        //If there is no page, set to 6 items per page
         $courses = $query->paginate($courseNumber ?? 6);
 
         if ($courses->isNotEmpty()) {

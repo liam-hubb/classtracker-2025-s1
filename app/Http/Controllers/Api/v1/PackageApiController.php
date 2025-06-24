@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * Assessment Title: Portfolio Part 1
+ * Cluster:          SaaS - BED: APIs & NoSQL - 2025 S1
+ * Qualification:    ICT50220 (Advanced Programming)
+ * Name:             Yui Migaki
+ * Student ID:       20098757
+ * Year/Semester:    2025/S1
+ *
+ * YOUR SUMMARY OF PORTFOLIO ACTIVITY
+ * This portfolio work was conducted within a team called classTracker with 4 people.
+ * I contributed by adding features for courses and packages as well as APIs for those features.
+ * This project includes implementing a REST API and a management interface to create a new “Student Tracking” system.
+ */
+
 namespace App\Http\Controllers\Api\v1;
 
 use App\Classes\ApiResponse;
@@ -13,19 +27,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
- * PackageApiController
- *
- * Handles operations related to Package management.
- *
- * Filename:        PackageApiController.php
- * Location:        app/Http/Controllers/PackageApiController.php
- * Project:         classtracker-2025-s1
- * Date Created:    14/04/2025
- *
- * Author:          Yui_Migaki
- */
-
-/**
  * API Version 1 - PackageApiController
  */
 class PackageApiController extends Controller
@@ -36,7 +37,9 @@ class PackageApiController extends Controller
     public function index(Request $request): JsonResponse
     {
 
+        // set perPage parameter and specific number per page
         $packageNumber = $request->perPage;
+        // set search parameter
         $search = $request->search;
 
         $query = Package::with('courses');
@@ -49,6 +52,7 @@ class PackageApiController extends Controller
             }
         }
 
+        //If there is no page, set to 6 items per page
         $packages = $query->paginate($packageNumber ?? 6);
 
         if ($packages->isNotEmpty()) {
@@ -81,14 +85,13 @@ class PackageApiController extends Controller
     {
         $package = Package::create($request->validated());
 
+        //Loop each course id and find specific course, and then update the course's package id field.
         if ($request->filled('course_ids')) {
             foreach ($request->course_ids as $course_id) {
                 $course = Course::find($course_id);
                 $course->update(['package_id' => $package->id]);
             }
         }
-
-
         //Load the courses relationship
         $package->load('courses');
 
@@ -102,11 +105,12 @@ class PackageApiController extends Controller
     {
         $package->update($request->validated());
 
-
+        // Get the specific package id field and remove old ones that have been set previously.
         $oldCourses = Course::where('package_id', $package->id)->get();
         foreach ($oldCourses as $oldCourse) {
             $oldCourse->update(['package_id' => null]);
         }
+        //Loop each course id and find specific course, and then update the course's package id field.
         if ($request->filled('course_ids')) {
             foreach ($request->course_ids as $course_id) {
                 $course = Course::find($course_id);

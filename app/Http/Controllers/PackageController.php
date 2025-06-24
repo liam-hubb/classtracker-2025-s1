@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * Assessment Title: Portfolio Part 1
+ * Cluster:          SaaS - BED: APIs & NoSQL - 2025 S1
+ * Qualification:    ICT50220 (Advanced Programming)
+ * Name:             Yui Migaki
+ * Student ID:       20098757
+ * Year/Semester:    2025/S1
+ *
+ * YOUR SUMMARY OF PORTFOLIO ACTIVITY
+ * This portfolio work was conducted within a team called classTracker with 4 people.
+ * I contributed by adding features for courses and packages as well as APIs for those features.
+ * This project includes implementing a REST API and a management interface to create a new “Student Tracking” system.
+ */
+
 namespace App\Http\Controllers;
 
 use App\Models\Course;
@@ -50,6 +64,7 @@ class PackageController extends Controller
 
         $package = Package::create($validated);
 
+        //Loop each course id and find specific course, and then update the course's package id field.
         foreach ($request->course_ids as $course_id) {
             $course = Course::whereId($course_id);
             $course->update(['package_id' => $package->id]);
@@ -105,11 +120,13 @@ class PackageController extends Controller
             'tga_status' => ['required', 'min:5', 'max:255', 'string',],
         ]);
 
+        // Get the specific package id field and remove old ones that have been set previously.
         $oldCourses = Course::where('package_id', $package->id)->get();
         foreach ($oldCourses as $oldCourse) {
             $oldCourse->update(['package_id' => null]);
         }
 
+        //Loop each course id and find specific course, and then update the course's package id field.
         foreach ($request->course_ids as $course_id) {
             $course = Course::whereId($course_id);
             $course->update(['package_id' => $package->id]);
