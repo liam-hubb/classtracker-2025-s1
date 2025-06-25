@@ -27,4 +27,4 @@ jobs:
 
       - name: Deploy build
         run: |
-          rsync -rv ./public/build/ clsstrckscrnadmn@${{ secrets.SERVER_IP }}:/home/clsstrckscrnadmn/public_html/classtracker-2025-s1/public/build
+          scp -r ./public/build/ clsstrckscrnadmn@${{ secrets.SERVER_IP }}:/home/clsstrckscrnadmn/public_html/classtracker-2025-s1/public/
