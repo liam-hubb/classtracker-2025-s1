@@ -1,4 +1,4 @@
-name: DeployAdd commentMore actions
+name: Deploy to cPanel
 on:
   push:
   pull_request:
