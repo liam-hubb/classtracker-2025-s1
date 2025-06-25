@@ -1,4 +1,4 @@
-name: CI
+name: CI Deploy build
 on:
   push:
   pull_request:
