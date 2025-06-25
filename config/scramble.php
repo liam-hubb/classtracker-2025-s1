@@ -29,7 +29,7 @@ return [
         /*
          * Description rendered on the home page of the API documentation (`/docs/api`).
          */
-        'description' => 'Api Documentation For The Classtrack Project.',
+        'description' => '',
     ],
 
     /*
@@ -107,20 +107,13 @@ return [
         RestrictedDocsAccess::class,
     ],
 
-    'extensions' => [
-        'components' => [
-            'securitySchemes' => [
-                'bearerAuth' => [
-                    'type' => 'http',
-                    'scheme' => 'bearer',
-                    'bearerFormat' => 'Token',
-                ],
-            ],
-        ],
-        'security' => [
-            ['bearerAuth' => []],
-        ],
-    ],
+    'extensions' => [],
 
-
+    'auth' => [
+    'enabled' => true,
+    'in' => 'header',
+    'name' => 'Authorization',
+    'type' => 'http',
+    'scheme' => 'bearer',
+],
 ];
