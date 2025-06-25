@@ -27,5 +27,5 @@ jobs:
 
       - name: Deploy build
         run: |
-          rsync -rv ${{ github.workspace }}/node_modules/clsstrckscrnadmn@${{ secrets.SERVER_IP }}:/home/clsstrckscrnadmn/public_html/classtracker-2025-s1/node_modules
-          rsync -rv ${{ github.workspace }}/public/build/clsstrckscrnadmn@${{ secrets.SERVER_IP }}:/home/clsstrckscrnadmn/public_html/classtracker-2025-s1/public/build
+          rsync -rv ./node_modules/ clsstrckscrnadmn@${{ secrets.SERVER_IP }}:/home/clsstrckscrnadmn/public_html/classtracker-2025-s1/node_modules
+          rsync -rv ./public/build/ clsstrckscrnadmn@${{ secrets.SERVER_IP }}:/home/clsstrckscrnadmn/public_html/classtracker-2025-s1/public/build
