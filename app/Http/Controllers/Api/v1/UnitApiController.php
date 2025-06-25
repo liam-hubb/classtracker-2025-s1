@@ -17,27 +17,31 @@ class UnitApiController extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-
-        $unitNumber = $request->PerPage;
+        $unitNumber = $request->PerPage ?? 10;
         $search = $request->search;
 
         $query = Unit::query();
 
-        $searchableFields = ['unit', 'national_code', 'aqf_level', 'title', 'tga_status', 'state_code', 'nominal_hours', 'type', 'qa' ];
+        $searchableFields = [
+            'unit', 'national_code', 'aqf_level', 'title',
+            'tga_status', 'state_code', 'nominal_hours', 'type', 'qa'
+        ];
 
         if ($search) {
-            foreach ($searchableFields as $field) {
-                $query->orWhere($field, 'like', '%' . $search . '%');
-            }
+            $query->where(function ($q) use ($search, $searchableFields) {
+                foreach ($searchableFields as $field) {
+                    $q->orWhere($field, 'like', '%' . $search . '%');
+                }
+            });
         }
 
         $units = $query->paginate($unitNumber);
 
         if ($units->isEmpty()) {
-            return ApiResponse::success($units, "All units found");
+            return ApiResponse::error([], "No units found", 404);
         }
 
-        return ApiResponse::error([], "No units found", 404);
+        return ApiResponse::success($units, "All units found");
     }
 
     /**
@@ -95,6 +99,14 @@ class UnitApiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $unit = Unit::find($id);
+
+        if (!$unit) {
+            return ApiResponse::error([], "Unit not found", 404);
+        }
+
+        $unit->delete();
+
+        return ApiResponse::success([], "Unit deleted");
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Lesson;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class LessonSeeder extends Seeder
@@ -13,9 +14,16 @@ class LessonSeeder extends Seeder
      */
     public function run(): void
     {
-        // Truncate the lessons table before seeding
-        Lesson::truncate();
+         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        Lesson::factory()->count(20)->create();
+        // Truncate related tables first to avoid FK conflicts
+        DB::table('lesson_user')->truncate();
+        DB::table('lessons')->truncate();
+
+        // Re-enable foreign key checks
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        // Seed lessons
+        Lesson::factory(20)->create();
     }
 }

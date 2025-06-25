@@ -62,6 +62,7 @@ Route::delete('/roles-permissions/destroy', [RolesAndPermissionsController::clas
 Route::resource('users', UserController::class);
 Route::resource('lessons', LessonController::class);
 
+Route::redirect('/api/v1/doc', '/docs/api');
 
 
 require __DIR__.'/auth.php';

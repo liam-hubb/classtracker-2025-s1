@@ -30,6 +30,8 @@ class UnitsSeeder extends Seeder
                     "state_code" => $state_code,
                     "nominal_hours" => $nominal_hours,
 //                    'cluster_id' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ]);
             }
             $firstLine = false;

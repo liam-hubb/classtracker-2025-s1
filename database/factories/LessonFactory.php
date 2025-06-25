@@ -34,7 +34,7 @@ class LessonFactory extends Factory
             'cluster_id' => $cluster->code,
             'name' => $cluster->title,
             'start_date' => $startDate,
-            'start_time' => Carbon::createFromTime($this->faker->numberBetween(8, 18), 0)->format('H:i'),
+            'start_time' => Carbon::createFromTime($this->faker->numberBetween(8, 18), 0)->format('H:i:s'),
             'weekday' => self::WEEKDAYS[$this->faker->numberBetween(1, 5)],
             'duration' => $this->faker->randomElement([2.0, 2.5, 4.0]),
             'end_date' => $endDate,

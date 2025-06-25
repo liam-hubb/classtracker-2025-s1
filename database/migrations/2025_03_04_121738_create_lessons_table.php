@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('start_date');
             $table->string('end_date');
-            $table->timestamp('start_time')->nullable();
+            $table->time('start_time')->nullable();
             $table->string('weekday')->nullable();
             $table->float('duration');
         });
