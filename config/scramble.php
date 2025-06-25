@@ -108,4 +108,12 @@ return [
     ],
 
     'extensions' => [],
+
+    'auth' => [
+    'enabled' => true,
+    'in' => 'header',
+    'name' => 'Authorization',
+    'type' => 'http',
+    'scheme' => 'bearer',
+],
 ];
