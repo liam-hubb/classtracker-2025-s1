@@ -27,25 +27,17 @@ use Illuminate\Support\Facades\Route;
 
 //Route::post('/register', [AuthApiController::class, 'register']);
 Route::post('/login', [AuthApiController::class, 'login']);
-Route::get('/profile', [AuthApiController::class, 'profile'])->middleware(['auth:sanctum',]);
-//Route::post('/logout', [AuthApiController::class, 'logout'])->middleware(['auth:sanctum',]);
+Route::get('/profile', [AuthApiController::class, 'profile']);
+//Route::post('/logout', [AuthApiController::class, 'logout']);
 
 Route::apiResource('courses', CourseApiController::class)
-    ->only(['index', 'show'])
     ->names([
         'index' => 'api.v1.courses.index',
         'show' => 'api.v1.courses.show',
+        'store' => 'api.v1.courses.store',
+        'update' => 'api.v1.courses.update',
+        'destroy' => 'api.v1.courses.destroy',
     ]);
-
-Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('courses', CourseApiController::class)
-        ->only(['store', 'update', 'destroy'])
-        ->names([
-            'store' => 'api.v1.courses.store',
-            'update' => 'api.v1.courses.update',
-            'destroy' => 'api.v1.courses.destroy',
-        ]);
-});
 
 Route::apiResource('units', UnitApiController::class)
     ->names([
@@ -55,67 +47,40 @@ Route::apiResource('units', UnitApiController::class)
         'update' => 'api.v1.units.update',
     ]);
 
-
 Route::apiResource('packages', PackageApiController::class)
-    ->only(['index', 'show'])
     ->names([
         'index' => 'api.v1.packages.index',
         'show' => 'api.v1.packages.show',
+        'store' => 'api.v1.packages.store',
+        'update' => 'api.v1.packages.update',
+        'destroy' => 'api.v1.packages.destroy',
     ]);
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('packages', PackageApiController::class)
-        ->only(['store', 'update', 'destroy'])
-        ->names([
-            'store' => 'api.v1.packages.store',
-            'update' => 'api.v1.packages.update',
-            'destroy' => 'api.v1.packages.destroy',
-        ]);
-});
-
 Route::apiResource('lessons', LessonApiController::class)
-    ->only(['index', 'show',
-    ])
     ->names([
         'index' => 'api.v1.lessons.index',
         'show' => 'api.v1.lessons.show',
+        'store' => 'api.v1.lessons.store',
+        'update' => 'api.v1.lessons.update',
+        'destroy' => 'api.v1.lessons.destroy',
     ]);
-Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('lessons', LessonApiController::class)
-        ->only(['store', 'update', 'destroy'])
-        ->names([
-            'store' => 'api.v1.lessons.store',
-            'update' => 'api.v1.lessons.update',
-            'destroy' => 'api.v1.lessons.destroy',
-        ]);
+
+Route::prefix('roles-permissions')->group(function () {
+    Route::get('/', [RolesAndPermissionsApiController::class, 'index']);
+    Route::post('/assign', [RolesAndPermissionsApiController::class, 'assignRole']);
+    Route::delete('/remove', [RolesAndPermissionsApiController::class, 'removeRole']);
+    Route::get('/user/{user}', [RolesAndPermissionsApiController::class, 'getUserRoles']);
 });
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::prefix('roles-permissions')->group(function () {
-        Route::get('/', [RolesAndPermissionsApiController::class, 'index']);
-        Route::post('/assign', [RolesAndPermissionsApiController::class, 'assignRole']);
-        Route::delete('/remove', [RolesAndPermissionsApiController::class, 'removeRole']);
-        Route::get('/user/{user}', [RolesAndPermissionsApiController::class, 'getUserRoles']);
-    });
-
-    Route::name('api.v1.')->group(function () {
-        Route::apiResource('users', UserApiController::class)
-            ->names([
+Route::name('api.v1.')->group(function () {
+    Route::apiResource('users', UserApiController::class)
+        ->names([
             'index' => 'users.index',
             'store' => 'users.store',
             'show' => 'users.show',
             'update' => 'users.update',
             'destroy' => 'users.destroy',
         ]);
-    });
 });
 
-Route::apiResource('clusters', ClusterApiController::class)
-->names([
-    'index' => 'api.v1.clusters.index',
-    'show' => 'api.v1.clusters.show',
-    'store' => 'api.v1.clusters.store',
-    'update' => 'api.v1.cluster.update',
-]);
-
-
+Route::apiResource('clusters', ClusterApiController::class);

@@ -29,7 +29,7 @@ return [
         /*
          * Description rendered on the home page of the API documentation (`/docs/api`).
          */
-        'description' => '',
+        'description' => 'Test Scramble',
     ],
 
     /*
@@ -108,4 +108,12 @@ return [
     ],
 
     'extensions' => [],
+
+    'auth' => [
+    'enabled' => true,
+    'in' => 'header',
+    'name' => 'Authorization',
+    'type' => 'http',
+    'scheme' => 'bearer',
+],
 ];
