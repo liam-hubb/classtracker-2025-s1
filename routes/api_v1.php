@@ -110,6 +110,12 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 });
 
-Route::apiResource('clusters', ClusterApiController::class);
+Route::apiResource('clusters', ClusterApiController::class)
+->names([
+    'index' => 'api.v1.clusters.index',
+    'show' => 'api.v1.clusters.show',
+    'store' => 'api.v1.clusters.store',
+    'update' => 'api.v1.cluster.update',
+]);
 
 
