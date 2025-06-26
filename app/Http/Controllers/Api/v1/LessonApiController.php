@@ -14,6 +14,7 @@ class LessonApiController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @return JsonResponse
      */
     public function index(): JsonResponse
     {
@@ -30,6 +31,8 @@ class LessonApiController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @param  StoreLessonRequest  $request
+     * @return JsonResponse
      */
     public function store(StoreLessonRequest $request): JsonResponse
     {
@@ -51,6 +54,10 @@ class LessonApiController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @param  Lesson  $lesson
+     * @return JsonResponse
+     *
      */
     public function show(Lesson $lesson): JsonResponse
     {
@@ -60,6 +67,10 @@ class LessonApiController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  UpdateLessonRequest  $request
+     * @param  Lesson  $lesson
+     * @return JsonResponse
      */
     public function update(UpdateLessonRequest $request, Lesson $lesson): JsonResponse
     {
@@ -81,6 +92,9 @@ class LessonApiController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  Lesson  $lesson
+     * @return JsonResponse
      */
     public function destroy(Lesson $lesson): JsonResponse
     {
