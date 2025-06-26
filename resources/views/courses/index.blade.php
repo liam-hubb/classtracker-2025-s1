@@ -3,6 +3,38 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Course Management') }}
         </h2>
+        @auth
+            <div class="flex justify-end">
+            <form action="{{ route('courses.search') }}" method="POST" class="flex justify-end w-1/3 mx-5">
+                @csrf
+                <x-text-input type="text" name="keywords" placeholder="Course search..." value=""
+                              class="flex-grow px-4 py-2 focus:outline-none text-black w-full"/>
+                <x-primary-button type="submit"
+                                  class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 pl-2focus:outline-none transition ease-in-out duration-500">
+                    <i class="fa fa-search"></i> {{ __('Search') }}
+                </x-primary-button>
+            </form>
+            </div>
+        @else
+            <div class="flex justify-end">
+            <form action="{{ route('search')  }}"
+                  method="POST" class="block mx-5">
+                @csrf
+
+                <x-text-input type="text" name="keywords" placeholder="Course search..." value=""
+                              class="w-full h-1/5 mr-2  md:w-auto px-4 py-2 focus:outline-none text-black"/>
+
+                <x-primary-button type="submit"
+                                  class="w-full md:w-auto
+                           bg-sky-500 hover:bg-sky-600
+                           text-white
+                           px-4 py-2
+                           focus:outline-none transition ease-in-out duration-500">
+                    <i class="fa fa-search"></i> {{ __('Search') }}
+                </x-primary-button>
+            </form>
+            </div>
+        @endauth
     </x-slot>
 
     @auth
@@ -16,35 +48,6 @@
 
                     <div class="flex justify-between items-center mb-6">
                         <h3 class="text-xl font-bold mb-6">Courses</h3>
-
-                        @auth
-                            <form action="{{ route('courses.search') }}" method="POST" class="flex justify-end mx-5">
-                                @csrf
-                                <x-text-input type="text" name="keywords" placeholder="Course search..." value=""
-                                              class="flex-grow px-4 py-2 focus:outline-none text-black w-full"/>
-                                <x-primary-button type="submit"
-                                                  class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 pl-2focus:outline-none transition ease-in-out duration-500">
-                                    <i class="fa fa-search"></i> {{ __('Search') }}
-                                </x-primary-button>
-                            </form>
-                        @else
-                            <form action="{{ route('search')  }}"
-                                  method="POST" class="block mx-5">
-                                @csrf
-
-                                <x-text-input type="text" name="keywords" placeholder="Course search..." value=""
-                                              class="w-full h-1/5 mr-2  md:w-auto px-4 py-2 focus:outline-none text-black"/>
-
-                                <x-primary-button type="submit"
-                                                  class="w-full md:w-auto
-                           bg-sky-500 hover:bg-sky-600
-                           text-white
-                           px-4 py-2
-                           focus:outline-none transition ease-in-out duration-500">
-                                    <i class="fa fa-search"></i> {{ __('Search') }}
-                                </x-primary-button>
-                            </form>
-                        @endauth
 
                         <x-primary-link-button href="{{ route('courses.create') }}"
                                                class="bg-zinc-200 hover:bg-zinc-900 text-zinc-800 hover:text-white">

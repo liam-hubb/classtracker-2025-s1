@@ -63,7 +63,7 @@ class CourseApiController extends Controller
 
         $query = Course::query();
 
-        $searchableFields = ['course', 'national_code', 'aqf_level', 'title', 'tga_status', 'state_code', 'nominal_hours', 'type', 'qa', 'nat_code', 'nat_title'];
+        $searchableFields = ['national_code', 'aqf_level', 'title', 'tga_status', 'state_code', 'nominal_hours', 'type', 'qa', 'nat_code', 'nat_title', 'nat_code_title'];
 
         if ($search) {
             foreach ($searchableFields as $field) {
