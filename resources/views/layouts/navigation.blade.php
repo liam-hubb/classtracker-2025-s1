@@ -91,7 +91,10 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @auth
                     <div class="flex items-center space-x-4">
-                        <div class="text-blue-500 font-bold italic">{{ Auth::user()->preffered_name ?? Auth::user()->given_name }}</div>
+                        <x-nav-link  :href="route('profile.edit')" >
+                            <div class="text-blue-500 font-bold italic">{{ Auth::user()->preffered_name ?? Auth::user()->given_name }}</div>
+                        </x-nav-link>
+
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="text-blue-500 hover:text-blue-700 font-bold border-b-2 border-blue-300 hover:border-blue-700 pb-1 transition duration-300 ease-in-out">
