@@ -65,7 +65,7 @@ class PackageApiController extends Controller
 
         $query = Package::with('courses');
 
-        $searchableFields = ['course', 'national_code', 'title', 'tga_status'];
+        $searchableFields = ['national_code', 'title', 'tga_status'];
 
         if ($search) {
             foreach ($searchableFields as $field) {

@@ -97,7 +97,7 @@ class PackageController extends Controller
 
         $query = Package::with('courses');
 
-        $searchableFields = ['courses', 'national_code', 'title', 'tga_status'];
+        $searchableFields = ['national_code', 'title', 'tga_status'];
 
         if ($search) {
             foreach ($searchableFields as $field) {
