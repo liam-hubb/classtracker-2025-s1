@@ -46,13 +46,17 @@ Route::resource('units', UnitController::class)
 Route::get('/course', [\App\Http\Controllers\CourseController::class, 'index'])
     ->name('course');
 Route::resource('courses', CourseController::class)
-    ->only(['index', 'show', 'create', 'store', 'edit', 'update', 'destroy',]);
+    ->only(['index', 'show', 'create', 'store', 'edit', 'update', 'destroy', 'search']);
+Route::match(['get', 'post'], '/course/search', [\App\Http\Controllers\CourseController::class, 'search'])
+    ->name('courses.search');//Make this to handle both GET and POST methods
 
 
 Route::get('/package', [\App\Http\Controllers\PackageController::class, 'index'])
     ->name('package');
 Route::resource('packages', PackageController::class)
-    ->only(['index', 'show', 'create', 'store', 'edit', 'update', 'destroy',]);
+    ->only(['index', 'show', 'create', 'store', 'edit', 'update', 'destroy', 'search']);
+Route::match(['get', 'post'], '/package/search', [\App\Http\Controllers\PackageController::class, 'search'])
+    ->name('packages.search');//Make this to handle both GET and POST methods
 
 
 Route::get('/roles-permissions', [RolesAndPermissionsController::class, 'index'])->name('roles-permissions.index');
