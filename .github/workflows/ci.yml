@@ -1,4 +1,4 @@
-name: Deploy to cPanel
+name: CI Deploy build
 on:
   push:
   pull_request:
@@ -10,6 +10,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Compile assets
+        run:  npm run build
+
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh/
@@ -19,6 +25,6 @@ jobs:
           chmod 600 ~/.ssh/id_rsa.pub
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Deploy
+      - name: Deploy build
         run: |
-          ssh clsstrckscrnadmn@${{ secrets.SERVER_IP }} 'bash -s' < ${{ github.workspace }}/.github/workflows/deploy.sh
+          scp -r ./public/build/ clsstrckscrnadmn@${{ secrets.SERVER_IP }}:/home/clsstrckscrnadmn/public_html/classtracker-2025-s1/public/
