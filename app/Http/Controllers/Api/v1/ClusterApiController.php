@@ -59,7 +59,8 @@ class ClusterApiController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * @param StoreClustersRequest $request
+     * @return JsonResponse
      */
     public function store(StoreClustersRequest $request): JsonResponse
     {
@@ -79,6 +80,7 @@ class ClusterApiController extends Controller
      *
      * @param $id
      * @return JsonResponse
+     * @unauthenticated
      */
     public function show($id): JsonResponse
     {
@@ -94,6 +96,10 @@ class ClusterApiController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param UpdateClustersRequest $request
+     * @param Cluster $cluster
+     * @return JsonResponse
      */
     public function update(UpdateClustersRequest $request, Cluster $cluster): JsonResponse
     {
@@ -109,6 +115,9 @@ class ClusterApiController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param $clusterId
+     * @return JsonResponse
      */
     public function destroy($clusterId): JsonResponse
     {
