@@ -39,6 +39,15 @@ Route::apiResource('courses', CourseApiController::class)
         'destroy' => 'api.v1.courses.destroy',
     ]);
 
+Route::apiResource('clusters', ClusterApiController::class)
+    ->names([
+        'index' => 'api.v1.clusters.index',
+        'show' => 'api.v1.clusters.show',
+        'store' => 'api.v1.clusters.store',
+        'update' => 'api.v1.clusters.update',
+        'destroy' => 'api.v1.clusters.destroy',
+    ]);
+
 Route::apiResource('units', UnitApiController::class)
     ->names([
         'index' => 'api.v1.units.index',
@@ -82,5 +91,3 @@ Route::name('api.v1.')->group(function () {
             'destroy' => 'users.destroy',
         ]);
 });
-
-Route::apiResource('clusters', ClusterApiController::class);

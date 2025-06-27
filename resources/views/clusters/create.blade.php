@@ -76,20 +76,20 @@
                                         <x-input-error :messages="$errors->get('qualification_code')" class="mt-2"/>
                                     </div>
 
-                                    @foreach(range(1, 8) as $units)
+                                    @foreach(range(1, 4) as $i)
                                         <div class="flex flex-col my-2">
-                                            <x-input-label for="{{ 'unit_' . $unit }}">
-                                                Unit {{ $unit }}
+                                            <x-input-label for="{{ 'unit_' . $i }}">
+                                                Unit {{ $i }}
                                             </x-input-label>
-                                            <select name="unit_{{ $unit }}" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                                            <select name="unit_{{ $units }}" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                                                 <option value="">Select Unit</option>
-                                                @foreach ($cluster->units as $unit)
-                                                    <option value="{{ $unitItem->id }}">
-                                                        {{ $unitItem->national_code }}
+                                                @foreach ($units as $unit)
+                                                    <option value="{{ $unit->id }}">
+                                                        {{ $unit->national_code }}
                                                     </option>
                                                 @endforeach
                                             </select>
-                                            <x-input-error :messages="$errors->get('unit_' . $unit)" class="mt-2"/>
+                                            <x-input-error :messages="$errors->get('unit_' . $i)" class="mt-2"/>
                                         </div>
                                     @endforeach
                                 </section>
