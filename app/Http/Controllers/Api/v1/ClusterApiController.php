@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreClustersRequest;
 use App\Http\Requests\UpdateClustersRequest;
 use App\Models\Cluster;
+use App\Models\Unit;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -128,5 +129,11 @@ class ClusterApiController extends Controller
         }
         $cluster->delete();
         return ApiResponse::success([], 'Cluster deleted', 201);
+    }
+
+    public function create()
+    {
+        $units = Unit::all();
+        return view('clusters.create', compact('units'));
     }
 }
